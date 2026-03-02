@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAG Beverages — Kava Infuser Bottle & Kava Shot | Find a Retailer Near You</title>
+<meta name="description" content="MAG Beverages makes the Spirited Kava Infuser bottle and Spirited Kava Shot — functional non-alcoholic drinks combining noble kava, organic caffeine, and terpene essential oils. No THC, CBD, or kratom. Find a stockist near you or order wholesale today.">
+<meta name="keywords" content="kava infuser bottle, spirited kava infuser, kava shot, kava ashwagandha drink, kava l-theanine, kava vitamin c, kava nootropic, kava adaptogen drink, non-alcoholic functional beverage, kava wholesale, wholesale kava bottle, kava for bars, kava bottle shop, stock kava drinks, NA bar wholesale, alcohol alternative wholesale, kava infuser wholesale, kava near me, kava drink retailer, sober curious functional drink, zero proof wellness drink, kava adaptogen, plant-based wellness drink, kava bar menu, NA beverage distributor, kava smoke shop, MAG Beverages wholesale">
+<meta property="og:title" content="MAG Beverages — Kava Infuser Bottle & Kava Shot. Find a Retailer or Order Wholesale.">
+<meta property="og:description" content="The Spirited Kava Infuser and Spirited Kava Shot — combining kavalactones, organic caffeine, and terpene essential oils. Clean, lab-tested, no THC/CBD/kratom. Available at bars, bottle shops, and wellness stores across the US.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://magbeverages.com">
+<link rel="canonical" href="https://magbeverages.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --sand: #9a9184;         /* 10% accent — eyebrows, divider, hover tints */
+    --bg: #f0efed;
+    --surface: #faf9f7;
+    --teal: #465b5f;
+    --teal-mid: #567276;
+    --teal-pale: #e2e8e9;
+    --teal-hover: #cfd8da;
+    --text: #333333;
+    --muted: #666666;
+    --border: #c8c4bc;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 32px 64px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 44px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .divider {
+    width: 44px;
+    height: 2.5px;
+    background: #9a9184;
+    margin: 14px auto;
+    border-radius: 2px;
+    opacity: 0.8;
+  }
+
+  .page-subtitle {
+    font-family: 'DM Serif Display', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: #232d2f;
+  }
+
+  .layout {
+    width: 100%;
+    max-width: 980px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 36px;
+    align-items: start;
+    animation: fadeUp 0.6s 0.12s ease both;
+  }
+
+  svg#us-map { width: 100%; height: auto; display: block; }
+
+  .state {
+    fill: #c8d0d1;
+    stroke: #f0ece3;
+    stroke-width: 2;
+    transition: fill 0.18s ease;
+    cursor: default;
+  }
+  .state.active {
+    fill: var(--teal-pale);
+    stroke: var(--teal);
+    stroke-width: 2.5;
+    cursor: pointer;
+  }
+  .state.active:hover { fill: var(--teal-hover); }
+  .state.selected {
+    fill: var(--teal);
+    stroke: var(--teal-mid);
+    stroke-width: 3;
+  }
+
+  .slabel {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 7.5px;
+    font-weight: 600;
+    fill: #999999;
+    pointer-events: none;
+    user-select: none;
+    text-anchor: middle;
+    dominant-baseline: middle;
+  }
+  .slabel.active-lbl { fill: var(--teal); }
+  .slabel.selected-lbl { fill: white; }
+
+  .map-hint {
+    font-size: 11px;
+    color: #9a9184;
+    letter-spacing: 0.8px;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .sidebar {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    min-height: 240px;
+  }
+
+  .sidebar-header {
+    background: var(--teal);
+    padding: 20px 22px 18px;
+  }
+  .sidebar-header-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: white;
+    line-height: 1.35;
+  }
+  .sidebar-header-hint {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  .state-view { display: none; }
+  .state-view.visible { display: block; }
+
+  .state-name-bar {
+    background: var(--teal);
+    padding: 16px 22px 14px;
+  }
+  .state-name-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: white;
+    font-style: italic;
+  }
+  .state-count {
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 3px;
+    font-weight: 500;
+  }
+
+  .retailer-list { padding: 6px 0; }
+  .retailer {
+    padding: 13px 22px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  .retailer:last-child { border-bottom: none; }
+  .retailer:hover { background: var(--teal-pale); }
+
+  .retailer-name { font-size: 14px; font-weight: 600; color: var(--text); }
+  .retailer-meta { display: flex; align-items: center; gap: 8px; margin-top: 4px; flex-wrap: wrap; }
+  .retailer-city { font-size: 12px; color: var(--muted); }
+  .retailer-type {
+    font-size: 10px; font-weight: 600; color: var(--teal);
+    background: var(--teal-pale); padding: 2px 7px;
+    border-radius: 20px; text-transform: uppercase; letter-spacing: 0.3px;
+  }
+  .retailer-address { font-size: 11px; color: #9a9184; margin-top: 3px; }
+
+  .legend {
+    width: 100%; max-width: 980px;
+    display: flex; align-items: center; gap: 20px;
+    margin-top: 18px; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.24s ease both;
+  }
+  .legend-item { display: flex; align-items: center; gap: 7px; font-size: 11px; color: #9a9184; font-weight: 500; }
+  .legend-swatch { width: 14px; height: 14px; border-radius: 3px; border: 1.5px solid; flex-shrink: 0; }
+  .legend-swatch.has { background: var(--teal-pale); border-color: var(--teal); }
+  .legend-swatch.none { background: #c8d0d1; border-color: #cccccc; }
+  .legend-swatch.sel { background: var(--teal); border-color: var(--teal-mid); }
+
+  /* TRUST BAR */
+  .trust-bar {
+    width: 100%;
+    max-width: 980px;
+    margin-top: 48px;
+    padding: 22px 32px;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    animation: fadeUp 0.6s 0.5s ease both;
+  }
+
+  .trust-item {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #9a9184;
+  }
+
+  .trust-dot {
+    color: var(--border);
+    font-size: 13px;
+    line-height: 1;
+  }
+
+  /* last trust item is the sentence — override uppercase */
+  .trust-item:last-child {
+    text-transform: none;
+    letter-spacing: 0.2px;
+    font-weight: 400;
+    font-size: 12px;
+    font-style: italic;
+    color: var(--muted);
+  }
+
+  /* JOURNAL CTA */
+  .journal-cta {
+    width: 100%;
+    max-width: 980px;
+    margin-top: 32px;
+    text-align: center;
+  }
+
+  .journal-cta-link {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    padding: 16px 32px;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .journal-cta-link:hover {
+    border-color: var(--teal);
+    background: var(--teal-pale);
+  }
+
+  .journal-cta-eyebrow {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--sand);
+    font-weight: 600;
+  }
+
+  .journal-cta-text {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--teal);
+  }
+
+  footer {
+    margin-top: 48px; text-align: center;
+    font-size: 11px; color: #9a9184; letter-spacing: 1px;
+    animation: fadeUp 0.6s 0.36s ease both;
+  }
+  footer a { color: var(--teal); text-decoration: none; font-weight: 600; }
+
+  /* WHOLESALE BANNER — above the fold */
+  .wholesale-banner {
+    width: 100%;
+    max-width: 980px;
+    margin-bottom: 36px;
+    background: var(--teal);
+    border-radius: 6px;
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    animation: fadeUp 0.6s 0.05s ease both;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wholesale-banner::before {
+    content: '';
+    position: absolute;
+    right: -30px;
+    top: -30px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+
+  .wholesale-banner::after {
+    content: '';
+    position: absolute;
+    right: 60px;
+    bottom: -40px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    pointer-events: none;
+  }
+
+  .wholesale-banner-left { flex: 1; min-width: 0; }
+
+  .wholesale-banner-eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  .wholesale-banner-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: white;
+    line-height: 1.3;
+  }
+
+  .wholesale-banner-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.65);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  .wholesale-banner-btn {
+    flex-shrink: 0;
+    display: inline-block;
+    padding: 13px 26px;
+    background: white;
+    color: var(--teal);
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    transition: background 0.18s, transform 0.15s;
+    white-space: nowrap;
+  }
+
+  .wholesale-banner-btn:hover {
+    background: #f0f4f4;
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 620px) {
+    .wholesale-banner { flex-direction: column; align-items: flex-start; padding: 20px 22px; }
+    .wholesale-banner-btn { width: 100%; text-align: center; }
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    width: 100%;
+    max-width: 980px;
+    margin-top: 52px;
+    border-top: 1.5px solid var(--border);
+    padding-top: 48px;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .cta-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #9a9184;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .cta-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 30px;
+    font-style: italic;
+    color: #232d2f;
+    text-align: center;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .cta-subtext {
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 36px;
+    line-height: 1.7;
+  }
+
+  .cta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .cta-card {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 28px 24px;
+    text-align: center;
+    transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+  }
+
+  .cta-card:hover {
+    border-color: var(--teal);
+    box-shadow: 0 4px 20px rgba(31,89,84,0.1);
+    transform: translateY(-2px);
+  }
+
+  .cta-card-icon {
+    font-size: 26px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .cta-card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 17px;
+    color: var(--text);
+    margin-bottom: 7px;
+    line-height: 1.3;
+  }
+
+  .cta-card-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: background 0.18s, color 0.18s;
+  }
+
+  .cta-btn-primary {
+    background: var(--teal);
+    color: white;
+    border: 1.5px solid var(--teal);
+  }
+  .cta-btn-primary:hover { background: var(--teal); border-color: var(--teal-mid); }
+
+  .cta-btn-secondary {
+    background: transparent;
+    color: var(--teal);
+    border: 1.5px solid var(--teal);
+  }
+  .cta-btn-secondary:hover { background: #ede9e4; }
+
+  /* SEO COPY SECTION */
+  .seo-section {
+    width: 100%;
+    max-width: 980px;
+    margin-top: 52px;
+    padding-top: 40px;
+    border-top: 1.5px solid var(--border);
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+
+  .seo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px;
+  }
+
+  .seo-block-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: #232d2f;
+    margin-bottom: 10px;
+  }
+
+  .seo-block-body {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 720px) {
+    .layout { grid-template-columns: 1fr; }
+    body { padding: 32px 16px 48px; }
+    .cta-grid { grid-template-columns: 1fr; }
+    .seo-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <!--
+    =====================================================================
+    LOGO SWAP — TO DO BEFORE DEPLOYING:
+    1. Place "logo.png" in the same folder as this HTML file
+    2. Delete the SVG block below
+    3. Uncomment the <img> tag below it
+    =====================================================================
+  -->
+
+  <!-- STEP 3: Uncomment this line and delete the SVG below -->
+  <img src="logo.png" height="110" alt="MAG Beverages" style="display:block;margin:0 auto;">
+
+
+  <div class="divider"></div>
+  <div class="page-subtitle">Find us near you</div>
+</header>
+
+<!-- WHOLESALE BANNER -->
+<div class="wholesale-banner" role="complementary" aria-label="Wholesale opportunity">
+  <div class="wholesale-banner-left">
+    <div class="wholesale-banner-eyebrow">For Bars, Bottle Shops & Retailers</div>
+    <div class="wholesale-banner-headline">Your customers are already looking for this.</div>
+    <div class="wholesale-banner-sub">The Spirited Kava Infuser bottle and Kava Shot — kava with ashwagandha, L-theanine, and Vitamin C, filling the gap between wellness supplements and alcohol alternatives. Now available to stock wholesale.</div>
+  </div>
+  <a class="wholesale-banner-btn" href="https://airgoods.com/u/mag-beverages" target="_blank" rel="noopener">Browse Wholesale Catalog →</a>
+</div>
+
+<div class="layout">
+  <div class="map-wrap">
+    <!--
+      Blocky grid-style US map.
+      Each state = uniform rectangle, arranged geographically.
+      Cell size: 42x34px  Gap: 3px
+      Active states (have ordered customers) highlighted in teal.
+    -->
+    <svg id="us-map" viewBox="0 0 545 390" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- W=42 H=34 gap=3 -->
+      <!-- ROW 1 y=6 -->
+      <rect class="state" x="6"   y="6"   width="42" height="34" rx="4" id="s-WA"/>
+      <rect class="state" x="51"  y="6"   width="42" height="34" rx="4" id="s-MT"/>
+      <rect class="state" x="96"  y="6"   width="42" height="34" rx="4" id="s-ND"/>
+      <rect class="state" x="141" y="6"   width="42" height="34" rx="4" id="s-MN"/>
+      <rect class="state" x="186" y="6"   width="42" height="34" rx="4" id="s-WI"/>
+      <rect class="state" x="231" y="6"   width="42" height="34" rx="4" id="s-MI"/>
+      <!-- gap -->
+      <rect class="state" x="321" y="6"   width="42" height="34" rx="4" id="s-NY"/>
+      <rect class="state" x="366" y="6"   width="22" height="34" rx="4" id="s-VT"/>
+      <rect class="state" x="391" y="6"   width="22" height="34" rx="4" id="s-NH"/>
+      <rect class="state" x="416" y="6"   width="42" height="34" rx="4" id="s-ME"/>
+
+      <!-- ROW 2 y=43 -->
+      <rect class="state" x="6"   y="43"  width="42" height="34" rx="4" id="s-OR"/>
+      <rect class="state" x="51"  y="43"  width="42" height="34" rx="4" id="s-ID"/>
+      <rect class="state" x="96"  y="43"  width="42" height="34" rx="4" id="s-SD"/>
+      <rect class="state" x="141" y="43"  width="42" height="34" rx="4" id="s-IA"/>
+      <rect class="state" x="186" y="43"  width="42" height="34" rx="4" id="s-IL"/>
+      <rect class="state active" data-state="Indiana"      x="231" y="43"  width="42" height="34" rx="4" id="s-IN"/>
+      <rect class="state" x="276" y="43"  width="42" height="34" rx="4" id="s-OH"/>
+      <rect class="state active" data-state="Pennsylvania" x="321" y="43"  width="42" height="34" rx="4" id="s-PA"/>
+      <rect class="state" x="366" y="43"  width="22" height="34" rx="4" id="s-NJ"/>
+      <rect class="state" x="391" y="43"  width="22" height="34" rx="4" id="s-CT"/>
+      <rect class="state" x="416" y="43"  width="22" height="17" rx="3" id="s-RI"/>
+      <rect class="state" x="366" y="6"   width="72" height="17" rx="3" id="s-MA"/><!-- MA overlaid top -->
+
+      <!-- ROW 3 y=80 -->
+      <rect class="state" x="6"   y="80"  width="42" height="34" rx="4" id="s-CA1"/><!-- CA spans rows 3+4 -->
+      <rect class="state" x="51"  y="80"  width="42" height="34" rx="4" id="s-NV"/>
+      <rect class="state" x="96"  y="80"  width="42" height="34" rx="4" id="s-WY"/>
+      <rect class="state" x="141" y="80"  width="42" height="34" rx="4" id="s-NE"/>
+      <rect class="state active" data-state="Missouri"     x="186" y="80"  width="42" height="34" rx="4" id="s-MO"/>
+      <rect class="state" x="231" y="80"  width="42" height="34" rx="4" id="s-KY"/>
+      <rect class="state" x="276" y="80"  width="42" height="34" rx="4" id="s-WV"/>
+      <rect class="state" x="321" y="80"  width="28" height="17" rx="3" id="s-MD"/>
+      <rect class="state" x="352" y="80"  width="20" height="17" rx="3" id="s-DE"/>
+
+      <!-- ROW 4 y=117 -->
+      <rect class="state active" data-state="California"   x="6"   y="117" width="42" height="34" rx="4" id="s-CA2"/>
+      <rect class="state" x="51"  y="117" width="42" height="34" rx="4" id="s-UT"/>
+      <rect class="state active" data-state="Colorado"     x="96"  y="117" width="42" height="34" rx="4" id="s-CO"/>
+      <rect class="state" x="141" y="117" width="42" height="34" rx="4" id="s-KS"/>
+      <rect class="state" x="186" y="117" width="42" height="34" rx="4" id="s-AR"/>
+      <rect class="state active" data-state="Tennessee"    x="231" y="117" width="42" height="34" rx="4" id="s-TN"/>
+      <rect class="state" x="276" y="117" width="42" height="34" rx="4" id="s-VA"/>
+      <rect class="state active" data-state="North Carolina" x="321" y="117" width="42" height="34" rx="4" id="s-NC"/>
+
+      <!-- ROW 5 y=154 -->
+      <rect class="state" x="51"  y="154" width="42" height="34" rx="4" id="s-AZ"/>
+      <rect class="state" x="96"  y="154" width="42" height="34" rx="4" id="s-NM"/>
+      <rect class="state" x="141" y="154" width="42" height="34" rx="4" id="s-OK"/>
+      <rect class="state" x="186" y="154" width="42" height="34" rx="4" id="s-MS"/>
+      <rect class="state" x="231" y="154" width="42" height="34" rx="4" id="s-AL"/>
+      <rect class="state active" data-state="Georgia"      x="276" y="154" width="42" height="34" rx="4" id="s-GA"/>
+      <rect class="state" x="321" y="154" width="42" height="34" rx="4" id="s-SC"/>
+
+      <!-- ROW 6 y=191 — Texas bigger -->
+      <rect class="state active" data-state="Texas"        x="96"  y="191" width="87" height="54" rx="4" id="s-TX"/>
+      <rect class="state" x="186" y="191" width="42" height="34" rx="4" id="s-LA"/>
+      <rect class="state"                                  x="276" y="191" width="87" height="34" rx="4" id="s-FL"/>
+
+      <!-- AK + HI bottom left -->
+      <rect class="state" x="6"   y="320" width="62" height="44" rx="4" id="s-AK"/>
+      <rect class="state" x="80"  y="336" width="62" height="28" rx="4" id="s-HI"/>
+
+      <!-- ===== LABELS ===== -->
+      <!-- Row 1 -->
+      <text class="slabel" x="27"  y="23">WA</text>
+      <text class="slabel" x="72"  y="23">MT</text>
+      <text class="slabel" x="117" y="23">ND</text>
+      <text class="slabel" x="162" y="23">MN</text>
+      <text class="slabel" x="207" y="23">WI</text>
+      <text class="slabel" x="252" y="23">MI</text>
+      <text class="slabel" x="342" y="23">NY</text>
+      <text class="slabel" x="377" y="23" font-size="6">VT</text>
+      <text class="slabel" x="402" y="23" font-size="6">NH</text>
+      <text class="slabel" x="437" y="23">ME</text>
+      <!-- Row 2 -->
+      <text class="slabel" x="27"  y="60">OR</text>
+      <text class="slabel" x="72"  y="60">ID</text>
+      <text class="slabel" x="117" y="60">SD</text>
+      <text class="slabel" x="162" y="60">IA</text>
+      <text class="slabel" x="207" y="60">IL</text>
+      <text class="slabel active-lbl" id="lbl-IN" x="252" y="60">IN</text>
+      <text class="slabel" x="297" y="60">OH</text>
+      <text class="slabel active-lbl" id="lbl-PA" x="342" y="60">PA</text>
+      <text class="slabel" x="377" y="60" font-size="6">NJ</text>
+      <text class="slabel" x="402" y="60" font-size="6">CT</text>
+      <text class="slabel" x="427" y="51" font-size="6">RI</text>
+      <text class="slabel" x="402" y="14" font-size="6">MA</text>
+      <!-- Row 3 -->
+      <text class="slabel" x="27"  y="97">CA</text>
+      <text class="slabel" x="72"  y="97">NV</text>
+      <text class="slabel" x="117" y="97">WY</text>
+      <text class="slabel" x="162" y="97">NE</text>
+      <text class="slabel active-lbl" id="lbl-MO" x="207" y="97">MO</text>
+      <text class="slabel" x="252" y="97">KY</text>
+      <text class="slabel" x="297" y="97">WV</text>
+      <text class="slabel" x="335" y="89" font-size="6">MD</text>
+      <text class="slabel" x="362" y="89" font-size="6">DE</text>
+      <!-- Row 4 -->
+      <text class="slabel active-lbl" id="lbl-CA" x="27"  y="134">CA</text>
+      <text class="slabel" x="72"  y="134">UT</text>
+      <text class="slabel active-lbl" id="lbl-CO" x="117" y="134">CO</text>
+      <text class="slabel" x="162" y="134">KS</text>
+      <text class="slabel" x="207" y="134">AR</text>
+      <text class="slabel active-lbl" id="lbl-TN" x="252" y="134">TN</text>
+      <text class="slabel" x="297" y="134">VA</text>
+      <text class="slabel active-lbl" id="lbl-NC" x="342" y="134">NC</text>
+      <!-- Row 5 -->
+      <text class="slabel" x="72"  y="171">AZ</text>
+      <text class="slabel" x="117" y="171">NM</text>
+      <text class="slabel" x="162" y="171">OK</text>
+      <text class="slabel" x="207" y="171">MS</text>
+      <text class="slabel" x="252" y="171">AL</text>
+      <text class="slabel active-lbl" id="lbl-GA" x="297" y="171">GA</text>
+      <text class="slabel" x="342" y="171">SC</text>
+      <!-- Row 6 -->
+      <text class="slabel active-lbl" id="lbl-TX" x="139" y="218">TX</text>
+      <text class="slabel" x="207" y="208">LA</text>
+      <text class="slabel"            id="lbl-FL" x="319" y="208">FL</text>
+      <!-- AK HI -->
+      <text class="slabel" x="37"  y="342">AK</text>
+      <text class="slabel" x="111" y="350">HI</text>
+    </svg>
+
+    <p class="map-hint">Click a highlighted state to explore retailers</p>
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div id="prompt-view">
+      <div class="sidebar-header">
+        <div class="sidebar-header-title">Where can you find MAG?</div>
+        <div class="sidebar-header-hint">Select any highlighted state on the map to see local retailers near you.</div>
+      </div>
+      <div style="padding:18px 22px;">
+        <div style="font-size:11px;color:var(--muted);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">Retailers in</div>
+        <div id="state-pills" style="display:flex;flex-wrap:wrap;gap:7px;"></div>
+        <div style="margin-top:20px;padding-top:18px;border-top:1px solid var(--border);">
+          <div style="font-size:11px;color:var(--muted);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">Not seeing your state?</div>
+          <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:12px;">We're expanding fast. Reach out to stock MAG at your bar, bottle shop, or wellness store.</p>
+          <a href="https://airgoods.com/u/mag-beverages" target="_blank" rel="noopener" style="display:block;text-align:center;background:var(--teal);color:white;padding:10px 16px;border-radius:4px;font-size:12px;font-weight:700;text-decoration:none;letter-spacing:0.3px;transition:background 0.18s;" onmouseover="this.style.background='#567276'" onmouseout="this.style.background='var(--teal)'">Order Now on Airgoods →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="state-view" id="state-view">
+      <div class="state-name-bar">
+        <div class="state-name-text" id="state-name-text"></div>
+        <div class="state-count" id="state-count"></div>
+      </div>
+      <div class="retailer-list" id="retailer-list"></div>
+    </div>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-swatch has"></div>States with MAG retailers</div>
+  <div class="legend-item"><div class="legend-swatch sel"></div>Selected state</div>
+  <div class="legend-item"><div class="legend-swatch none"></div>Coming soon</div>
+</div>
+
+<!-- CTA SECTION -->
+<section class="cta-section" aria-label="Connect with MAG Beverages">
+  <p class="cta-eyebrow">Wholesale & Partnerships</p>
+  <h2 class="cta-heading">The kava bottle and shot your customers can't find anywhere else.</h2>
+  <p class="cta-subtext">Kava with ashwagandha, L-theanine, and Vitamin C — a functional, non-alcoholic drink that fills the white space between wellness supplements and zero-proof spirits. Low minimums. Ships nationwide. Easy reorders.</p>
+
+  <div class="cta-grid">
+
+    <div class="cta-card">
+      <span class="cta-card-icon">🛒</span>
+      <div class="cta-card-title">Stock MAG at Your Store</div>
+      <p class="cta-card-desc">Browse our wholesale catalog on Airgoods — the Spirited Kava Infuser bottle and Spirited Kava Shot, with low minimums and fast shipping nationwide.</p>
+      <a class="cta-btn cta-btn-primary" href="https://airgoods.com/u/mag-beverages" target="_blank" rel="noopener">Place a Wholesale Order →</a>
+    </div>
+
+    <div class="cta-card">
+      <span class="cta-card-icon">📸</span>
+      <div class="cta-card-title">Follow & Connect</div>
+      <p class="cta-card-desc">Stay up to date on new products, new stockists, and what's happening in the non-alcoholic and kava space. Slide into our DMs anytime.</p>
+      <a class="cta-btn cta-btn-secondary" href="https://www.instagram.com/magbeverages/" target="_blank" rel="noopener">DM Us on Instagram →</a>
+    </div>
+
+    <div class="cta-card">
+      <span class="cta-card-icon">✉️</span>
+      <div class="cta-card-title">Have Questions?</div>
+      <p class="cta-card-desc">Press inquiries, partnership ideas, or just want to know more about our kava formulations? We're happy to talk.</p>
+      <a class="cta-btn cta-btn-secondary" href="/cdn-cgi/l/email-protection#e28f87868b83a28f8385cf808794879083858791cc818d8f">Email Us with Questions →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- SEO CONTENT SECTION -->
+<section class="seo-section" aria-label="About MAG Beverages">
+  <div class="seo-grid">
+    <div>
+      <h3 class="seo-block-title">The Wholesale Kava Bottle & Shot Built for Modern Retail</h3>
+      <p class="seo-block-body">Bars building zero-proof programs, NA bottle shops, wellness stores, smoke shops, and natural food retailers are hunting for functional drinks their customers actually come back for. Made with real ingredients, the Spirited Kava Infuser bottle is a versatile back-bar staple — mix it into mocktails or serve over ice. The Spirited Kava Shot is a grab-and-go impulse buy that moves near the register. Both ship wholesale nationwide through Airgoods with low minimums. Stock the kava bottle and shot your competitors don't have yet.</p>
+    </div>
+    <div>
+      <h3 class="seo-block-title">What Are Kavalactones — and Why Does the Source Matter?</h3>
+      <p class="seo-block-body">Kavalactones are the active compounds in kava root (Piper methysticum) responsible for its calming, mood-lifting effects. They interact with GABA receptors in the brain — similar to how anti-anxiety compounds work — producing relaxation and social ease without intoxication. Not all kava is equal: noble kava chemotypes are smoother, safer for regular use, and free from the compounds found in low-grade tudei varieties. MAG's Spirited Kava Infuser bottle and Kava Shot combine premium noble kava extract with ashwagandha, L-theanine, and Vitamin C — a functional stack that stands apart from every sparkling kava tonic, kava spirit, and kava powder on the market today.</p>
+    </div>
+    <div>
+      <h3 class="seo-block-title">Find MAG Kava Drinks Near You</h3>
+      <p class="seo-block-body">MAG Beverages is currently available at NA bars, alcohol-free bottle shops, smoke shops, and wellness retailers across California, Colorado, Georgia, Indiana, Missouri, North Carolina, Pennsylvania, Tennessee, and Texas — with new stockists being added monthly. If you're looking for a kava drink near you, use the map above to find your closest retailer. If you're a retailer looking to carry the Spirited Kava Infuser bottle and Kava Shot, browse our wholesale catalog on Airgoods and place an order with no long-term commitment required.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <span class="trust-item">No THC</span>
+  <span class="trust-dot">·</span>
+  <span class="trust-item">No CBD</span>
+  <span class="trust-dot">·</span>
+  <span class="trust-item">No Kratom</span>
+  <span class="trust-dot">·</span>
+  <span class="trust-item">Third-Party Tested</span>
+  <span class="trust-dot">·</span>
+  <span class="trust-item">Built for consumers looking for alternatives to energy drinks and alcohol</span>
+</div>
+
+<div class="journal-cta">
+  <a href="https://magbeverages.com/journal" class="journal-cta-link">
+    <span class="journal-cta-eyebrow">Wellness Intelligence — Issue No. 1</span>
+    <span class="journal-cta-text">Read the science behind our ingredients →</span>
+  </a>
+</div>
+
+<footer>
+  <p>© 2025 MAG Beverages &nbsp;·&nbsp; <a href="https://magbeverages.com">magbeverages.com</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/magbeverages/" target="_blank" rel="noopener">@magbeverages</a> &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection#147971707d7554797573397671627166757371673a777b79"><span class="__cf_email__" data-cfemail="177a72737e76577a76703a7572617265767072643974787a">[email&#160;protected]</span></a></p>
+  <p style="margin-top:6px; font-size:10px; opacity:0.6;">Kava infuser bottle · Kava shot · Functional non-alcoholic beverage · Wholesale kava drinks · Noble kava extract</p>
+  <p style="margin-top:4px; font-size:10px; opacity:0.6;">Proudly Crafted in St. Louis, MO</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const retailers = {
+  "California": [
+    { name: "Dragon Smokeshop",           city: "Santa Monica",   type: "Smoke Shop",     address: "2934 Wilshire Blvd" },
+    { name: "Corner Shop Mini-Mart",      city: "Los Angeles",    type: "Convenience",    address: "730 S Western Ave" },
+    { name: "The Polished Pigeon",        city: "San Diego",      type: "NA Bar",         address: "1450 Market St A1" },
+    { name: "Bumble Bee Botanicals",      city: "La Mesa",        type: "Wellness",       address: "8047 La Mesa Blvd" },
+    { name: "Good News Bar",              city: "San Diego",      type: "NA Bar",         address: "3821 Park Blvd" },
+  ],
+  "Colorado": [
+    { name: "Puffs Smoke and Vape",       city: "Denver",         type: "Smoke Shop",     address: "2344 S Broadway" },
+  ],
+  "Georgia": [
+    { name: "Nuts 'n Berries",            city: "Atlanta",        type: "Natural Food",   address: "4274 Peachtree Rd NE" },
+  ],
+  "Indiana": [
+    { name: "Social AF Bevvies Boutique", city: "Whitestown",     type: "NA Bottle Shop", address: "8 S Main St" },
+    { name: "Generation NA",              city: "Lafayette",      type: "NA Taproom",     address: "504 Main St" },
+  ],
+  "Missouri": [
+    { name: "Royals Liquor Gravois",      city: "St. Louis",      type: "Liquor Store",   address: "6400 Gravois Ave" },
+    { name: "Royals Liquor Telegraph",    city: "St. Louis",      type: "Liquor Store",   address: "2568 Telegraph Rd" },
+    { name: "Royals Liquor St. Charles",  city: "St. Charles",    type: "Liquor Store",   address: "1815 Zumbehl Rd" },
+  ],
+  "North Carolina": [
+    { name: "Harvested Dreams LLC",       city: "Hendersonville", type: "Wellness",       address: "1705 Asheville Hwy" },
+  ],
+  "Pennsylvania": [
+    { name: "Hippie & French",            city: "Pittsburgh",     type: "Smoke Shop",     address: "5122 Butler St" },
+  ],
+  "Tennessee": [
+    { name: "Killjoy East — East Nashville Shop", city: "Nashville", type: "NA Bottle Shop", address: "1100 Fatherland St, Ste 107" },
+    { name: "Killjoy South — Berry Hill Shop",   city: "Nashville", type: "NA Bottle Shop", address: "2813 Columbine Pl" },
+  ],
+  "Texas": [
+    { name: "CBD American Shaman",        city: "Houston",        type: "Wellness",       address: "7939 Katy Fwy" },
+  ],
+};
+
+const labelMap = {
+  "California":     "lbl-CA",
+  "Colorado":       "lbl-CO",
+  "Georgia":        "lbl-GA",
+  "Indiana":        "lbl-IN",
+  "Missouri":       "lbl-MO",
+  "North Carolina": "lbl-NC",
+  "Pennsylvania":   "lbl-PA",
+  "Tennessee":      "lbl-TN",
+  "Texas":          "lbl-TX",
+};
+
+// Sidebar pills
+const pillsEl = document.getElementById('state-pills');
+Object.keys(retailers).sort().forEach(state => {
+  const count = retailers[state].length;
+  const pill = document.createElement('div');
+  pill.style.cssText = 'background:var(--teal-pale);border:1.5px solid var(--teal);border-radius:20px;padding:5px 13px;font-size:11px;font-weight:600;color:var(--teal);cursor:pointer;transition:background 0.15s;';
+  pill.textContent = `${state} (${count})`;
+  pill.onmouseenter = () => pill.style.background = 'var(--teal-hover)';
+  pill.onmouseleave = () => pill.style.background = 'var(--teal-pale)';
+  pill.onclick = () => showState(state);
+  pillsEl.appendChild(pill);
+});
+
+function showState(stateName) {
+  document.querySelectorAll('.state.selected').forEach(el => el.classList.remove('selected'));
+  document.querySelectorAll('.slabel.selected-lbl').forEach(el => {
+    el.classList.remove('selected-lbl');
+    el.classList.add('active-lbl');
+  });
+
+  document.querySelectorAll(`[data-state="${stateName}"]`).forEach(el => el.classList.add('selected'));
+
+  const lblId = labelMap[stateName];
+  if (lblId) {
+    const lbl = document.getElementById(lblId);
+    if (lbl) { lbl.classList.remove('active-lbl'); lbl.classList.add('selected-lbl'); }
+  }
+
+  const list = retailers[stateName];
+  document.getElementById('state-name-text').textContent = stateName;
+  document.getElementById('state-count').textContent = `${list.length} retailer${list.length !== 1 ? 's' : ''} carrying MAG`;
+  document.getElementById('retailer-list').innerHTML = list.map(r => `
+    <div class="retailer">
+      <div class="retailer-name">${r.name}</div>
+      <div class="retailer-meta">
+        <span class="retailer-city">${r.city}</span>
+        <span class="retailer-type">${r.type}</span>
+      </div>
+      <div class="retailer-address">${r.address}</div>
+    </div>
+  `).join('');
+
+  document.getElementById('prompt-view').style.display = 'none';
+  document.getElementById('state-view').classList.add('visible');
+}
+
+document.querySelectorAll('.state.active').forEach(el => {
+  el.addEventListener('click', () => { if (el.dataset.state) showState(el.dataset.state); });
+});
+</script>
+</body>
+</html>

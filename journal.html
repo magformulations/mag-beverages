@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wellness Intelligence — Issue No. 1 | MAG Beverages</title>
+<meta name="description" content="What peer-reviewed science says about kava, ashwagandha, L-theanine, and Vitamin C — the ingredients behind MAG Beverages' Spirited Kava Infuser bottle and Kava Shot.">
+<meta name="keywords" content="kava research, ashwagandha science, L-theanine study, Vitamin C cognition, kavalactones anxiety, adaptogen research, functional beverage ingredients, MAG Beverages wellness, kava clinical trial, ashwagandha cortisol">
+<meta property="og:title" content="Wellness Intelligence Issue No. 1 — MAG Beverages">
+<meta property="og:description" content="The peer-reviewed science behind kava, ashwagandha, L-theanine, and Vitamin C. Four ingredients. Four studies. One formulation philosophy.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://magbeverages.com/journal">
+<link rel="canonical" href="https://magbeverages.com/journal">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --sand: #9a9184;
+    --bg: #f0efed;
+    --surface: #faf9f7;
+    --teal: #465b5f;
+    --teal-mid: #567276;
+    --teal-pale: #e2e8e9;
+    --text: #333333;
+    --muted: #666666;
+    --border: #c8c4bc;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 32px 80px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    text-align: center;
+    margin-bottom: 44px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .logo-wordmark {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--teal);
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+
+  .logo-tagline {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--sand);
+    display: block;
+  }
+
+  .divider {
+    width: 44px;
+    height: 2.5px;
+    background: var(--sand);
+    margin: 20px auto 0;
+    border-radius: 2px;
+  }
+
+  /* ── NAV BACK LINK ── */
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--sand);
+    text-decoration: none;
+    margin-bottom: 40px;
+    animation: fadeUp 0.5s ease both;
+  }
+  .back-link:hover { color: var(--teal); }
+  .back-link::before { content: '←'; font-size: 13px; }
+
+  /* ── ARTICLE HEADER ── */
+  .article-header {
+    max-width: 720px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 56px;
+    animation: fadeUp 0.6s 0.05s ease both;
+  }
+
+  .issue-eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .article-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 5vw, 42px);
+    color: var(--teal);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .article-subtitle {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 560px;
+    margin: 0 auto 24px;
+  }
+
+  .article-meta {
+    font-size: 11px;
+    color: var(--sand);
+    letter-spacing: 0.5px;
+  }
+
+  /* ── ARTICLE BODY ── */
+  .article-body {
+    max-width: 720px;
+    width: 100%;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .intro-text {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--muted);
+    margin-bottom: 56px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── INGREDIENT SECTION ── */
+  .ingredient-section {
+    margin-bottom: 64px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid var(--border);
+  }
+  .ingredient-section:last-of-type {
+    border-bottom: none;
+  }
+
+  .ingredient-number {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .ingredient-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(22px, 3.5vw, 30px);
+    color: var(--teal);
+    margin-bottom: 6px;
+    line-height: 1.25;
+  }
+
+  .ingredient-subtitle {
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    color: var(--sand);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .ingredient-body {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 28px;
+  }
+
+  /* ── RESEARCH CARD ── */
+  .research-card {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-left: 4px solid var(--teal);
+    border-radius: 6px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+  }
+
+  .research-card-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .research-stat {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .research-stat:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .research-stat-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 6px;
+  }
+
+  .research-stat-body {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  /* ── BOTTOM LINE ── */
+  .bottom-line {
+    background: var(--teal-pale);
+    border-radius: 6px;
+    padding: 18px 24px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--teal);
+    border: 1px solid #cdd8da;
+  }
+
+  .bottom-line strong {
+    font-weight: 600;
+  }
+
+  /* ── REFERENCES ── */
+  .references-section {
+    max-width: 720px;
+    width: 100%;
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .references-title {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-bottom: 20px;
+  }
+
+  .reference-item {
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-bottom: 12px;
+    padding-left: 20px;
+    position: relative;
+  }
+  .reference-item::before {
+    content: attr(data-num);
+    position: absolute;
+    left: 0;
+    font-weight: 600;
+    color: var(--sand);
+  }
+
+  .reference-item a {
+    color: var(--teal-mid);
+    text-decoration: none;
+  }
+  .reference-item a:hover { text-decoration: underline; }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    max-width: 720px;
+    width: 100%;
+    margin-top: 56px;
+    text-align: center;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .footer-nav a {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--sand);
+    text-decoration: none;
+  }
+  .footer-nav a:hover { color: var(--teal); }
+
+  footer {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 11px;
+    color: #9a9184;
+  }
+
+  footer a {
+    color: var(--teal-mid);
+    text-decoration: none;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 620px) {
+    body { padding: 32px 20px 64px; }
+    .research-card { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="https://magbeverages.com">
+    <img src="logo.png" height="100" alt="MAG Beverages" style="display:block;margin:0 auto;">
+  </a>
+  <div class="divider"></div>
+</header>
+
+<!-- BACK LINK -->
+<a href="https://magbeverages.com" class="back-link">Back to Store Locator</a>
+
+<!-- ARTICLE HEADER -->
+<div class="article-header">
+  <span class="issue-eyebrow">Wellness Intelligence &nbsp;·&nbsp; Issue No. 1 &nbsp;·&nbsp; February 2026</span>
+  <h1 class="article-title">The New Social Formula</h1>
+  <p class="article-subtitle">What peer-reviewed science says about the ingredients redefining what it means to go out and feel great</p>
+  <span class="article-meta">magbeverages.com</span>
+</div>
+
+<!-- ARTICLE BODY -->
+<div class="article-body">
+
+  <p class="intro-text">The functional wellness space is growing fast — and so are consumer expectations. People no longer just want products that taste good; they want to know they work. At MAG Beverages, we are committed to full transparency, and that starts with the science behind every ingredient we use. In this first installment of our Wellness Intelligence series, we examine four widely researched botanical and nutritional ingredients used in our SPIRITED Kava bottle and shot: kava, ashwagandha, L-theanine, and Vitamin C.</p>
+
+  <!-- ── 1. KAVA ── -->
+  <div class="ingredient-section">
+    <span class="ingredient-number">01</span>
+    <h2 class="ingredient-title">Kava (Piper methysticum)</h2>
+    <p class="ingredient-subtitle">The Pacific Island Anxiety Remedy</p>
+    <p class="ingredient-body">Kava is a root native to the South Pacific, where it has been consumed ceremonially for thousands of years. In modern wellness circles, it is gaining renewed attention as a natural anxiolytic — an agent that helps reduce anxiety without the sedation or dependency concerns associated with pharmaceutical alternatives. Its active compounds, kavalactones, are believed to work by modulating GABA-A receptor activity and noradrenaline reuptake — mechanisms that closely mirror those of conventional anxiolytics.</p>
+    <p class="ingredient-body">In a pivotal 2013 double-blind, randomized, placebo-controlled trial published in the <em>Journal of Clinical Psychopharmacology</em>, researchers enrolled 75 adults with a formal diagnosis of Generalized Anxiety Disorder (GAD). Participants received an aqueous extract of kava delivering 120–240 mg of kavalactones daily for six weeks. Anxiety was assessed using the Hamilton Anxiety Rating Scale (HAMA), and remission rates were tracked throughout. The results were striking.</p>
+
+    <div class="research-card">
+      <span class="research-card-label">The Research</span>
+      <div class="research-stat">
+        <div class="research-stat-label">Remission Rate</div>
+        <div class="research-stat-body">26% of kava recipients achieved anxiety remission (HAMA ≤ 7), compared to just 6% in the placebo group — a greater than four-fold difference (p = 0.04).</div>
+      </div>
+      <div class="research-stat">
+        <div class="research-stat-label">Effect Size</div>
+        <div class="research-stat-body">Overall HAMA anxiety scores were significantly reduced in the kava group (p = 0.046, Cohen's d = 0.62), rising to d = 0.82 among those with moderate-to-severe GAD.</div>
+      </div>
+    </div>
+
+    <div class="bottom-line"><strong>The bottom line:</strong> A four-fold higher remission rate than placebo places standardized aqueous kava extract among the more compelling natural options for stress and situational anxiety. The effect sizes reported are considered clinically meaningful in anxiety research. <sup>[1]</sup></div>
+  </div>
+
+  <!-- ── 2. ASHWAGANDHA ── -->
+  <div class="ingredient-section">
+    <span class="ingredient-number">02</span>
+    <h2 class="ingredient-title">Ashwagandha (Withania somnifera)</h2>
+    <p class="ingredient-subtitle">Ayurveda's Stress Shield</p>
+    <p class="ingredient-body">Ashwagandha is a cornerstone of Ayurvedic medicine, used for over 3,000 years across India and North Africa as an adaptogen — a substance that helps the body adapt to physical and psychological stress. Unlike stimulants or sedatives, adaptogens work by regulating the body's stress-response system at a physiological level, specifically targeting the hypothalamic-pituitary-adrenal (HPA) axis. The clinical evidence supports this mechanism powerfully.</p>
+    <p class="ingredient-body">A landmark 2012 double-blind, randomized, placebo-controlled study published in the <em>Indian Journal of Psychological Medicine</em> enrolled 64 chronically stressed adults. Participants received either 300 mg of a high-concentration, full-spectrum ashwagandha root extract (KSM-66®) twice daily or a placebo for 60 days. Crucially, researchers measured not only subjective stress scores but also serum cortisol — the body's primary biochemical stress marker — giving this study objective, measurable outcomes.</p>
+
+    <div class="research-card">
+      <span class="research-card-label">The Research</span>
+      <div class="research-stat">
+        <div class="research-stat-label">Cortisol Reduction</div>
+        <div class="research-stat-body">Serum cortisol dropped by 27.9% in the ashwagandha group versus just 7.9% in the placebo group (p = 0.0006) — more than three and a half times the reduction compared to placebo.</div>
+      </div>
+      <div class="research-stat">
+        <div class="research-stat-label">Stress & Mood Scores</div>
+        <div class="research-stat-body">Standardized depression subscale scores improved by 77% in the ashwagandha group, compared to essentially no change in the placebo group — a clinically dramatic difference.</div>
+      </div>
+    </div>
+
+    <div class="bottom-line"><strong>The bottom line:</strong> A 27.9% reduction in serum cortisol is not a subtle shift — it represents a measurable recalibration of the body's stress-response system. For anyone managing chronic stress, ashwagandha's documented effect on the HPA axis is among the most compelling findings in the adaptogen literature. <sup>[2]</sup></div>
+  </div>
+
+  <!-- ── 3. L-THEANINE ── -->
+  <div class="ingredient-section">
+    <span class="ingredient-number">03</span>
+    <h2 class="ingredient-title">L-Theanine</h2>
+    <p class="ingredient-subtitle">The Calm in Your Cup of Tea</p>
+    <p class="ingredient-body">L-theanine is a naturally occurring amino acid found almost exclusively in the leaves of <em>Camellia sinensis</em> — the plant behind green tea. It is largely responsible for the focused, calm state that tea drinkers have appreciated for centuries. Unlike many calming agents, L-theanine achieves its effects without sedation, by modulating gamma-aminobutyric acid (GABA), dopamine, and serotonin activity in the brain — dialing down the nervous system's anxiety response while keeping the mind sharp and alert.</p>
+    <p class="ingredient-body">A 2019 randomized, placebo-controlled, crossover, double-blind trial published in the peer-reviewed journal <em>Nutrients</em> assessed the effects of 200 mg of L-theanine per day in 30 healthy adults over four weeks. Researchers measured both stress-related psychological symptoms and cognitive performance using validated clinical instruments: the State-Trait Anxiety Inventory (STAI), the Self-rating Depression Scale (SDS), the Pittsburgh Sleep Quality Index (PSQI), and the Brief Assessment of Cognition in Schizophrenia (BACS) battery.</p>
+
+    <div class="research-card">
+      <span class="research-card-label">The Research</span>
+      <div class="research-stat">
+        <div class="research-stat-label">Anxiety & Sleep Quality</div>
+        <div class="research-stat-body">STAI trait-anxiety scores fell significantly in the L-theanine group (p = 0.006) and sleep quality improved (p = 0.013) — with no significant changes observed in the placebo group.</div>
+      </div>
+      <div class="research-stat">
+        <div class="research-stat-label">Cognitive Performance</div>
+        <div class="research-stat-body">Verbal fluency and executive function both improved significantly in the L-theanine group compared to placebo (p = 0.001 and p = 0.031, respectively).</div>
+      </div>
+    </div>
+
+    <div class="bottom-line"><strong>The bottom line:</strong> L-theanine's dual profile — simultaneously reducing anxiety and sharpening cognitive function without inducing sedation — is unusual among wellness ingredients. Meaningful improvements in both emotional wellbeing and executive function from a single, well-tolerated compound at 200 mg/day make it a stand-out addition to any daytime wellness formulation. <sup>[3]</sup></div>
+  </div>
+
+  <!-- ── 4. VITAMIN C ── -->
+  <div class="ingredient-section">
+    <span class="ingredient-number">04</span>
+    <h2 class="ingredient-title">Vitamin C (Ascorbic Acid)</h2>
+    <p class="ingredient-subtitle">Beyond the Common Cold</p>
+    <p class="ingredient-body">Vitamin C is the most widely consumed dietary supplement in the world, and most people associate it almost exclusively with immune defense. Emerging clinical evidence, however, is building a compelling case for a secondary role: supporting mental performance, attentional focus, and cognitive resilience. This is especially relevant for the large proportion of the population that does not achieve optimal Vitamin C status through diet alone — a group for whom targeted supplementation may offer measurable cognitive dividends.</p>
+    <p class="ingredient-body">A 2022 double-blind, randomized, placebo-controlled trial published in the <em>European Journal of Nutrition</em> enrolled 46 healthy young adults whose serum Vitamin C levels were below the adequate threshold (&lt; 50 μmol/L). Participants received 500 mg of Vitamin C twice daily or a placebo for four weeks. Researchers assessed multiple dimensions of mental performance, including attention, work engagement, mood, and cognitive processing speed using both questionnaires and objective cognitive testing.</p>
+
+    <div class="research-card">
+      <span class="research-card-label">The Research</span>
+      <div class="research-stat">
+        <div class="research-stat-label">Attention & Focus</div>
+        <div class="research-stat-body">Vitamin C supplementation significantly improved attention scores (p = 0.03) and work absorption (p = 0.03) compared to placebo — in just four weeks of supplementation.</div>
+      </div>
+      <div class="research-stat">
+        <div class="research-stat-label">Cognitive Speed</div>
+        <div class="research-stat-body">Subjects in the Vitamin C group outperformed the placebo group on the Stroop color-word test, a validated measure of attentional control and processing speed (p = 0.04).</div>
+      </div>
+    </div>
+
+    <div class="bottom-line"><strong>The bottom line:</strong> Vitamin C's role in mental performance is increasingly difficult to ignore. At optimal levels, it measurably sharpens attentional focus and cognitive output — making it a powerful addition to any evidence-based functional beverage designed for daily performance. <sup>[4]</sup></div>
+  </div>
+
+  <!-- ── CLOSING ── -->
+  <div class="ingredient-section" style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
+    <span class="ingredient-number">Final Thoughts</span>
+    <h2 class="ingredient-title">From MAG Beverages</h2>
+    <p class="ingredient-body" style="margin-top:16px;">At MAG Beverages, we formulate with a single standard: the science has to be there. Kava, ashwagandha, L-theanine, and Vitamin C are not trend ingredients — they are evidence-supported compounds with measurable, peer-reviewed effects on stress, anxiety, cognition, and overall wellbeing.</p>
+    <p class="ingredient-body">Follow us at <a href="https://magbeverages.com" style="color:var(--teal-mid);">magbeverages.com</a> and on <a href="https://www.instagram.com/magbeverages/" target="_blank" rel="noopener" style="color:var(--teal-mid);">@magbeverages</a> to stay informed.</p>
+  </div>
+
+</div>
+
+<!-- REFERENCES -->
+<div class="references-section">
+  <div class="references-title">References</div>
+  <div class="reference-item" data-num="1.">Sarris J, Stough C, Bousman CA, et al. Kava in the treatment of generalized anxiety disorder: a double-blind, randomized, placebo-controlled study. <em>J Clin Psychopharmacol.</em> 2013;33(5):643–648. doi:10.1097/JCP.0b013e318291be67. PMID: 23635869.</div>
+  <div class="reference-item" data-num="2.">Chandrasekhar K, Kapoor J, Anishetty S. A prospective, randomized double-blind, placebo-controlled study of safety and efficacy of a high-concentration full-spectrum extract of ashwagandha root in reducing stress and anxiety in adults. <em>Indian J Psychol Med.</em> 2012;34(3):255–262. doi:10.4103/0253-7176.106022. PMID: 23439798; PMCID: PMC3573577.</div>
+  <div class="reference-item" data-num="3.">Hidese S, Ogawa S, Ota M, et al. Effects of L-theanine administration on stress-related symptoms and cognitive functions in healthy adults: a randomized controlled trial. <em>Nutrients.</em> 2019;11(10):2362. doi:10.3390/nu11102362. PMID: 31623400; PMCID: PMC6836118.</div>
+  <div class="reference-item" data-num="4.">Sim M, Hong SY, Jung SI, et al. Vitamin C supplementation promotes mental vitality in healthy young adults: results from a cross-sectional analysis and a randomized, double-blind, placebo-controlled trial. <em>Eur J Nutr.</em> 2022;61(1):447–459. doi:10.1007/s00394-021-02656-3. PMID: 34476568; PMCID: PMC8783887.</div>
+</div>
+
+<!-- FOOTER -->
+<div class="page-footer">
+  <div class="footer-nav">
+    <a href="https://magbeverages.com">Find a Retailer</a>
+    <a href="https://www.instagram.com/magbeverages/" target="_blank" rel="noopener">@magbeverages</a>
+    <a href="/cdn-cgi/l/email-protection#b8d0ddd4d4d7f8d5d9dfdaddceddcad9dfddcb96dbd7d5">Contact</a>
+  </div>
+  <footer>
+    <p>© 2026 MAG Beverages &nbsp;·&nbsp; <a href="https://magbeverages.com">magbeverages.com</a></p>
+    <p style="margin-top:4px; font-size:10px; opacity:0.6;">Proudly Crafted in St. Louis
