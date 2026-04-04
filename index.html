@@ -830,7 +830,7 @@
 </div>
 
 <footer>
-  <p>© 2026 MAG Beverages &nbsp;·&nbsp; <a href="https://magbeverages.com">magbeverages.com</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/magbeverages/" target="_blank" rel="noopener">@magbeverages</a> &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="94f9f1f0fdf5d4f9f5f3b9f6f1e2f1e6f5f3f1e7baf7fbf9">[email&#160;protected]</a></p>
+  <p>© 2026 MAG Beverages &nbsp;·&nbsp; <a href="https://magbeverages.com">magbeverages.com</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/magbeverages/" target="_blank" rel="noopener">@magbeverages</a> &nbsp;·&nbsp; media@mag-beverages.com</p>
   <p style="margin-top:6px; font-size:10px; opacity:0.6;">Kava infuser bottle · Kava shot · Functional non-alcoholic beverage · Wholesale kava drinks · Noble kava extract</p>
   <p style="margin-top:4px; font-size:10px; opacity:0.6;">Proudly Crafted in St. Louis, MO</p>
   <p style="margin-top:6px; font-size:10px; opacity:0.5; line-height:1.6;">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
@@ -930,77 +930,4 @@ function showState(stateName) {
   `).join('');
 
   document.getElementById('prompt-view').style.display = 'none';
-  document.getElementById('state-view').style.display = 'block';
-  document.getElementById('state-view').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-
-// Click handler for active map states
-document.querySelectorAll('.state.active').forEach(el => {
-  el.style.cursor = 'pointer';
-  el.addEventListener('click', () => {
-    const stateName = el.getAttribute('data-state');
-    if (stateName && retailers[stateName]) showState(stateName);
-  });
-});
-
-// Also make active labels clickable
-document.querySelectorAll('.slabel.active-lbl').forEach(el => {
-  el.style.cursor = 'pointer';
-  el.addEventListener('click', () => {
-    // Find the corresponding state rect by matching the label id to labelMap
-    for (const [stateName, lblId] of Object.entries(labelMap)) {
-      if (el.id === lblId) {
-        showState(stateName);
-        break;
-      }
-    }
-  });
-});
-
-// Google Maps link helper — opens address in Google Maps
-function openInMaps(name, address, city, state) {
-  const query = encodeURIComponent(`${name}, ${address}, ${city}, ${state}`);
-  window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, '_blank', 'noopener');
-}
-
-// Override retailer list rendering to include clickable addresses
-const _origShowState = showState;
-showState = function(stateName) {
-  document.querySelectorAll('.state.selected').forEach(el => el.classList.remove('selected'));
-  document.querySelectorAll('.slabel.selected-lbl').forEach(el => {
-    el.classList.remove('selected-lbl');
-    el.classList.add('active-lbl');
-  });
-
-  document.querySelectorAll(`[data-state="${stateName}"]`).forEach(el => el.classList.add('selected'));
-
-  const lblId = labelMap[stateName];
-  if (lblId) {
-    const lbl = document.getElementById(lblId);
-    if (lbl) { lbl.classList.remove('active-lbl'); lbl.classList.add('selected-lbl'); }
-  }
-
-  const list = retailers[stateName];
-  document.getElementById('state-name-text').textContent = stateName;
-  document.getElementById('state-count').textContent = `${list.length} retailer${list.length !== 1 ? 's' : ''} carrying MAG`;
-  document.getElementById('retailer-list').innerHTML = list.map(r => {
-    const mapsQuery = encodeURIComponent(`${r.name}, ${r.address}, ${r.city}, ${stateName}`);
-    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
-    return `
-    <div class="retailer">
-      <a href="${mapsUrl}" target="_blank" rel="noopener" class="retailer-name" style="text-decoration:none;color:inherit;cursor:pointer;" onmouseenter="this.style.color='var(--teal)'" onmouseleave="this.style.color='inherit'">${r.name}</a>
-      <div class="retailer-meta">
-        <span class="retailer-city">${r.city}</span>
-        <span class="retailer-type">${r.type}</span>
-      </div>
-      <a href="${mapsUrl}" target="_blank" rel="noopener" class="retailer-address" style="text-decoration:none;color:var(--teal-mid);cursor:pointer;" onmouseenter="this.style.textDecoration='underline'" onmouseleave="this.style.textDecoration='none'">${r.address} ↗</a>
-    </div>
-  `}).join('');
-
-  document.getElementById('prompt-view').style.display = 'none';
-  document.getElementById('state-view').style.display = 'block';
-  document.getElementById('state-view').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-};
-</script>
-</body>
-</html>
+  document.getElem
