@@ -7,12 +7,9 @@
 <title>MAG Beverages — Kava Infuser Bottle & Kava Shot | Find a Retailer Near You</title>
 <meta name="description" content="MAG Beverages makes the Spirited Kava Infuser bottle and Spirited Kava Shot — functional non-alcoholic drinks combining noble kava, organic caffeine, and terpene essential oils. No THC, CBD, or kratom. Find a stockist near you or order wholesale today.">
 <meta name="keywords" content="kava infuser bottle, spirited kava infuser, kava shot, kava ashwagandha drink, kava l-theanine, kava vitamin c, kava nootropic, kava adaptogen drink, non-alcoholic functional beverage, kava wholesale, wholesale kava bottle, kava for bars, kava bottle shop, stock kava drinks, NA bar wholesale, alcohol alternative wholesale, kava infuser wholesale, kava near me, kava drink retailer, sober curious functional drink, zero proof wellness drink, kava adaptogen, plant-based wellness drink, kava bar menu, NA beverage distributor, kava smoke shop, MAG Beverages wholesale">
-<meta property="og:title" content="MAG Beverages — Kava Infuser Bottle & Kava Shot">
-<meta property="og:description" content="Kava with ashwagandha, L-theanine, and Vitamin C. No THC, CBD, or kratom. Find a retailer near you or order wholesale.">
+<meta property="og:title" content="MAG Beverages — Kava Infuser Bottle & Kava Shot. Find a Retailer or Order Wholesale.">
+<meta property="og:description" content="The Spirited Kava Infuser and Spirited Kava Shot — combining kavalactones, organic caffeine, and terpene essential oils. Clean, lab-tested, no THC/CBD/kratom. Available at bars, bottle shops, and wellness stores across the US.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://magbeverages.com/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="1200">
 <meta property="og:url" content="https://magbeverages.com">
 <link rel="canonical" href="https://magbeverages.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -807,15 +804,6 @@
   </div>
 </div>
 
-<!-- REVIEW -->
-<div style="max-width:960px;margin:0 auto;padding:0 24px 28px;">
-  <div style="border:1.5px solid var(--border);border-radius:6px;background:var(--surface);padding:24px 28px;">
-    <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--sand);font-weight:600;margin-bottom:16px;">Customer Review</div>
-    <p style="font-family:'DM Serif Display',serif;font-style:italic;font-size:17px;color:var(--teal);line-height:1.6;margin-bottom:16px;">"We've been loving the Spirited Kava Infuser Bottle and Kava Shots from MAG Beverages! They are a game changer for our wellness routine. The kava infusion gives a smooth calming buzz without any THC, CBD, or Kratom. It's blended perfectly with L-Theanine and Ashwagandha for clean, lasting energy. The kava shots are super convenient for on-the-go moments and the bottle is a great addition to any gathering with friends. 10/10 highly recommend both products to anyone looking for an alternative, elevated buzz!"</p>
-    <div style="font-size:11px;color:var(--sand);font-weight:600;letter-spacing:0.5px;">Kay &amp; Crystal Clark &nbsp;·&nbsp; <a href="https://www.undertowco.com" target="_blank" rel="noopener" style="color:var(--teal-mid);text-decoration:none;">Undertow Collective</a> &nbsp;·&nbsp; Southern California</div>
-  </div>
-</div>
-
 <!-- TRUST BAR -->
 <div class="trust-bar">
   <span class="trust-item">No THC</span>
@@ -836,7 +824,7 @@
   <p style="margin-top:6px; font-size:10px; opacity:0.5; line-height:1.6;">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const retailers = {
   "California": [
     { name: "Dragon Smokeshop",           city: "Santa Monica",   type: "Smoke Shop",     address: "2934 Wilshire Blvd" },
@@ -930,4 +918,12 @@ function showState(stateName) {
   `).join('');
 
   document.getElementById('prompt-view').style.display = 'none';
-  document.getElem
+  document.getElementById('state-view').classList.add('visible');
+}
+
+document.querySelectorAll('.state.active').forEach(el => {
+  el.addEventListener('click', () => { if (el.dataset.state) showState(el.dataset.state); });
+});
+</script>
+</body>
+</html>
