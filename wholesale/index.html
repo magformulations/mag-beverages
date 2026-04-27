@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAG Beverages — Wholesale Orders</title>
+  <meta name="description" content="Place your wholesale order with MAG Beverages. Premium kava RTD beverages — direct ordering with 5% discount and Net 60 terms.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    /* ── Reset & Base ────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background-color: #eef1f2;
+      color: #232d2f;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Brand Colors ────────────────────────── */
+    :root {
+      --dark:    #232d2f;
+      --mid:     #465b5f;
+      --accent:  #567276;
+      --light:   #bcc6c8;
+      --bg:      #eef1f2;
+      --card:    #ffffff;
+      --border:  #dde4e6;
+      --success: #1d6941;
+      --error:   #a83232;
+      --warn:    #7a5a10;
+    }
+
+    /* ── Header ──────────────────────────────── */
+    .site-header {
+      background-color: var(--dark);
+      padding: 2.25rem 1.5rem;
+      text-align: center;
+      position: relative;
+    }
+    .site-header::after {
+      content: '';
+      display: block;
+      height: 4px;
+      background: var(--accent);
+    }
+    .site-logo {
+      max-width: 280px;
+      width: 100%;
+      height: auto;
+    }
+
+    /* ── Banner ───────────────────────────────── */
+    .banner {
+      background: var(--accent);
+      color: #fff;
+      text-align: center;
+      padding: 0.75rem 1rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    /* ── Main Container ──────────────────────── */
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+    }
+
+    /* ── Intro ────────────────────────────────── */
+    .intro {
+      background: var(--card);
+      border-radius: 6px;
+      padding: 2rem 2rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border);
+    }
+    .intro h2 {
+      font-size: 1.15rem;
+      color: var(--dark);
+      margin-bottom: 0.6rem;
+    }
+    .intro p {
+      font-size: 0.9rem;
+      color: var(--mid);
+      line-height: 1.65;
+    }
+    .intro .terms {
+      display: flex;
+      gap: 1.25rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .intro .term-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: #f0f5f3;
+      color: var(--success);
+      padding: 0.35rem 0.75rem;
+      border-radius: 3px;
+      border: 1px solid #d0e4d6;
+    }
+
+    /* ── Form Card ────────────────────────────── */
+    .form-card {
+      background: var(--card);
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+    .form-section-header {
+      background: var(--dark);
+      padding: 0.85rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .form-section-header .num {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .form-section-header h3 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--light);
+    }
+    .form-section-body { padding: 1.5rem 2rem 2rem; }
+
+    /* ── Form Fields ─────────────────────────── */
+    .field { margin-bottom: 1.25rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 0.35rem;
+    }
+    .field label .req { color: var(--accent); margin-left: 0.15rem; }
+    .field label .hint {
+      font-weight: 400;
+      color: var(--mid);
+      font-size: 0.78rem;
+    }
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="tel"],
+    .field input[type="number"],
+    .field textarea {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      color: var(--dark);
+      background: #fff;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .field input:focus, .field textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(86, 114, 118, 0.12);
+    }
+    .field textarea { resize: vertical; min-height: 80px; }
+    .field input.error, .field textarea.error {
+      border-color: var(--error);
+      box-shadow: 0 0 0 3px rgba(168, 50, 50, 0.08);
+    }
+    .field .field-error {
+      color: var(--error);
+      font-size: 0.78rem;
+      margin-top: 0.3rem;
+      display: none;
+    }
+
+    /* ── Product Rows ────────────────────────── */
+    .product-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .product-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.85rem 1rem;
+      background: #f8fafb;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    .product-row .product-info { flex: 1; }
+    .product-row .product-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+    .product-row .product-detail {
+      font-size: 0.75rem;
+      color: var(--mid);
+      margin-top: 0.1rem;
+    }
+    .product-row .product-qty {
+      width: 80px;
+      flex-shrink: 0;
+    }
+    .product-row .product-qty input {
+      width: 100%;
+      padding: 0.55rem 0.65rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      color: var(--dark);
+      text-align: center;
+      background: #fff;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .product-row .product-qty input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(86, 114, 118, 0.12);
+    }
+
+    /* ── Live Total ──────────────────────────── */
+    .order-summary {
+      margin-top: 1.25rem;
+      padding: 1rem 1.25rem;
+      background: var(--dark);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .order-summary .line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: var(--light);
+    }
+    .order-summary .line.discount { color: #7dd3a0; }
+    .order-summary .line.total {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      padding-top: 0.4rem;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      margin-top: 0.25rem;
+    }
+    .order-summary .minimum-warning {
+      font-size: 0.75rem;
+      color: #f5a623;
+      margin-top: 0.25rem;
+      display: none;
+    }
+
+    /* ── Checkbox ─────────────────────────────── */
+    .checkbox-field {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      margin-top: 0.25rem;
+    }
+    .checkbox-field input[type="checkbox"] {
+      margin-top: 0.25rem;
+      accent-color: var(--accent);
+      width: 1rem;
+      height: 1rem;
+      flex-shrink: 0;
+    }
+    .checkbox-field .checkbox-label {
+      font-size: 0.82rem;
+      color: var(--mid);
+      line-height: 1.5;
+    }
+
+    /* ── Submit ───────────────────────────────── */
+    .submit-area { text-align: center; margin-top: 0.5rem; }
+    .btn-submit {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.85rem 3rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .btn-submit:hover { background: var(--mid); }
+    .btn-submit:active { transform: scale(0.98); }
+    .btn-submit:disabled {
+      background: var(--light);
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ── States ───────────────────────────────── */
+    .form-message {
+      text-align: center;
+      padding: 1.5rem 2rem;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+    .form-message.success {
+      background: #eef7f1;
+      border: 1px solid #c0dfc9;
+      color: var(--success);
+      display: block;
+    }
+    .form-message.error-msg {
+      background: #fdf0f0;
+      border: 1px solid #e5c0c0;
+      color: var(--error);
+      display: block;
+    }
+    .form-message h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+    .form-message p { font-size: 0.88rem; line-height: 1.55; }
+
+    .spinner {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      vertical-align: middle;
+      margin-right: 0.4rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Footer ───────────────────────────────── */
+    .site-footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      border-top: 1px solid var(--border);
+      background: #f5f8f9;
+    }
+    .site-footer .brand { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; color: var(--accent); text-transform: uppercase; }
+    .site-footer .tagline { font-size: 0.72rem; color: var(--mid); font-style: italic; margin-top: 0.2rem; }
+    .site-footer .links { font-size: 0.72rem; color: var(--mid); margin-top: 0.3rem; }
+    .site-footer a { color: var(--accent); text-decoration: none; }
+    .site-footer a:hover { text-decoration: underline; }
+
+    /* ── Responsive ───────────────────────────── */
+    @media (max-width: 600px) {
+      .site-logo { max-width: 200px; }
+      .form-section-body { padding: 1.25rem 1.25rem 1.5rem; }
+      .intro { padding: 1.5rem 1.25rem; }
+      .product-row { flex-direction: column; align-items: stretch; gap: 0.5rem; }
+      .product-row .product-qty { width: 100%; }
+      .product-row .product-qty input { text-align: left; }
+      .intro .terms { gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ──────────────────────────────── -->
+  <header class="site-header">
+    <img src="mag-logo.svg" alt="MAG Beverages" class="site-logo">
+  </header>
+  <div class="banner">Wholesale Order Form</div>
+
+  <main class="container">
+
+    <!-- ── Intro ─────────────────────────────── -->
+    <div class="intro">
+      <h2>Place a Direct Wholesale Order</h2>
+      <p>Order below to receive a 5% discount on every direct order vs. marketplace pricing. You'll receive an order confirmation immediately and a Stripe invoice within 1 business day.</p>
+      <div class="terms">
+        <span class="term-badge">5% Direct Discount</span>
+        <span class="term-badge">Net 60 Payment Terms</span>
+        <span class="term-badge">$70 Minimum Order</span>
+      </div>
+    </div>
+
+    <!-- ── Success / Error States ────────────── -->
+    <div id="successMessage" class="form-message" style="display:none;">
+      <h3>Order Received</h3>
+      <p>Thank you — your order has been submitted. You'll receive a confirmation email shortly, followed by a Stripe invoice within 1 business day. Payment terms are Net 60.</p>
+    </div>
+    <div id="errorMessage" class="form-message" style="display:none;">
+      <h3>Something went wrong</h3>
+      <p>We couldn't process your order. Please try again, or contact us at <a href="mailto:media@mag-beverages.com">media@mag-beverages.com</a>.</p>
+    </div>
+
+    <!-- ── Order Form ────────────────────────── -->
+    <form id="orderForm" novalidate>
+
+      <!-- Section 1: Account Info -->
+      <div class="form-card">
+        <div class="form-section-header">
+          <div class="num">1</div>
+          <h3>Your Account</h3>
+        </div>
+        <div class="form-section-body">
+          <div class="field">
+            <label>Business Name <span class="req">*</span></label>
+            <input type="text" name="businessName" required autocomplete="organization">
+            <div class="field-error">Business name is required.</div>
+          </div>
+          <div class="field">
+            <label>Your Name <span class="req">*</span></label>
+            <input type="text" name="contactName" required autocomplete="name">
+            <div class="field-error">Your name is required.</div>
+          </div>
+          <div class="field">
+            <label>Contact Email <span class="req">*</span></label>
+            <input type="email" name="email" required autocomplete="email">
+            <div class="field-error">A valid email is required.</div>
+          </div>
+          <div class="field">
+            <label>Phone Number <span class="hint">(optional)</span></label>
+            <input type="tel" name="phone" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label>Shipping Address <span class="req">*</span></label>
+            <textarea name="address" required rows="3" placeholder="Street, City, State, ZIP"></textarea>
+            <div class="field-error">Shipping address is required.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Products -->
+      <div class="form-card">
+        <div class="form-section-header">
+          <div class="num">2</div>
+          <h3>Your Order</h3>
+        </div>
+        <div class="form-section-body">
+          <p style="font-size:0.82rem;color:var(--mid);margin-bottom:1rem;">Enter the number of <strong>cases</strong> for each product. Leave blank for items you don't need.</p>
+
+          <div class="product-grid">
+            <div class="product-row">
+              <div class="product-info">
+                <div class="product-name">Spirited Kava Shot (2oz)</div>
+                <div class="product-detail">Case of 12 &nbsp;·&nbsp; $60/case</div>
+              </div>
+              <div class="product-qty">
+                <input type="number" name="qtyShot" min="0" step="1" placeholder="0" data-price="60">
+              </div>
+            </div>
+
+            <div class="product-row">
+              <div class="product-info">
+                <div class="product-name">Spirited Kava Infuser (756ml)</div>
+                <div class="product-detail">Case of 12 &nbsp;·&nbsp; $400/case</div>
+              </div>
+              <div class="product-qty">
+                <input type="number" name="qtyInfuser" min="0" step="1" placeholder="0" data-price="400">
+              </div>
+            </div>
+
+            <div class="product-row">
+              <div class="product-info">
+                <div class="product-name">Kava Cola</div>
+                <div class="product-detail">Case of 24 &nbsp;·&nbsp; $96/case</div>
+              </div>
+              <div class="product-qty">
+                <input type="number" name="qtyCola" min="0" step="1" placeholder="0" data-price="96">
+              </div>
+            </div>
+
+            <div class="product-row">
+              <div class="product-info">
+                <div class="product-name">Kava Paloma</div>
+                <div class="product-detail">Case of 24 &nbsp;·&nbsp; $96/case</div>
+              </div>
+              <div class="product-qty">
+                <input type="number" name="qtyPaloma" min="0" step="1" placeholder="0" data-price="96">
+              </div>
+            </div>
+          </div>
+
+          <!-- Live order total -->
+          <div class="order-summary" id="orderSummary" style="display:none;">
+            <div class="line"><span>Subtotal</span><span id="subtotalDisplay">$0.00</span></div>
+            <div class="line discount"><span>5% Direct Discount</span><span id="discountDisplay">-$0.00</span></div>
+            <div class="line total"><span>Total Due</span><span id="totalDisplay">$0.00</span></div>
+            <div class="minimum-warning" id="minimumWarning">Order must be at least $70 after discount.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3: Notes & Confirmation -->
+      <div class="form-card">
+        <div class="form-section-header">
+          <div class="num">3</div>
+          <h3>Notes & Confirmation</h3>
+        </div>
+        <div class="form-section-body">
+          <div class="field">
+            <label>Order Notes <span class="hint">(optional)</span></label>
+            <textarea name="notes" rows="3" placeholder="Special instructions, preferred ship dates, or anything else we should know."></textarea>
+          </div>
+          <div class="field" style="margin-top:1.25rem;">
+            <div class="checkbox-field">
+              <input type="checkbox" id="ackCheckbox" name="acknowledgment" required>
+              <label for="ackCheckbox" class="checkbox-label">
+                I understand that payment terms are <strong>Net 60</strong> from the order date. A late fee of <strong>1.5% per month</strong> applies to invoices unpaid after 60 days.
+              </label>
+            </div>
+            <div class="field-error" style="margin-left:1.65rem;">You must acknowledge the payment terms to proceed.</div>
+          </div>
+          <div class="submit-area" style="margin-top:1.5rem;">
+            <button type="submit" class="btn-submit" id="submitBtn">Submit Order</button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </main>
+
+  <!-- ── Footer ──────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="brand">MAG Beverages</div>
+    <div class="tagline">Magnify the Good Times</div>
+    <div class="links">
+      <a href="https://magbeverages.com">magbeverages.com</a> &nbsp;·&nbsp;
+      <a href="mailto:media@mag-beverages.com">media@mag-beverages.com</a> &nbsp;·&nbsp;
+      Saint Louis, MO
+    </div>
+  </footer>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- SCRIPT                                       -->
+  <!-- ════════════════════════════════════════════ -->
+  <script>
+  (function() {
+    'use strict';
+
+    // ── CONFIG ──────────────────────────────────
+    // Replace this URL with your deployed Apps Script web app URL
+    // (see setup guide Step 3b for how to get this URL)
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzlS4CZoF5xgku_otPDuXpYpc0jUClK5xzXPCQt3hr4Kt9VYC25-N22Cl974UlsicQm/exec';
+
+    const DISCOUNT_RATE = 0.05;
+    const ORDER_MINIMUM = 70;
+
+    // ── DOM refs ────────────────────────────────
+    const form          = document.getElementById('orderForm');
+    const submitBtn     = document.getElementById('submitBtn');
+    const successMsg    = document.getElementById('successMessage');
+    const errorMsg      = document.getElementById('errorMessage');
+    const summaryBox    = document.getElementById('orderSummary');
+    const subtotalEl    = document.getElementById('subtotalDisplay');
+    const discountEl    = document.getElementById('discountDisplay');
+    const totalEl       = document.getElementById('totalDisplay');
+    const minWarning    = document.getElementById('minimumWarning');
+    const qtyInputs     = document.querySelectorAll('.product-qty input');
+
+    // ── Live total calculation ──────────────────
+    function updateSummary() {
+      let subtotal = 0;
+      qtyInputs.forEach(input => {
+        const qty   = parseInt(input.value) || 0;
+        const price = parseFloat(input.dataset.price) || 0;
+        subtotal += qty * price;
+      });
+
+      if (subtotal === 0) {
+        summaryBox.style.display = 'none';
+        return;
+      }
+
+      const discount = subtotal * DISCOUNT_RATE;
+      const total    = subtotal - discount;
+
+      subtotalEl.textContent = '$' + subtotal.toFixed(2);
+      discountEl.textContent = '-$' + discount.toFixed(2);
+      totalEl.textContent    = '$' + total.toFixed(2);
+
+      summaryBox.style.display = 'flex';
+      minWarning.style.display = total < ORDER_MINIMUM ? 'block' : 'none';
+    }
+
+    qtyInputs.forEach(input => {
+      input.addEventListener('input', updateSummary);
+    });
+
+    // ── Validation ──────────────────────────────
+    function validate() {
+      let valid = true;
+
+      // Required text/email/textarea fields
+      form.querySelectorAll('[required]').forEach(field => {
+        const errorEl = field.closest('.field, .checkbox-field')
+                        ?.parentElement?.querySelector('.field-error')
+                        || field.closest('.field')?.querySelector('.field-error');
+
+        if (field.type === 'checkbox') {
+          const err = field.closest('.field')?.querySelector('.field-error');
+          if (!field.checked) {
+            if (err) err.style.display = 'block';
+            valid = false;
+          } else {
+            if (err) err.style.display = 'none';
+          }
+          return;
+        }
+
+        if (field.type === 'email' && field.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
+          field.classList.add('error');
+          const err = field.closest('.field')?.querySelector('.field-error');
+          if (err) err.style.display = 'block';
+          valid = false;
+          return;
+        }
+
+        if (!field.value.trim()) {
+          field.classList.add('error');
+          const err = field.closest('.field')?.querySelector('.field-error');
+          if (err) err.style.display = 'block';
+          valid = false;
+        } else {
+          field.classList.remove('error');
+          const err = field.closest('.field')?.querySelector('.field-error');
+          if (err) err.style.display = 'none';
+        }
+      });
+
+      // Check at least one product has qty > 0
+      let hasItems = false;
+      qtyInputs.forEach(input => {
+        if (parseInt(input.value) > 0) hasItems = true;
+      });
+      if (!hasItems) {
+        valid = false;
+        // Flash the product section
+        summaryBox.style.display = 'flex';
+        subtotalEl.textContent = '$0.00';
+        discountEl.textContent = '-$0.00';
+        totalEl.textContent = '$0.00';
+        minWarning.textContent = 'Please select at least one product.';
+        minWarning.style.display = 'block';
+      }
+
+      // Check minimum
+      if (hasItems) {
+        let subtotal = 0;
+        qtyInputs.forEach(input => {
+          subtotal += (parseInt(input.value) || 0) * (parseFloat(input.dataset.price) || 0);
+        });
+        const total = subtotal * (1 - DISCOUNT_RATE);
+        if (total < ORDER_MINIMUM) {
+          valid = false;
+          minWarning.textContent = 'Order must be at least $70 after discount.';
+          minWarning.style.display = 'block';
+        }
+      }
+
+      return valid;
+    }
+
+    // ── Clear errors on input ───────────────────
+    form.querySelectorAll('input, textarea').forEach(field => {
+      field.addEventListener('input', () => {
+        field.classList.remove('error');
+        const err = field.closest('.field')?.querySelector('.field-error');
+        if (err) err.style.display = 'none';
+      });
+    });
+
+    // ── Submit ──────────────────────────────────
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      if (!validate()) {
+        // Scroll to first error
+        const firstError = form.querySelector('.error, .field-error[style*="block"]');
+        if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      // Disable button and show spinner
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="spinner"></span>Submitting...';
+      errorMsg.style.display = 'none';
+
+      // Build form data
+      const data = new FormData();
+      data.append('businessName', form.businessName.value.trim());
+      data.append('contactName',  form.contactName.value.trim());
+      data.append('email',        form.email.value.trim());
+      data.append('phone',        form.phone.value.trim());
+      data.append('address',      form.address.value.trim());
+      data.append('qtyShot',      form.qtyShot.value || '0');
+      data.append('qtyInfuser',   form.qtyInfuser.value || '0');
+      data.append('qtyCola',      form.qtyCola.value || '0');
+      data.append('qtyPaloma',    form.qtyPaloma.value || '0');
+      data.append('notes',        form.notes.value.trim());
+      data.append('source',       'wholesale.magbeverages.com');
+
+      try {
+        await fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          mode:   'no-cors',
+          body:   data
+        });
+
+        // no-cors means we can't read the response, but the request went through
+        form.style.display = 'none';
+        successMsg.style.display = 'block';
+        successMsg.classList.add('success');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      } catch (err) {
+        errorMsg.style.display = 'block';
+        errorMsg.classList.add('error-msg');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Submit Order';
+        errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+
+  })();
+  </script>
+
+</body>
+</html>
