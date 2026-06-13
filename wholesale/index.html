@@ -5,13 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MAG Beverages — Wholesale Orders</title>
   <meta name="description" content="Place your wholesale order with MAG Beverages. Premium kava RTD beverages — direct ordering with 5% discount and Net 60 terms.">
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- Open Graph / social share (assets live at the site root) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="MAG Beverages — Wholesale Orders">
+  <meta property="og:description" content="Direct wholesale ordering for MAG Beverages. 5% direct discount, Net 60 terms, $70 minimum.">
+  <meta property="og:url" content="https://magbeverages.com/wholesale/">
+  <meta property="og:image" content="https://magbeverages.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     /* ── Reset & Base ────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; scroll-behavior: smooth; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       background-color: #eef1f2;
       color: #232d2f;
       line-height: 1.6;
@@ -142,6 +154,16 @@
       color: var(--light);
     }
     .form-section-body { padding: 1.5rem 2rem 2rem; }
+
+    /* ── Honeypot (spam trap — hidden from humans) ── */
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
 
     /* ── Form Fields ─────────────────────────── */
     .field { margin-bottom: 1.25rem; }
@@ -410,6 +432,12 @@
     <!-- ── Order Form ────────────────────────── -->
     <form id="orderForm" novalidate>
 
+      <!-- Honeypot: hidden spam trap. Real users never see or fill this. -->
+      <div class="hp-field" aria-hidden="true">
+        <label>Company Website (leave blank)</label>
+        <input type="text" name="company_website" tabindex="-1" autocomplete="off">
+      </div>
+
       <!-- Section 1: Account Info -->
       <div class="form-card">
         <div class="form-section-header">
@@ -572,14 +600,19 @@
     const minWarning    = document.getElementById('minimumWarning');
     const qtyInputs     = document.querySelectorAll('.product-qty input');
 
+    const MIN_WARNING_TEXT = 'Order must be at least $70 after discount.';
+
     // ── Live total calculation ──────────────────
     function updateSummary() {
       let subtotal = 0;
       qtyInputs.forEach(input => {
-        const qty   = parseInt(input.value) || 0;
+        const qty   = Math.max(0, parseInt(input.value) || 0);
         const price = parseFloat(input.dataset.price) || 0;
         subtotal += qty * price;
       });
+
+      // Reset to the default message in case a prior validation changed it
+      minWarning.textContent = MIN_WARNING_TEXT;
 
       if (subtotal === 0) {
         summaryBox.style.display = 'none';
@@ -598,7 +631,13 @@
     }
 
     qtyInputs.forEach(input => {
-      input.addEventListener('input', updateSummary);
+      // Clamp negative or invalid entries to empty so totals never go negative
+      input.addEventListener('input', () => {
+        if (input.value !== '' && (parseInt(input.value) < 0 || isNaN(parseInt(input.value)))) {
+          input.value = '';
+        }
+        updateSummary();
+      });
     });
 
     // ── Validation ──────────────────────────────
@@ -700,28 +739,39 @@
       submitBtn.innerHTML = '<span class="spinner"></span>Submitting...';
       errorMsg.style.display = 'none';
 
+      // Clamp quantities one more time before sending (defense in depth)
+      const cleanQty = (el) => String(Math.max(0, parseInt(el.value) || 0));
+
       // Build form data
       const data = new FormData();
-      data.append('businessName', form.businessName.value.trim());
-      data.append('contactName',  form.contactName.value.trim());
-      data.append('email',        form.email.value.trim());
-      data.append('phone',        form.phone.value.trim());
-      data.append('address',      form.address.value.trim());
-      data.append('qtyShot',      form.qtyShot.value || '0');
-      data.append('qtyInfuser',   form.qtyInfuser.value || '0');
-      data.append('qtyCola',      form.qtyCola.value || '0');
-      data.append('qtyPaloma',    form.qtyPaloma.value || '0');
-      data.append('notes',        form.notes.value.trim());
-      data.append('source',       'wholesale.magbeverages.com');
+      data.append('businessName',    form.businessName.value.trim());
+      data.append('contactName',     form.contactName.value.trim());
+      data.append('email',           form.email.value.trim());
+      data.append('phone',           form.phone.value.trim());
+      data.append('address',         form.address.value.trim());
+      data.append('qtyShot',         cleanQty(form.qtyShot));
+      data.append('qtyInfuser',      cleanQty(form.qtyInfuser));
+      data.append('qtyCola',         cleanQty(form.qtyCola));
+      data.append('qtyPaloma',       cleanQty(form.qtyPaloma));
+      data.append('notes',           form.notes.value.trim());
+      data.append('company_website', form.company_website.value); // honeypot
+      data.append('source',          'magbeverages.com/wholesale');
 
       try {
-        await fetch(APPS_SCRIPT_URL, {
+        // 'cors' lets us read the JSON the Apps Script returns. A POST with
+        // FormData is a "simple request" so the browser sends no preflight.
+        const res  = await fetch(APPS_SCRIPT_URL, {
           method: 'POST',
-          mode:   'no-cors',
+          mode:   'cors',
           body:   data
         });
+        const json = await res.json();
 
-        // no-cors means we can't read the response, but the request went through
+        if (!json.success) {
+          throw new Error(json.error || 'Order was not accepted.');
+        }
+
+        // Real success confirmed by the server
         form.style.display = 'none';
         successMsg.style.display = 'block';
         successMsg.classList.add('success');
