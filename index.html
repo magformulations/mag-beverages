@@ -168,12 +168,17 @@
 
   .retailer-list { padding: 6px 0; }
   .retailer {
+    display: block;
     padding: 13px 22px;
     border-bottom: 1px solid var(--border);
     transition: background 0.15s;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
   }
   .retailer:last-child { border-bottom: none; }
   .retailer:hover { background: var(--teal-pale); }
+  .retailer:focus-visible { outline: 2px solid var(--teal); outline-offset: -2px; }
 
   .retailer-name { font-size: 14px; font-weight: 600; color: var(--text); }
   .retailer-meta { display: flex; align-items: center; gap: 8px; margin-top: 4px; flex-wrap: wrap; }
@@ -184,6 +189,12 @@
     border-radius: 20px; text-transform: uppercase; letter-spacing: 0.3px;
   }
   .retailer-address { font-size: 11px; color: #9a9184; margin-top: 3px; }
+  .retailer-maps {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 11px; font-weight: 600; color: var(--teal);
+    margin-top: 7px;
+  }
+  .retailer:hover .retailer-maps { text-decoration: underline; }
 
   .legend {
     width: 100%; max-width: 980px;
@@ -373,8 +384,25 @@
     transform: translateY(-1px);
   }
 
+  .wholesale-banner-cta {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .wholesale-banner-alt {
+    font-size: 11px;
+    color: rgba(255,255,255,0.82);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    white-space: nowrap;
+  }
+  .wholesale-banner-alt:hover { color: #fff; }
+
   @media (max-width: 620px) {
     .wholesale-banner { flex-direction: column; align-items: flex-start; padding: 20px 22px; }
+    .wholesale-banner-cta { width: 100%; }
     .wholesale-banner-btn { width: 100%; text-align: center; }
   }
 
@@ -553,7 +581,10 @@
     <div class="wholesale-banner-headline">Your customers are already looking for this.</div>
     <div class="wholesale-banner-sub">The Spirited Kava Infuser bottle and Kava Shot — kava with ashwagandha, L-theanine, and Vitamin C, filling the gap between wellness supplements and alcohol alternatives. Now available to stock wholesale.</div>
   </div>
-  <a class="wholesale-banner-btn" href="https://airgoods.com/u/mag-beverages" target="_blank" rel="noopener">Browse Wholesale Catalog →</a>
+  <div class="wholesale-banner-cta">
+    <a class="wholesale-banner-btn" href="/wholesale/">Browse Wholesale Catalog →</a>
+    <a class="wholesale-banner-alt" href="https://airgoods.com/u/mag-beverages" target="_blank" rel="noopener">or order on Airgoods →</a>
+  </div>
 </div>
 
 <div class="layout">
@@ -710,7 +741,8 @@
         <div style="margin-top:20px;padding-top:18px;border-top:1px solid var(--border);">
           <div style="font-size:11px;color:var(--muted);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">Not seeing your state?</div>
           <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:12px;">We're expanding fast. Reach out to stock MAG at your bar, bottle shop, or wellness store.</p>
-          <a href="https://airgoods.com/u/mag-beverages" target="_blank" rel="noopener" style="display:block;text-align:center;background:var(--teal);color:white;padding:10px 16px;border-radius:4px;font-size:12px;font-weight:700;text-decoration:none;letter-spacing:0.3px;transition:background 0.18s;" onmouseover="this.style.background='#567276'" onmouseout="this.style.background='var(--teal)'">Order Now on Airgoods →</a>
+          <a href="/wholesale/" style="display:block;text-align:center;background:var(--teal);color:white;padding:10px 16px;border-radius:4px;font-size:12px;font-weight:700;text-decoration:none;letter-spacing:0.3px;transition:background 0.18s;" onmouseover="this.style.background='#567276'" onmouseout="this.style.background='var(--teal)'">Order Wholesale Direct →</a>
+          <a href="https://airgoods.com/u/mag-beverages" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:8px;font-size:11px;color:var(--muted);text-decoration:underline;text-underline-offset:2px;">or order on Airgoods →</a>
         </div>
         <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);">
           <a href="https://magbeverages.com/journal" style="display:block;text-decoration:none;padding:13px 16px;border:1.5px solid var(--border);border-radius:4px;background:var(--bg);transition:border-color 0.2s,background 0.2s;" onmouseover="this.style.borderColor='var(--teal)';this.style.background='var(--teal-pale)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--bg)'">
@@ -748,8 +780,9 @@
     <div class="cta-card">
       <span class="cta-card-icon">🛒</span>
       <div class="cta-card-title">Stock MAG at Your Store</div>
-      <p class="cta-card-desc">Browse our wholesale catalog on Airgoods — the Spirited Kava Infuser bottle and Spirited Kava Shot, with low minimums and fast shipping nationwide.</p>
-      <a class="cta-btn cta-btn-primary" href="https://airgoods.com/u/mag-beverages" target="_blank" rel="noopener">Place a Wholesale Order →</a>
+      <p class="cta-card-desc">Order direct from us — the Spirited Kava Infuser bottle and Spirited Kava Shot, with a 5% direct discount, low minimums, and fast shipping nationwide.</p>
+      <a class="cta-btn cta-btn-primary" href="/wholesale/">Place a Wholesale Order →</a>
+      <a href="https://airgoods.com/u/mag-beverages" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:10px;font-size:11px;color:var(--muted);text-decoration:underline;text-underline-offset:2px;">Prefer a marketplace? Order on Airgoods →</a>
     </div>
 
     <div class="cta-card">
@@ -774,7 +807,7 @@
   <div class="seo-grid">
     <div>
       <h3 class="seo-block-title">The Wholesale Kava Bottle & Shot Built for Modern Retail</h3>
-      <p class="seo-block-body">Bars building zero-proof programs, NA bottle shops, wellness stores, smoke shops, and natural food retailers are hunting for functional drinks their customers actually come back for. Made with real ingredients, the Spirited Kava Infuser bottle is a versatile back-bar staple — mix it into mocktails or serve over ice. The Spirited Kava Shot is a grab-and-go impulse buy that moves near the register. Both ship wholesale nationwide through Airgoods with low minimums. Stock the kava bottle and shot your competitors don't have yet.</p>
+      <p class="seo-block-body">Bars building zero-proof programs, NA bottle shops, wellness stores, smoke shops, and natural food retailers are hunting for functional drinks their customers actually come back for. Made with real ingredients, the Spirited Kava Infuser bottle is a versatile back-bar staple — mix it into mocktails or serve over ice. The Spirited Kava Shot is a grab-and-go impulse buy that moves near the register. Both ship wholesale nationwide with low minimums — order direct at magbeverages.com/wholesale for a 5% discount, or through the Airgoods marketplace. Stock the kava bottle and shot your competitors don't have yet.</p>
     </div>
     <div>
       <h3 class="seo-block-title">What Are Kavalactones — and Why Does the Source Matter?</h3>
@@ -782,7 +815,7 @@
     </div>
     <div>
       <h3 class="seo-block-title">Find MAG Kava Drinks Near You</h3>
-      <p class="seo-block-body">MAG Beverages is currently available at NA bars, alcohol-free bottle shops, smoke shops, and wellness retailers across California, Colorado, Georgia, Indiana, Missouri, North Carolina, Pennsylvania, Tennessee, and Texas — with new stockists being added monthly. If you're looking for a kava drink near you, use the map above to find your closest retailer. If you're a retailer looking to carry the Spirited Kava Infuser bottle and Kava Shot, browse our wholesale catalog on Airgoods and place an order with no long-term commitment required.</p>
+      <p class="seo-block-body">MAG Beverages is currently available at NA bars, alcohol-free bottle shops, smoke shops, and wellness retailers across California, Colorado, Georgia, Indiana, Missouri, North Carolina, Pennsylvania, Tennessee, and Texas — with new stockists being added monthly. If you're looking for a kava drink near you, use the map above to find your closest retailer. If you're a retailer looking to carry the Spirited Kava Infuser bottle and Kava Shot, order wholesale direct at magbeverages.com/wholesale (or through the Airgoods marketplace) with no long-term commitment required.</p>
     </div>
   </div>
 </section>
@@ -918,16 +951,25 @@ function showState(stateName) {
   const list = retailers[stateName];
   document.getElementById('state-name-text').textContent = stateName;
   document.getElementById('state-count').textContent = `${list.length} retailer${list.length !== 1 ? 's' : ''} carrying MAG`;
-  document.getElementById('retailer-list').innerHTML = list.map(r => `
-    <div class="retailer">
+  document.getElementById('retailer-list').innerHTML = list.map(r => {
+    const mapsQuery = encodeURIComponent(`${r.name}, ${r.address}, ${r.city}, ${stateName}`);
+    const mapsUrl   = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
+    return `
+    <a class="retailer" href="${mapsUrl}" target="_blank" rel="noopener"
+       aria-label="Open ${r.name} in Google Maps">
       <div class="retailer-name">${r.name}</div>
       <div class="retailer-meta">
         <span class="retailer-city">${r.city}</span>
         <span class="retailer-type">${r.type}</span>
       </div>
       <div class="retailer-address">${r.address}</div>
-    </div>
-  `).join('');
+      <div class="retailer-maps">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+        View on Google Maps →
+      </div>
+    </a>
+  `;
+  }).join('');
 
   document.getElementById('prompt-view').style.display = 'none';
   document.getElementById('state-view').classList.add('visible');
