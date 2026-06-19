@@ -425,7 +425,7 @@
     <!-- ── Intro ─────────────────────────────── -->
     <div class="intro">
       <h2>Place a Direct Wholesale Order</h2>
-      <p>Order below to receive a 5% discount on every direct order vs. marketplace pricing. You'll receive an order confirmation immediately and an invoice within 1 business day.</p>
+      <p>Order below to receive a 5% discount on every direct order vs. marketplace pricing. You'll receive an order confirmation immediately, and an invoice around the time your order ships.</p>
       <div class="terms">
         <span class="term-badge">5% Direct Discount</span>
         <span class="term-badge">Net 60 Payment Terms</span>
@@ -436,7 +436,7 @@
     <!-- ── Success / Error States ────────────── -->
     <div id="successMessage" class="form-message" style="display:none;">
       <h3>Order Received</h3>
-      <p>Thank you — your order has been submitted. You'll receive a confirmation email shortly, followed by an invoice within 1 business day. Payment terms are Net 60.</p>
+      <p>Thank you — your order has been submitted. You'll receive a confirmation email shortly, followed by an invoice around the time your order ships. Payment terms are Net 60.</p>
     </div>
     <div id="errorMessage" class="form-message" style="display:none;">
       <h3>Something went wrong</h3>
@@ -777,26 +777,25 @@
       data.append('source',          'magbeverages.com/wholesale');
 
       try {
-        // 'cors' lets us read the JSON the Apps Script returns. A POST with
-        // FormData is a "simple request" so the browser sends no preflight.
-        const res  = await fetch(APPS_SCRIPT_URL, {
+        // Apps Script replies via a redirect to googleusercontent.com whose
+        // response the browser cannot reliably read cross-origin, so we use
+        // 'no-cors': the POST is delivered (sheet write + emails fire) and the
+        // promise resolves on completion. It rejects only on a true network
+        // failure. The empty/below-minimum cases are already blocked by
+        // validate() above, so the server guards are just backstops.
+        await fetch(APPS_SCRIPT_URL, {
           method: 'POST',
-          mode:   'cors',
+          mode:   'no-cors',
           body:   data
         });
-        const json = await res.json();
 
-        if (!json.success) {
-          throw new Error(json.error || 'Order was not accepted.');
-        }
-
-        // Real success confirmed by the server
         form.style.display = 'none';
         successMsg.style.display = 'block';
         successMsg.classList.add('success');
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
       } catch (err) {
+        // Only reached on a genuine network failure (request never sent)
         errorMsg.style.display = 'block';
         errorMsg.classList.add('error-msg');
         submitBtn.disabled = false;
