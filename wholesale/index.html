@@ -293,6 +293,20 @@
       display: none;
     }
 
+    /* ── Shipping disclosure ──────────────────── */
+    .shipping-note {
+      margin-top: 1rem;
+      padding: 0.85rem 1rem;
+      background: #f8fafb;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+      font-size: 0.78rem;
+      line-height: 1.55;
+      color: var(--mid);
+    }
+    .shipping-note strong { color: var(--dark); }
+
     /* ── Checkbox ─────────────────────────────── */
     .checkbox-field {
       display: flex;
@@ -485,40 +499,40 @@
             <div class="product-row">
               <div class="product-info">
                 <div class="product-name">Spirited Kava Shot (2oz)</div>
-                <div class="product-detail">Case of 12 &nbsp;·&nbsp; $60/case</div>
+                <div class="product-detail">Case of 5 &nbsp;·&nbsp; $25/case</div>
               </div>
               <div class="product-qty">
-                <input type="number" name="qtyShot" min="0" step="1" placeholder="0" data-price="60">
+                <input type="number" name="qtyShot" min="0" step="1" placeholder="0" data-price="25">
               </div>
             </div>
 
             <div class="product-row">
               <div class="product-info">
                 <div class="product-name">Spirited Kava Infuser (756ml)</div>
-                <div class="product-detail">Case of 12 &nbsp;·&nbsp; $400/case</div>
+                <div class="product-detail">Case of 12 &nbsp;·&nbsp; $396/case</div>
               </div>
               <div class="product-qty">
-                <input type="number" name="qtyInfuser" min="0" step="1" placeholder="0" data-price="400">
+                <input type="number" name="qtyInfuser" min="0" step="1" placeholder="0" data-price="396">
               </div>
             </div>
 
             <div class="product-row">
               <div class="product-info">
                 <div class="product-name">Kava Cola</div>
-                <div class="product-detail">Case of 24 &nbsp;·&nbsp; $96/case</div>
+                <div class="product-detail">Case of 24 &nbsp;·&nbsp; $120/case</div>
               </div>
               <div class="product-qty">
-                <input type="number" name="qtyCola" min="0" step="1" placeholder="0" data-price="96">
+                <input type="number" name="qtyCola" min="0" step="1" placeholder="0" data-price="120">
               </div>
             </div>
 
             <div class="product-row">
               <div class="product-info">
                 <div class="product-name">Kava Paloma</div>
-                <div class="product-detail">Case of 24 &nbsp;·&nbsp; $96/case</div>
+                <div class="product-detail">Case of 24 &nbsp;·&nbsp; $120/case</div>
               </div>
               <div class="product-qty">
-                <input type="number" name="qtyPaloma" min="0" step="1" placeholder="0" data-price="96">
+                <input type="number" name="qtyPaloma" min="0" step="1" placeholder="0" data-price="120">
               </div>
             </div>
           </div>
@@ -529,6 +543,11 @@
             <div class="line discount"><span>5% Direct Discount</span><span id="discountDisplay">-$0.00</span></div>
             <div class="line total"><span>Total Due</span><span id="totalDisplay">$0.00</span></div>
             <div class="minimum-warning" id="minimumWarning">Order must be at least $70 after discount.</div>
+          </div>
+
+          <!-- Shipping disclosure -->
+          <div class="shipping-note">
+            <strong>Shipping &amp; handling not included.</strong> The total shown above reflects merchandise only. Shipping and handling are calculated based on your order's size and delivery destination, and will be added to your final invoice. The full invoice amount — merchandise plus shipping — is payable under the Net&nbsp;60 terms below and will be billed together as a single charge.
           </div>
         </div>
       </div>
@@ -548,7 +567,7 @@
             <div class="checkbox-field">
               <input type="checkbox" id="ackCheckbox" name="acknowledgment" required>
               <label for="ackCheckbox" class="checkbox-label">
-                I understand that payment terms are <strong>Net 60</strong> from the order date. A late fee of <strong>1.5% per month</strong> applies to invoices unpaid after 60 days.
+                I understand that payment terms are <strong>Net 60</strong> from the order date, and that <strong>shipping &amp; handling</strong> will be added to the total shown and billed on the same invoice. A late fee of <strong>1.5% per month</strong> applies to invoices unpaid after 60 days.
               </label>
             </div>
             <div class="field-error" style="margin-left:1.65rem;">You must acknowledge the payment terms to proceed.</div>
