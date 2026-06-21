@@ -228,6 +228,15 @@
       border: 1px solid var(--border);
       border-radius: 4px;
     }
+    .product-row .product-thumb {
+      width: 60px;
+      height: 60px;
+      flex-shrink: 0;
+      border-radius: 4px;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      background: #fff;
+    }
     .product-row .product-info { flex: 1; }
     .product-row .product-name {
       font-size: 0.88rem;
@@ -497,6 +506,7 @@
 
           <div class="product-grid">
             <div class="product-row">
+              <img class="product-thumb" src="shot.png" alt="Spirited Kava Shot" onerror="this.style.display='none'">
               <div class="product-info">
                 <div class="product-name">Spirited Kava Shot (2oz)</div>
                 <div class="product-detail">Case of 5 &nbsp;·&nbsp; $25/case</div>
@@ -507,8 +517,9 @@
             </div>
 
             <div class="product-row">
+              <img class="product-thumb" src="infuser-full.png" alt="Spirited Kava Infuser full case" onerror="this.style.display='none'">
               <div class="product-info">
-                <div class="product-name">Spirited Kava Infuser (756ml)</div>
+                <div class="product-name">Spirited Kava Infuser &ndash; full case</div>
                 <div class="product-detail">Case of 12 &nbsp;·&nbsp; $396/case</div>
               </div>
               <div class="product-qty">
@@ -517,6 +528,18 @@
             </div>
 
             <div class="product-row">
+              <img class="product-thumb" src="infuser-half.png" alt="Spirited Kava Infuser half case" onerror="this.style.display='none'">
+              <div class="product-info">
+                <div class="product-name">Spirited Kava Infuser &ndash; half case</div>
+                <div class="product-detail">Case of 6 &nbsp;·&nbsp; $240/case</div>
+              </div>
+              <div class="product-qty">
+                <input type="number" name="qtyInfuserHalf" min="0" step="1" placeholder="0" data-price="240">
+              </div>
+            </div>
+
+            <div class="product-row">
+              <img class="product-thumb" src="cola.png" alt="Kava Cola" onerror="this.style.display='none'">
               <div class="product-info">
                 <div class="product-name">Kava Cola</div>
                 <div class="product-detail">Case of 24 &nbsp;·&nbsp; $120/case</div>
@@ -527,12 +550,24 @@
             </div>
 
             <div class="product-row">
+              <img class="product-thumb" src="paloma.png" alt="Kava Paloma" onerror="this.style.display='none'">
               <div class="product-info">
                 <div class="product-name">Kava Paloma</div>
                 <div class="product-detail">Case of 24 &nbsp;·&nbsp; $120/case</div>
               </div>
               <div class="product-qty">
                 <input type="number" name="qtyPaloma" min="0" step="1" placeholder="0" data-price="120">
+              </div>
+            </div>
+
+            <div class="product-row">
+              <img class="product-thumb" src="mixed.png" alt="Kava Cola and Paloma mixed case" onerror="this.style.display='none'">
+              <div class="product-info">
+                <div class="product-name">Kava Cola &amp; Kava Paloma &ndash; mixed case</div>
+                <div class="product-detail">12 of each &nbsp;·&nbsp; $120/case</div>
+              </div>
+              <div class="product-qty">
+                <input type="number" name="qtyColaPalomaMix" min="0" step="1" placeholder="0" data-price="120">
               </div>
             </div>
           </div>
@@ -768,10 +803,12 @@
       data.append('email',           form.email.value.trim());
       data.append('phone',           form.phone.value.trim());
       data.append('address',         form.address.value.trim());
-      data.append('qtyShot',         cleanQty(form.qtyShot));
-      data.append('qtyInfuser',      cleanQty(form.qtyInfuser));
-      data.append('qtyCola',         cleanQty(form.qtyCola));
-      data.append('qtyPaloma',       cleanQty(form.qtyPaloma));
+      data.append('qtyShot',          cleanQty(form.qtyShot));
+      data.append('qtyInfuser',       cleanQty(form.qtyInfuser));
+      data.append('qtyInfuserHalf',   cleanQty(form.qtyInfuserHalf));
+      data.append('qtyCola',          cleanQty(form.qtyCola));
+      data.append('qtyPaloma',        cleanQty(form.qtyPaloma));
+      data.append('qtyColaPalomaMix', cleanQty(form.qtyColaPalomaMix));
       data.append('notes',           form.notes.value.trim());
       data.append('company_website', form.company_website.value); // honeypot
       data.append('source',          'magbeverages.com/wholesale');
