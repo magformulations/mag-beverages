@@ -1,0 +1,153 @@
+<!-- @dsCard group="Product Pages" viewport="1040x760" name="Lineup — All Products" subtitle="Shop-the-products hub linking to all four pages" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop the Products — MAG Beverages</title>
+<meta name="description" content="The MAG Beverages lineup: Kava Cola, Kava Paloma, the Spirited Kava Infuser, and the Spirited Kava Shot — functional, non-alcoholic kava drinks.">
+<link rel="icon" href="img/favicon.png">
+<!-- Open Graph / social share -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MAG Beverages">
+<meta property="og:title" content="Shop the Products — MAG Beverages">
+<meta property="og:description" content="The MAG Beverages lineup: Kava Cola, Kava Paloma, the Spirited Kava Infuser, and the Spirited Kava Shot — functional, non-alcoholic kava drinks.">
+<meta property="og:url" content="https://magbeverages.com/products/">
+<meta property="og:image" content="https://magbeverages.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shop the Products — MAG Beverages">
+<meta name="twitter:description" content="The MAG Beverages lineup: Kava Cola, Kava Paloma, the Spirited Kava Infuser, and the Spirited Kava Shot — functional, non-alcoholic kava drinks.">
+<meta name="twitter:image" content="https://magbeverages.com/og-image.png">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --sand: #9a9184; --bg: #f0efed; --surface: #faf9f7;
+    --teal: #465b5f; --teal-mid: #567276; --teal-pale: #e2e8e9;
+    --ink: #232d2f; --text: #333333; --muted: #666666; --border: #c8c4bc;
+  }
+  body {
+    background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif;
+    min-height: 100vh; display: flex; flex-direction: column; align-items: center;
+    padding: 40px 32px 72px; -webkit-font-smoothing: antialiased;
+  }
+  header { text-align: center; margin-bottom: 8px; animation: fadeUp 0.6s ease both; }
+  .divider { width: 44px; height: 2.5px; background: var(--sand); margin: 14px auto 0; border-radius: 2px; opacity: 0.85; }
+  .back-link {
+    align-self: flex-start; max-width: 980px; width: 100%; margin: 0 auto 30px;
+    display: block; font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--sand); text-decoration: none;
+    animation: fadeUp 0.5s ease both;
+  }
+  .back-link:hover { color: var(--teal); }
+  .back-link::before { content: '\2190'; margin-right: 6px; }
+
+  .lede-block { text-align: center; max-width: 620px; margin: 0 auto 44px; animation: fadeUp 0.6s 0.06s ease both; }
+  .eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--sand); font-weight: 600; }
+  .page-title { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 40px; color: var(--teal); line-height: 1.15; margin: 14px 0 14px; }
+  .page-sub { font-size: 15px; line-height: 1.7; color: var(--muted); }
+
+  .grid { width: 100%; max-width: 980px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; animation: fadeUp 0.6s 0.12s ease both; }
+  .mini-card { text-decoration: none; background: var(--surface); border: 1.5px solid var(--border); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; }
+  .mini-card:hover { border-color: var(--teal); box-shadow: 0 4px 20px rgba(31,89,84,0.1); transform: translateY(-2px); }
+  .mini-media { height: 200px; overflow: hidden; background: var(--bg); }
+  .mini-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .mini-body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+  .mini-cat { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand); font-weight: 600; }
+  .mini-name { font-family: 'DM Serif Display', serif; font-size: 19px; color: var(--teal); margin: 7px 0 6px; line-height: 1.2; }
+  .mini-spec { font-size: 12px; color: var(--muted); line-height: 1.55; margin-bottom: 14px; }
+  .mini-cta { font-size: 12px; color: var(--teal-mid); font-weight: 600; margin-top: auto; }
+
+  .cta-strip { width: 100%; max-width: 980px; margin-top: 40px; background: var(--teal); border-radius: 6px; padding: 22px 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; animation: fadeUp 0.6s 0.18s ease both; }
+  .cta-strip-text { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 19px; color: #fff; }
+  .cta-strip-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 4px; font-size: 13px; font-weight: 700; letter-spacing: 0.3px; text-decoration: none; transition: background 0.15s, transform 0.15s; }
+  .btn-white { background: #fff; color: var(--teal); }
+  .btn-white:hover { background: #f0f4f4; transform: translateY(-1px); }
+  .btn-ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.55); }
+  .btn-ghost:hover { border-color: #fff; }
+
+  footer { width: 100%; max-width: 980px; margin-top: 56px; padding-top: 32px; border-top: 1.5px solid var(--border); text-align: center; font-size: 11px; color: var(--sand); letter-spacing: 1px; animation: fadeUp 0.6s 0.24s ease both; }
+  footer a { color: var(--teal); text-decoration: none; font-weight: 600; }
+  .fda { margin-top: 10px; font-size: 10px; opacity: 0.6; line-height: 1.6; letter-spacing: 0.3px; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 860px) { .grid { grid-template-columns: 1fr 1fr; } .page-title { font-size: 32px; } }
+  @media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="https://magbeverages.com"><img src="img/logo.png" height="92" alt="MAG Beverages" style="display:block;margin:0 auto;"></a>
+  <div class="divider"></div>
+  <nav style="display:flex;justify-content:center;flex-wrap:wrap;gap:10px 24px;margin-top:16px;">
+    <a href="/products/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand);text-decoration:none;white-space:nowrap;">Shop Products</a>
+    <a href="/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand);text-decoration:none;white-space:nowrap;">Find a Retailer</a>
+    <a href="/wholesale/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand);text-decoration:none;white-space:nowrap;">Wholesale</a>
+    <a href="/journal" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand);text-decoration:none;white-space:nowrap;">Journal</a>
+  </nav>
+</header>
+
+<a href="https://magbeverages.com" class="back-link">Back to MAG Beverages</a>
+
+<div class="lede-block">
+  <span class="eyebrow">The Lineup</span>
+  <h1 class="page-title">Shop the Products</h1>
+  <p class="page-sub">Four ways to magnify the good times — functional, non-alcoholic kava with real ingredients. No THC, CBD, or kratom.</p>
+</div>
+
+<div class="grid">
+  <a class="mini-card" href="spirited-kava-infuser.html">
+    <div class="mini-media"><img src="img/infuser.jpg" alt="Spirited Kava Infuser"></div>
+    <div class="mini-body">
+      <span class="mini-cat">Drink Infuser · 756 ml</span>
+      <div class="mini-name">Spirited Kava Infuser</div>
+      <div class="mini-spec">Blend it your way — great straight, or mixed into whatever you're drinking.</div>
+      <div class="mini-cta">View product &rarr;</div>
+    </div>
+  </a>
+  <a class="mini-card" href="spirited-kava-shot.html">
+    <div class="mini-media"><img src="img/shot.jpg" alt="Spirited Kava Shot"></div>
+    <div class="mini-body">
+      <span class="mini-cat">Pre-Dosed · 2 oz</span>
+      <div class="mini-name">Spirited Kava Shot</div>
+      <div class="mini-spec">The Infuser in a single, pre-measured dose. No measuring, no commitment.</div>
+      <div class="mini-cta">View product &rarr;</div>
+    </div>
+  </a>
+  <a class="mini-card" href="kava-cola.html">
+    <div class="mini-media"><img src="img/cola.jpg" alt="Kava Cola"></div>
+    <div class="mini-body">
+      <span class="mini-cat">Ready-to-Drink</span>
+      <div class="mini-name">Kava Cola</div>
+      <div class="mini-spec">A blissful blackberry buzz — 60 mg caffeine, zero calories.</div>
+      <div class="mini-cta">View product &rarr;</div>
+    </div>
+  </a>
+  <a class="mini-card" href="kava-paloma.html">
+    <div class="mini-media"><img src="img/paloma.jpg" alt="Kava Paloma"></div>
+    <div class="mini-body">
+      <span class="mini-cat">Ready-to-Drink</span>
+      <div class="mini-name">Kava Paloma</div>
+      <div class="mini-spec">Crisp grapefruit and real lime — 30 mg caffeine, zero calories.</div>
+      <div class="mini-cta">View product &rarr;</div>
+    </div>
+  </a>
+</div>
+
+<div class="cta-strip">
+  <div class="cta-strip-text">Ready to stock MAG, or find it near you?</div>
+  <div class="cta-strip-actions">
+    <a class="btn btn-white" href="https://magbeverages.com">Find a Retailer <span>&rarr;</span></a>
+    <a class="btn btn-ghost" href="https://magbeverages.com/wholesale">Order Wholesale <span>&rarr;</span></a>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 MAG Beverages &nbsp;&middot;&nbsp; <a href="https://magbeverages.com">magbeverages.com</a> &nbsp;&middot;&nbsp; <a href="https://www.instagram.com/magbeverages/">@magbeverages</a></p>
+  <p class="fda">These statements have not been evaluated by the Food and Drug Administration. These products are not intended to diagnose, treat, cure, or prevent any disease.</p>
+</footer>
+
+</body>
+</html>

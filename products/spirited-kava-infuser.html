@@ -1,0 +1,333 @@
+<!-- @dsCard group="Product Pages" viewport="1040x760" name="Spirited Kava Infuser" subtitle="Craft your own ritual — customized to your taste." -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spirited Kava Infuser — MAG Beverages</title>
+<meta name="description" content="A versatile kava infuser made with real juices and organic coconut water. Great straight, or blend it into whatever you're drinking.">
+<link rel="icon" href="img/favicon.png">
+<!-- Open Graph / social share -->
+<meta property="og:type" content="product">
+<meta property="og:site_name" content="MAG Beverages">
+<meta property="og:title" content="Spirited Kava Infuser — MAG Beverages">
+<meta property="og:description" content="A versatile kava infuser made with real juices and organic coconut water. Great straight, or blend it into whatever you're drinking.">
+<meta property="og:url" content="https://magbeverages.com/products/spirited-kava-infuser">
+<meta property="og:image" content="https://magbeverages.com/og/infuser-og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Spirited Kava Infuser — MAG Beverages">
+<meta name="twitter:description" content="A versatile kava infuser made with real juices and organic coconut water. Great straight, or blend it into whatever you're drinking.">
+<meta name="twitter:image" content="https://magbeverages.com/og/infuser-og.jpg">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --sand: #9a9184; --bg: #f0efed; --surface: #faf9f7;
+    --teal: #465b5f; --teal-mid: #567276; --teal-pale: #e2e8e9; --teal-hover: #cfd8da;
+    --ink: #232d2f; --text: #333333; --muted: #666666; --border: #c8c4bc;
+  }
+  body {
+    background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif;
+    min-height: 100vh; display: flex; flex-direction: column; align-items: center;
+    padding: 40px 32px 72px; -webkit-font-smoothing: antialiased;
+  }
+  header { text-align: center; margin-bottom: 20px; animation: fadeUp 0.6s ease both; }
+  .divider { width: 44px; height: 2.5px; background: var(--sand); margin: 14px auto 0; border-radius: 2px; opacity: 0.85; }
+  .back-link {
+    align-self: flex-start; max-width: 980px; width: 100%; margin: 0 auto 26px;
+    display: block; font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--sand); text-decoration: none;
+    animation: fadeUp 0.5s ease both;
+  }
+  .back-link:hover { color: var(--teal); }
+  .back-link::before { content: '\2190'; margin-right: 6px; }
+
+  .hero {
+    width: 100%; max-width: 980px; display: grid; grid-template-columns: 440px 1fr;
+    gap: 48px; align-items: center; animation: fadeUp 0.6s 0.06s ease both;
+  }
+  .hero-media {
+    border-radius: 8px; overflow: hidden; border: 1.5px solid var(--border);
+    background: var(--surface); box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  }
+  .hero-media img { width: 100%; height: 480px; object-fit: cover; display: block; }
+
+  .eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--sand); font-weight: 600; }
+  .product-name { font-family: 'DM Serif Display', serif; font-size: 46px; color: var(--teal); line-height: 1.12; margin: 14px 0 12px; }
+  .tagline { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 21px; color: var(--ink); line-height: 1.35; margin-bottom: 18px; }
+  .lede { font-size: 15px; line-height: 1.7; color: var(--muted); margin-bottom: 26px; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 28px; }
+  .stat { background: var(--surface); border: 1.5px solid var(--border); border-radius: 6px; padding: 14px 10px; text-align: center; }
+  .stat-big { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--teal); line-height: 1; }
+  .stat-label { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-top: 6px; }
+
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 4px; font-size: 13px; font-weight: 700; letter-spacing: 0.3px; text-decoration: none; transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.15s; border: 1.5px solid transparent; }
+  .btn-primary { background: var(--teal); color: #fff; border-color: var(--teal); }
+  .btn-primary:hover { background: var(--teal-mid); border-color: var(--teal-mid); transform: translateY(-1px); }
+  .btn-secondary { background: transparent; color: var(--teal); border-color: var(--teal); }
+  .btn-secondary:hover { background: var(--teal-pale); }
+
+  .trust { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .trust span { font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--sand); }
+  .trust .dot { color: var(--border); }
+
+  .body { width: 100%; max-width: 980px; margin-top: 64px; padding-top: 48px; border-top: 1.5px solid var(--border); display: grid; grid-template-columns: 1.6fr 1fr; gap: 48px; align-items: start; animation: fadeUp 0.6s 0.12s ease both; }
+  .body h2 { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 26px; color: var(--teal); margin-bottom: 18px; }
+  .body p { font-size: 15px; line-height: 1.8; color: var(--text); margin-bottom: 18px; }
+
+  .ways { margin-top: 10px; }
+  .ways-title { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--sand); font-weight: 600; margin-bottom: 14px; }
+  .ways ul { list-style: none; }
+  .ways li { font-size: 14px; color: var(--text); padding: 11px 0 11px 22px; border-bottom: 1px solid var(--border); position: relative; }
+  .ways li:last-child { border-bottom: none; }
+  .ways li::before { content: '\2192'; position: absolute; left: 0; color: var(--teal-mid); font-weight: 700; }
+
+  .side-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: 6px; padding: 24px 26px; margin-bottom: 18px; }
+  .side-card.accent { border-left: 4px solid var(--teal); }
+  .side-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--sand); font-weight: 600; margin-bottom: 18px; }
+  .ing { padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--border); }
+  .ing:last-child { padding-bottom: 0; margin-bottom: 0; border-bottom: none; }
+  .ing-name { font-size: 13px; font-weight: 600; letter-spacing: 0.5px; color: var(--teal); }
+  .ing-note { font-size: 12px; color: var(--muted); margin-top: 3px; }
+  .note-list { list-style: none; }
+  .note-list li { font-size: 13px; color: var(--text); line-height: 1.5; padding: 8px 0 8px 20px; position: relative; }
+  .note-list li::before { content: '\2022'; position: absolute; left: 4px; color: var(--teal-mid); font-weight: 700; }
+
+  .facts-serving { font-size: 11px; color: var(--muted); margin: -8px 0 12px; }
+  .facts-row { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .facts-row:last-child { border-bottom: none; }
+  .facts-row .fk { color: var(--text); }
+  .facts-row .fv { color: var(--teal); font-weight: 600; letter-spacing: 0.3px; white-space: nowrap; }
+  .ingredients { font-size: 12px; line-height: 1.75; color: var(--muted); margin-top: 4px; }
+  .ingredients b { color: var(--text); font-weight: 600; text-transform: uppercase; font-size: 10px; display: block; margin-bottom: 6px; letter-spacing: 2px; }
+
+  .serve { width: 100%; max-width: 980px; margin-top: 64px; padding-top: 48px; border-top: 1.5px solid var(--border); animation: fadeUp 0.6s 0.14s ease both; }
+  .serve-title { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 26px; color: var(--teal); text-align: center; margin-bottom: 8px; }
+  .serve-sub { text-align: center; font-size: 14px; line-height: 1.7; color: var(--muted); max-width: 620px; margin: 0 auto 34px; }
+  .serve-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; text-align: left; }
+  .recipe { background: var(--surface); border: 1.5px solid var(--border); border-left: 4px solid var(--teal); border-radius: 6px; padding: 24px 24px 26px; display: flex; flex-direction: column; }
+  .recipe-eyebrow { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand); font-weight: 600; }
+  .recipe-name { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--teal); margin: 8px 0 3px; line-height: 1.2; }
+  .recipe-tag { font-style: italic; font-size: 12px; color: var(--sand); margin-bottom: 6px; }
+  .recipe-sub { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); font-weight: 600; margin: 16px 0 8px; }
+  .recipe-ings { list-style: none; font-size: 13px; color: var(--text); line-height: 1.55; }
+  .recipe-ings li { padding: 3px 0 3px 15px; position: relative; }
+  .recipe-ings li::before { content: '\2014'; position: absolute; left: 0; color: var(--sand); font-size: 11px; }
+  .recipe-method { font-size: 13px; line-height: 1.6; color: var(--muted); }
+  .serve-more { text-align: center; font-size: 13px; color: var(--muted); margin-top: 30px; }
+  .serve-more a { color: var(--teal-mid); font-weight: 600; text-decoration: none; }
+  .serve-more a:hover { text-decoration: underline; }
+  @media (max-width: 860px) { .serve-grid { grid-template-columns: 1fr; } }
+
+  .lineup { width: 100%; max-width: 980px; margin-top: 64px; padding-top: 48px; border-top: 1.5px solid var(--border); animation: fadeUp 0.6s 0.16s ease both; }
+  .lineup-title { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 26px; color: var(--teal); text-align: center; margin-bottom: 6px; }
+  .lineup-sub { text-align: center; font-size: 13px; color: var(--muted); margin-bottom: 32px; }
+  .lineup-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .mini-card { text-decoration: none; background: var(--surface); border: 1.5px solid var(--border); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; }
+  .mini-card:hover { border-color: var(--teal); box-shadow: 0 4px 20px rgba(31,89,84,0.1); transform: translateY(-2px); }
+  .mini-media { height: 170px; overflow: hidden; background: var(--bg); }
+  .mini-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .mini-body { padding: 16px 18px 18px; }
+  .mini-cat { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand); font-weight: 600; }
+  .mini-name { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--teal); margin: 7px 0 5px; line-height: 1.2; }
+  .mini-spec { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .mini-cta { font-size: 12px; color: var(--teal-mid); font-weight: 600; margin-top: 12px; }
+  @media (max-width: 860px) { .lineup-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .lineup-grid { grid-template-columns: 1fr; } }
+
+  footer { width: 100%; max-width: 980px; margin-top: 64px; padding-top: 32px; border-top: 1.5px solid var(--border); text-align: center; font-size: 11px; color: var(--sand); letter-spacing: 1px; animation: fadeUp 0.6s 0.2s ease both; }
+  footer a { color: var(--teal); text-decoration: none; font-weight: 600; }
+  .fda { margin-top: 10px; font-size: 10px; opacity: 0.6; line-height: 1.6; letter-spacing: 0.3px; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; gap: 28px; }
+    .hero-media img { height: 360px; }
+    .body { grid-template-columns: 1fr; gap: 32px; }
+    .product-name { font-size: 38px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="https://magbeverages.com"><img src="img/logo.png" height="92" alt="MAG Beverages" style="display:block;margin:0 auto;"></a>
+  <div class="divider"></div>
+  <nav style="display:flex;justify-content:center;flex-wrap:wrap;gap:10px 24px;margin-top:16px;">
+    <a href="/products/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand);text-decoration:none;white-space:nowrap;">Shop Products</a>
+    <a href="/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand);text-decoration:none;white-space:nowrap;">Find a Retailer</a>
+    <a href="/wholesale/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand);text-decoration:none;white-space:nowrap;">Wholesale</a>
+    <a href="/journal" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand);text-decoration:none;white-space:nowrap;">Journal</a>
+  </nav>
+</header>
+
+<a href="https://magbeverages.com" class="back-link">Back to MAG Beverages</a>
+
+<section class="hero">
+  <div class="hero-media"><img src="img/infuser.jpg" alt="Spirited Kava Infuser"></div>
+  <div class="hero-info">
+    <span class="eyebrow">Non-Alcoholic Drink Infuser · 756 ml</span>
+    <h1 class="product-name">Spirited Kava Infuser</h1>
+    <p class="tagline">Craft your own ritual — customized to your taste.</p>
+    <p class="lede">A versatile kava infuser made with real juices and organic coconut water. Great straight, or blend it into whatever you&rsquo;re drinking.</p>
+    <div class="stats">
+        <div class="stat"><div class="stat-big">750 mg</div><div class="stat-label">Kava Root Extract</div></div>
+        <div class="stat"><div class="stat-big">50 mg</div><div class="stat-label">Ashwagandha</div></div>
+        <div class="stat"><div class="stat-big">50 mg</div><div class="stat-label">L-Theanine</div></div>
+        <div class="stat"><div class="stat-big">20</div><div class="stat-label">Calories / Serving</div></div>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://magbeverages.com">Find a Retailer <span>&rarr;</span></a>
+      <a class="btn btn-secondary" href="https://magbeverages.com/wholesale">Order Wholesale <span>&rarr;</span></a>
+    </div>
+    <div class="trust">
+      <span>No THC</span><span class="dot">&middot;</span>
+      <span>No CBD</span><span class="dot">&middot;</span>
+      <span>No Kratom</span><span class="dot">&middot;</span>
+      <span>Third-Party Tested</span>
+    </div>
+  </div>
+</section>
+
+<section class="body">
+  <div class="body-main">
+    <h2>About Spirited Kava Infuser</h2>
+      <p>The Spirited Kava Infuser gives you a better bang for your buck, better ingredients, and more versatility. The bottle is made with real juices and organic coconut water, and avoids any artificial sweeteners. It tastes great straight, and is flexible enough to blend with a variety of drinks &mdash; so you can make the best product, customized to your preferences.</p>
+      <p>Everybody has different preferences. The addition of ashwagandha and L-theanine may help reduce stress and improve focus and attention. The perfect blend of kava and other naturally occurring adaptogens and nootropics, along with electrolytes, may help you improve hydration, support mental health, and magnify the good times.</p>
+      <p class="ingredients"><b>Ingredients</b>Apple Juice, Pineapple Juice, Citric Acid, Ascorbic Acid (Vitamin&nbsp;C), Potassium Citrate, Organic Coconut Water, Natural Flavors, Kava Root Extract, Organic Ashwagandha, L-Theanine, Potassium Sorbate, Sodium Benzoate.</p>
+      <div class="ways">
+        <div class="ways-title">Ways to enjoy</div>
+        <ul>
+          <li>Straight over ice</li>
+          <li>Splashed into a seltzer for something crisp</li>
+          <li>Stirred into a soda for something sweeter</li>
+          <li>Built into your favorite mocktail</li>
+        </ul>
+      </div>
+  </div>
+  <aside class="body-side">
+    <div class="side-card accent">
+      <div class="side-label">The functional stack</div>
+          <div class="ing"><div class="ing-name">Kava Root Extract</div><div class="ing-note">750&nbsp;mg &mdash; the calming base</div></div>
+          <div class="ing"><div class="ing-name">Ashwagandha</div><div class="ing-note">50&nbsp;mg &mdash; may help reduce stress</div></div>
+          <div class="ing"><div class="ing-name">L-Theanine</div><div class="ing-note">50&nbsp;mg &mdash; may improve focus &amp; attention</div></div>
+          <div class="ing"><div class="ing-name">Vitamin C</div><div class="ing-note">40&nbsp;mg &mdash; 45% Daily Value</div></div>
+          <div class="ing"><div class="ing-name">Electrolytes</div><div class="ing-note">sodium &amp; potassium for hydration</div></div>
+    </div>
+    <div class="side-card">
+      <div class="side-label">Supplement Facts</div>
+      <div class="facts-serving">Per 1.4 fl oz (42 ml) serving &middot; 18 per bottle</div>
+      <div class="facts-row"><span class="fk">Calories</span><span class="fv">20</span></div>
+      <div class="facts-row"><span class="fk">Total Carbohydrate</span><span class="fv">5 g</span></div>
+      <div class="facts-row"><span class="fk">Total Sugars</span><span class="fv">5 g</span></div>
+      <div class="facts-row"><span class="fk">Vitamin C</span><span class="fv">40 mg &middot; 45%</span></div>
+      <div class="facts-row"><span class="fk">Potassium</span><span class="fv">50 mg</span></div>
+    </div>
+    <div class="side-card">
+      <div class="side-label">Storage &amp; handling</div>
+      <ul class="note-list">
+          <li>Non-alcoholic drink mixer &mdash; shake before use</li>
+          <li>Shelf stable when unopened; pasteurized</li>
+          <li>Refrigerate after opening &mdash; use within 30 days</li>
+          <li>Made with real, organic natural ingredients</li>
+      </ul>
+    </div>
+  </aside>
+</section>
+
+<section class="serve">
+  <h2 class="serve-title">How to serve</h2>
+  <p class="serve-sub">Great straight over ice — but the Infuser is built to mix. A 2 oz pour stands in for a shot in any build. Three to start:</p>
+  <div class="serve-grid">
+    <div class="recipe">
+      <div class="recipe-eyebrow">No. 1</div>
+      <h3 class="recipe-name">Mango Drift</h3>
+      <p class="recipe-tag">Tropical, easy, crowd-friendly</p>
+      <div class="recipe-sub">Ingredients</div>
+      <ul class="recipe-ings">
+        <li>2 oz Spirited Kava Infuser</li>
+        <li>3 oz fresh mango juice</li>
+        <li>1 oz sparkling water</li>
+        <li>Squeeze of lime</li>
+        <li>Ice</li>
+      </ul>
+      <div class="recipe-sub">Method</div>
+      <p class="recipe-method">Combine the Infuser, mango juice and lime over ice; top with sparkling water and stir once.</p>
+    </div>
+    <div class="recipe">
+      <div class="recipe-eyebrow">No. 2</div>
+      <h3 class="recipe-name">The Pacific Tonic</h3>
+      <p class="recipe-tag">Earthy, bitter, clean</p>
+      <div class="recipe-sub">Ingredients</div>
+      <ul class="recipe-ings">
+        <li>2 oz Spirited Kava Infuser</li>
+        <li>4 oz premium tonic water</li>
+        <li>2 fresh mint sprigs</li>
+        <li>Squeeze of lemon</li>
+        <li>Ice</li>
+      </ul>
+      <div class="recipe-sub">Method</div>
+      <p class="recipe-method">Clap the mint and add to a tall glass of ice. Pour the Infuser, lemon, then tonic. Don’t over-stir.</p>
+    </div>
+    <div class="recipe">
+      <div class="recipe-eyebrow">No. 3</div>
+      <h3 class="recipe-name">Dark Cherry Ritual</h3>
+      <p class="recipe-tag">Low-light drink energy</p>
+      <div class="recipe-sub">Ingredients</div>
+      <ul class="recipe-ings">
+        <li>2 oz Spirited Kava Infuser</li>
+        <li>2 oz pomegranate juice</li>
+        <li>1 oz tart cherry juice</li>
+        <li>2 oz sparkling water</li>
+        <li>Ice</li>
+      </ul>
+      <div class="recipe-sub">Method</div>
+      <p class="recipe-method">Build the Infuser, pomegranate and cherry over ice; top with sparkling water and garnish with rosemary.</p>
+    </div>
+  </div>
+  <p class="serve-more">Want the full set? <a href="https://magbeverages.com/journal-recipes">Six ways to mix the Kava Shot &rarr;</a></p>
+</section>
+
+<section class="lineup">
+  <h2 class="lineup-title">Explore the lineup</h2>
+  <p class="lineup-sub">More ways to magnify the good times &mdash; <a href="index.html" style="color:var(--teal-mid);text-decoration:none;font-weight:600;">see all products &rarr;</a></p>
+  <div class="lineup-grid">
+      <a class="mini-card" href="spirited-kava-shot.html">
+        <div class="mini-media"><img src="img/shot.jpg" alt="Spirited Kava Shot"></div>
+        <div class="mini-body">
+          <span class="mini-cat">Pre-Dosed · 2 oz</span>
+          <div class="mini-name">Spirited Kava Shot</div>
+          <div class="mini-spec">Single-serve infuser</div>
+          <div class="mini-cta">View product &rarr;</div>
+        </div>
+      </a>
+      <a class="mini-card" href="kava-cola.html">
+        <div class="mini-media"><img src="img/cola.jpg" alt="Kava Cola"></div>
+        <div class="mini-body">
+          <span class="mini-cat">Ready-to-Drink</span>
+          <div class="mini-name">Kava Cola</div>
+          <div class="mini-spec">Blackberry buzz · 60 mg caffeine</div>
+          <div class="mini-cta">View product &rarr;</div>
+        </div>
+      </a>
+      <a class="mini-card" href="kava-paloma.html">
+        <div class="mini-media"><img src="img/paloma.jpg" alt="Kava Paloma"></div>
+        <div class="mini-body">
+          <span class="mini-cat">Ready-to-Drink</span>
+          <div class="mini-name">Kava Paloma</div>
+          <div class="mini-spec">Grapefruit + lime · 30 mg caffeine</div>
+          <div class="mini-cta">View product &rarr;</div>
+        </div>
+      </a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 MAG Beverages &nbsp;&middot;&nbsp; <a href="https://magbeverages.com">magbeverages.com</a> &nbsp;&middot;&nbsp; <a href="https://www.instagram.com/magbeverages/">@magbeverages</a></p>
+  <p class="fda">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+</footer>
+
+</body>
+</html>
