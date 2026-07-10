@@ -170,41 +170,6 @@
     }
     .section-body { padding: 1.5rem 2rem 1.75rem; }
 
-    /* ── Lineup ───────────────────────────────── */
-    .sku-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
-    .sku-row {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 0.7rem 1rem;
-      background: #f8fafb;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-    }
-    .sku-row .sku-name {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--dark);
-    }
-    .sku-row .sku-format {
-      font-size: 0.75rem;
-      color: var(--mid);
-      white-space: nowrap;
-    }
-    .lineup-note {
-      font-size: 0.78rem;
-      color: var(--mid);
-      margin-top: 1rem;
-      line-height: 1.6;
-    }
-    .lineup-note a { color: var(--accent); font-weight: 600; text-decoration: none; }
-    .lineup-note a:hover { text-decoration: underline; }
-
     /* ── Two doors ────────────────────────────── */
     .doors {
       display: grid;
@@ -332,7 +297,6 @@
       .doors { grid-template-columns: 1fr; }
       .hero-card { padding: 1.75rem 1.25rem; }
       .section-body { padding: 1.25rem 1.25rem 1.5rem; }
-      .sku-row { flex-direction: column; gap: 0.15rem; }
     }
   </style>
 </head>
@@ -355,7 +319,7 @@
     <!-- ── Hero ──────────────────────────────── -->
     <div class="hero-card">
       <h1>Stock the kava your customers ask for.</h1>
-      <p>MAG Beverages makes premium, functional, non&#8209;alcoholic kava drinks in St.&nbsp;Louis, MO — stocked at NA bars, bottle shops, and wellness retailers across the country. Order direct from the maker and keep more margin on every case.</p>
+      <p>MAG Beverages makes premium, functional, non&#8209;alcoholic kava drinks in St.&nbsp;Louis, MO &mdash; stocked at NA bars, bottle shops, and wellness retailers across the country.</p>
       <div class="trust-row">
         <span>No THC</span>
         <span>No CBD</span>
@@ -372,22 +336,6 @@
       <div class="benefit"><div class="big">No Contract</div><div class="small">Reorder when ready</div></div>
     </div>
 
-    <!-- ── The lineup ────────────────────────── -->
-    <div class="section-card">
-      <div class="section-header"><h2>The Lineup</h2></div>
-      <div class="section-body">
-        <div class="sku-grid">
-          <div class="sku-row"><span class="sku-name">Spirited Kava Shot (2oz)</span><span class="sku-format">Case of 5</span></div>
-          <div class="sku-row"><span class="sku-name">Spirited Kava Infuser &ndash; full case</span><span class="sku-format">Case of 12</span></div>
-          <div class="sku-row"><span class="sku-name">Spirited Kava Infuser &ndash; half case</span><span class="sku-format">Case of 6</span></div>
-          <div class="sku-row"><span class="sku-name">Kava Cola</span><span class="sku-format">Case of 24</span></div>
-          <div class="sku-row"><span class="sku-name">Kava Paloma</span><span class="sku-format">Case of 24</span></div>
-          <div class="sku-row"><span class="sku-name">Kava Cola &amp; Kava Paloma &ndash; mixed case</span><span class="sku-format">12 of each</span></div>
-        </div>
-        <p class="lineup-note">Case pricing is shown on the order page. Curious what the products are like? <a href="/products/">See the full product pages</a>.</p>
-      </div>
-    </div>
-
     <!-- ── Two doors ─────────────────────────── -->
     <div class="doors">
       <div class="door primary">
@@ -400,7 +348,7 @@
         <h3>New Retailers</h3>
         <div class="door-title">Request a wholesale account</div>
         <p>Tell us about your shop and we&rsquo;ll set you up — usually within one business day. First orders are invoiced for payment before shipment; established partners receive Net&nbsp;60 terms.</p>
-        <a class="btn btn-outline" href="mailto:media@mag-beverages.com?subject=Wholesale%20Account%20Request&body=Shop%20name%3A%0ACity%2C%20State%3A%0AShop%20type%20(NA%20bar%2C%20bottle%20shop%2C%20wellness%2C%20other)%3A%0AAnything%20else%20we%20should%20know%3A">Request an Account</a>
+        <a class="btn btn-outline" href="/wholesale/request/">Request an Account</a>
       </div>
     </div>
 
