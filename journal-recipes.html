@@ -20,7 +20,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --sand: #9a9184;
+    --sand: #9a9184; --sand-text: #6f675c;
     --bg: #f0efed;
     --surface: #faf9f7;
     --teal: #465b5f;
@@ -66,7 +66,7 @@
     font-weight: 600;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: var(--sand);
+    color: var(--sand-text);
     text-decoration: none;
     margin-bottom: 40px;
     animation: fadeUp 0.5s ease both;
@@ -87,7 +87,7 @@
     font-size: 10px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--sand);
+    color: var(--sand-text);
     margin-bottom: 16px;
     display: block;
   }
@@ -110,7 +110,7 @@
 
   .article-meta {
     font-size: 11px;
-    color: var(--sand);
+    color: var(--sand-text);
     letter-spacing: 0.5px;
   }
 
@@ -144,7 +144,7 @@
     font-size: 10px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--sand);
+    color: var(--sand-text);
     margin-bottom: 10px;
     display: block;
   }
@@ -160,7 +160,7 @@
   .recipe-tagline {
     font-size: 13px;
     letter-spacing: 0.5px;
-    color: var(--sand);
+    color: var(--sand-text);
     margin-bottom: 24px;
     font-style: italic;
   }
@@ -186,7 +186,7 @@
     font-size: 10px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--sand);
+    color: var(--sand-text);
     margin-bottom: 20px;
     display: block;
   }
@@ -231,7 +231,7 @@
     content: '—';
     position: absolute;
     left: 0;
-    color: var(--sand);
+    color: var(--sand-text);
     font-size: 12px;
   }
 
@@ -266,7 +266,7 @@
     font-size: 10px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--sand);
+    color: var(--sand-text);
     margin-bottom: 12px;
     display: block;
   }
@@ -342,7 +342,7 @@
     font-size: 11px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: var(--sand);
+    color: var(--sand-text);
     text-decoration: none;
   }
   .footer-nav a:hover { color: var(--teal); }
@@ -351,7 +351,7 @@
     margin-top: 16px;
     text-align: center;
     font-size: 11px;
-    color: #9a9184;
+    color: #6f675c;
   }
 
   footer a {
@@ -371,7 +371,8 @@
     .recipe-card { padding: 20px; }
     .product-callout { padding: 24px 20px; }
   }
-</style>
+  @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important;}}
+  </style>
 </head>
 <body>
 
@@ -382,10 +383,10 @@
   </a>
   <div class="divider"></div>
   <nav style="display:flex;justify-content:center;flex-wrap:wrap;gap:10px 24px;margin-top:16px;">
-    <a href="/products/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#9a9184;text-decoration:none;white-space:nowrap;">Shop Products</a>
-    <a href="/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#9a9184;text-decoration:none;white-space:nowrap;">Find a Retailer</a>
-    <a href="/wholesale/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#9a9184;text-decoration:none;white-space:nowrap;">Wholesale</a>
-    <a href="/journal" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#9a9184;text-decoration:none;white-space:nowrap;">Journal</a>
+    <a href="/products/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#6f675c;text-decoration:none;white-space:nowrap;">Shop Products</a>
+    <a href="/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#6f675c;text-decoration:none;white-space:nowrap;">Find a Retailer</a>
+    <a href="/wholesale/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#6f675c;text-decoration:none;white-space:nowrap;">Wholesale</a>
+    <a href="/journal" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#6f675c;text-decoration:none;white-space:nowrap;">Journal</a>
   </nav>
 </header>
 
@@ -637,5 +638,5 @@
   </div>
   <footer>
     <p>&copy; 2026 MAG Beverages &nbsp;&middot;&nbsp; <a href="https://magbeverages.com">magbeverages.com</a></p>
-    <p style="margin-top:4px; font-size:10px; opacity:0.6;">Proudly Crafted in St. Louis, MO</p>
-    <p style="margin-top:6px; font-size:10px; opacity:0.5; line-height:1.6;">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Please drink responsibly and consult a healthcare professional if you have questions about kava or adaptogens. Not intended for pregnant or nursing w
+    <p style="margin-top:4px; font-size:10px; opacity:1;">Proudly Crafted in St. Louis, MO</p>
+    <p style="margin-top:6px; font-size:10px; opacity:1; line-height:1.6;">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Please drink responsibly and consult a healthcare professional if you have questions about kava or adaptogens. Not intended for pregnant or nursing w
