@@ -22,7 +22,7 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
-    --sand: #9a9184; --bg: #f0efed; --surface: #faf9f7;
+    --sand: #9a9184; --sand-text: #6f675c; --bg: #f0efed; --surface: #faf9f7;
     --teal: #465b5f; --teal-mid: #567276; --teal-pale: #e2e8e9;
     --ink: #232d2f; --text: #333333; --muted: #666666; --border: #c8c4bc;
   }
@@ -36,14 +36,14 @@
   .back-link {
     align-self: flex-start; max-width: 980px; width: 100%; margin: 0 auto 30px;
     display: block; font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
-    text-transform: uppercase; color: var(--sand); text-decoration: none;
+    text-transform: uppercase; color: var(--sand-text); text-decoration: none;
     animation: fadeUp 0.5s ease both;
   }
   .back-link:hover { color: var(--teal); }
   .back-link::before { content: '\2190'; margin-right: 6px; }
 
   .lede-block { text-align: center; max-width: 620px; margin: 0 auto 44px; animation: fadeUp 0.6s 0.06s ease both; }
-  .eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--sand); font-weight: 600; }
+  .eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--sand-text); font-weight: 600; }
   .page-title { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 40px; color: var(--teal); line-height: 1.15; margin: 14px 0 14px; }
   .page-sub { font-size: 15px; line-height: 1.7; color: var(--muted); }
 
@@ -53,7 +53,7 @@
   .mini-media { height: 200px; overflow: hidden; background: var(--bg); }
   .mini-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .mini-body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
-  .mini-cat { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand); font-weight: 600; }
+  .mini-cat { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-text); font-weight: 600; }
   .mini-name { font-family: 'DM Serif Display', serif; font-size: 19px; color: var(--teal); margin: 7px 0 6px; line-height: 1.2; }
   .mini-spec { font-size: 12px; color: var(--muted); line-height: 1.55; margin-bottom: 14px; }
   .mini-cta { font-size: 12px; color: var(--teal-mid); font-weight: 600; margin-top: auto; }
@@ -67,14 +67,15 @@
   .btn-ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.55); }
   .btn-ghost:hover { border-color: #fff; }
 
-  footer { width: 100%; max-width: 980px; margin-top: 56px; padding-top: 32px; border-top: 1.5px solid var(--border); text-align: center; font-size: 11px; color: var(--sand); letter-spacing: 1px; animation: fadeUp 0.6s 0.24s ease both; }
+  footer { width: 100%; max-width: 980px; margin-top: 56px; padding-top: 32px; border-top: 1.5px solid var(--border); text-align: center; font-size: 11px; color: var(--sand-text); letter-spacing: 1px; animation: fadeUp 0.6s 0.24s ease both; }
   footer a { color: var(--teal); text-decoration: none; font-weight: 600; }
   .fda { margin-top: 10px; font-size: 10px; opacity: 0.6; line-height: 1.6; letter-spacing: 0.3px; }
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
   @media (max-width: 860px) { .grid { grid-template-columns: 1fr 1fr; } .page-title { font-size: 32px; } }
   @media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
-</style>
+  @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important;}}
+  </style>
 </head>
 <body>
 
@@ -82,10 +83,10 @@
   <a href="https://magbeverages.com"><img src="img/logo.png" height="92" alt="MAG Beverages" style="display:block;margin:0 auto;"></a>
   <div class="divider"></div>
   <nav style="display:flex;justify-content:center;flex-wrap:wrap;gap:10px 24px;margin-top:16px;">
-    <a href="/products/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand);text-decoration:none;white-space:nowrap;">Shop Products</a>
-    <a href="/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand);text-decoration:none;white-space:nowrap;">Find a Retailer</a>
-    <a href="/wholesale/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand);text-decoration:none;white-space:nowrap;">Wholesale</a>
-    <a href="/journal" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand);text-decoration:none;white-space:nowrap;">Journal</a>
+    <a href="/products/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand-text);text-decoration:none;white-space:nowrap;">Shop Products</a>
+    <a href="/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand-text);text-decoration:none;white-space:nowrap;">Find a Retailer</a>
+    <a href="/wholesale/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand-text);text-decoration:none;white-space:nowrap;">Wholesale</a>
+    <a href="/journal" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand-text);text-decoration:none;white-space:nowrap;">Journal</a>
   </nav>
 </header>
 

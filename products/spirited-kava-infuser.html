@@ -22,7 +22,7 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
-    --sand: #9a9184; --bg: #f0efed; --surface: #faf9f7;
+    --sand: #9a9184; --sand-text: #6f675c; --bg: #f0efed; --surface: #faf9f7;
     --teal: #465b5f; --teal-mid: #567276; --teal-pale: #e2e8e9; --teal-hover: #cfd8da;
     --ink: #232d2f; --text: #333333; --muted: #666666; --border: #c8c4bc;
   }
@@ -36,7 +36,7 @@
   .back-link {
     align-self: flex-start; max-width: 980px; width: 100%; margin: 0 auto 26px;
     display: block; font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
-    text-transform: uppercase; color: var(--sand); text-decoration: none;
+    text-transform: uppercase; color: var(--sand-text); text-decoration: none;
     animation: fadeUp 0.5s ease both;
   }
   .back-link:hover { color: var(--teal); }
@@ -52,7 +52,7 @@
   }
   .hero-media img { width: 100%; height: 480px; object-fit: cover; display: block; }
 
-  .eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--sand); font-weight: 600; }
+  .eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--sand-text); font-weight: 600; }
   .product-name { font-family: 'DM Serif Display', serif; font-size: 46px; color: var(--teal); line-height: 1.12; margin: 14px 0 12px; }
   .tagline { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 21px; color: var(--ink); line-height: 1.35; margin-bottom: 18px; }
   .lede { font-size: 15px; line-height: 1.7; color: var(--muted); margin-bottom: 26px; }
@@ -70,7 +70,7 @@
   .btn-secondary:hover { background: var(--teal-pale); }
 
   .trust { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-  .trust span { font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--sand); }
+  .trust span { font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--sand-text); }
   .trust .dot { color: var(--border); }
 
   .body { width: 100%; max-width: 980px; margin-top: 64px; padding-top: 48px; border-top: 1.5px solid var(--border); display: grid; grid-template-columns: 1.6fr 1fr; gap: 48px; align-items: start; animation: fadeUp 0.6s 0.12s ease both; }
@@ -78,7 +78,7 @@
   .body p { font-size: 15px; line-height: 1.8; color: var(--text); margin-bottom: 18px; }
 
   .ways { margin-top: 10px; }
-  .ways-title { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--sand); font-weight: 600; margin-bottom: 14px; }
+  .ways-title { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--sand-text); font-weight: 600; margin-bottom: 14px; }
   .ways ul { list-style: none; }
   .ways li { font-size: 14px; color: var(--text); padding: 11px 0 11px 22px; border-bottom: 1px solid var(--border); position: relative; }
   .ways li:last-child { border-bottom: none; }
@@ -86,7 +86,7 @@
 
   .side-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: 6px; padding: 24px 26px; margin-bottom: 18px; }
   .side-card.accent { border-left: 4px solid var(--teal); }
-  .side-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--sand); font-weight: 600; margin-bottom: 18px; }
+  .side-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--sand-text); font-weight: 600; margin-bottom: 18px; }
   .ing { padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--border); }
   .ing:last-child { padding-bottom: 0; margin-bottom: 0; border-bottom: none; }
   .ing-name { font-size: 13px; font-weight: 600; letter-spacing: 0.5px; color: var(--teal); }
@@ -108,13 +108,13 @@
   .serve-sub { text-align: center; font-size: 14px; line-height: 1.7; color: var(--muted); max-width: 620px; margin: 0 auto 34px; }
   .serve-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; text-align: left; }
   .recipe { background: var(--surface); border: 1.5px solid var(--border); border-left: 4px solid var(--teal); border-radius: 6px; padding: 24px 24px 26px; display: flex; flex-direction: column; }
-  .recipe-eyebrow { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand); font-weight: 600; }
+  .recipe-eyebrow { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-text); font-weight: 600; }
   .recipe-name { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--teal); margin: 8px 0 3px; line-height: 1.2; }
-  .recipe-tag { font-style: italic; font-size: 12px; color: var(--sand); margin-bottom: 6px; }
+  .recipe-tag { font-style: italic; font-size: 12px; color: var(--sand-text); margin-bottom: 6px; }
   .recipe-sub { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); font-weight: 600; margin: 16px 0 8px; }
   .recipe-ings { list-style: none; font-size: 13px; color: var(--text); line-height: 1.55; }
   .recipe-ings li { padding: 3px 0 3px 15px; position: relative; }
-  .recipe-ings li::before { content: '\2014'; position: absolute; left: 0; color: var(--sand); font-size: 11px; }
+  .recipe-ings li::before { content: '\2014'; position: absolute; left: 0; color: var(--sand-text); font-size: 11px; }
   .recipe-method { font-size: 13px; line-height: 1.6; color: var(--muted); }
   .serve-more { text-align: center; font-size: 13px; color: var(--muted); margin-top: 30px; }
   .serve-more a { color: var(--teal-mid); font-weight: 600; text-decoration: none; }
@@ -130,14 +130,14 @@
   .mini-media { height: 170px; overflow: hidden; background: var(--bg); }
   .mini-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .mini-body { padding: 16px 18px 18px; }
-  .mini-cat { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand); font-weight: 600; }
+  .mini-cat { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-text); font-weight: 600; }
   .mini-name { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--teal); margin: 7px 0 5px; line-height: 1.2; }
   .mini-spec { font-size: 12px; color: var(--muted); line-height: 1.5; }
   .mini-cta { font-size: 12px; color: var(--teal-mid); font-weight: 600; margin-top: 12px; }
   @media (max-width: 860px) { .lineup-grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 480px) { .lineup-grid { grid-template-columns: 1fr; } }
 
-  footer { width: 100%; max-width: 980px; margin-top: 64px; padding-top: 32px; border-top: 1.5px solid var(--border); text-align: center; font-size: 11px; color: var(--sand); letter-spacing: 1px; animation: fadeUp 0.6s 0.2s ease both; }
+  footer { width: 100%; max-width: 980px; margin-top: 64px; padding-top: 32px; border-top: 1.5px solid var(--border); text-align: center; font-size: 11px; color: var(--sand-text); letter-spacing: 1px; animation: fadeUp 0.6s 0.2s ease both; }
   footer a { color: var(--teal); text-decoration: none; font-weight: 600; }
   .fda { margin-top: 10px; font-size: 10px; opacity: 0.6; line-height: 1.6; letter-spacing: 0.3px; }
 
@@ -148,7 +148,8 @@
     .body { grid-template-columns: 1fr; gap: 32px; }
     .product-name { font-size: 38px; }
   }
-</style>
+  @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important;}}
+  </style>
 </head>
 <body>
 
@@ -156,10 +157,10 @@
   <a href="https://magbeverages.com"><img src="img/logo.png" height="92" alt="MAG Beverages" style="display:block;margin:0 auto;"></a>
   <div class="divider"></div>
   <nav style="display:flex;justify-content:center;flex-wrap:wrap;gap:10px 24px;margin-top:16px;">
-    <a href="/products/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand);text-decoration:none;white-space:nowrap;">Shop Products</a>
-    <a href="/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand);text-decoration:none;white-space:nowrap;">Find a Retailer</a>
-    <a href="/wholesale/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand);text-decoration:none;white-space:nowrap;">Wholesale</a>
-    <a href="/journal" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand);text-decoration:none;white-space:nowrap;">Journal</a>
+    <a href="/products/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand-text);text-decoration:none;white-space:nowrap;">Shop Products</a>
+    <a href="/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand-text);text-decoration:none;white-space:nowrap;">Find a Retailer</a>
+    <a href="/wholesale/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand-text);text-decoration:none;white-space:nowrap;">Wholesale</a>
+    <a href="/journal" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand-text);text-decoration:none;white-space:nowrap;">Journal</a>
   </nav>
 </header>
 
