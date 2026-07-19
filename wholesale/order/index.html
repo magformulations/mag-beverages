@@ -451,11 +451,11 @@
     </div>
 
     <!-- ── Success / Error States ────────────── -->
-    <div id="successMessage" class="form-message" style="display:none;">
+    <div id="successMessage" class="form-message" role="status" style="display:none;">
       <h3>Order Received</h3>
       <p>Thank you — your order has been submitted. You'll receive a confirmation email shortly, followed by an invoice. Your payment terms are shown in your confirmation email.</p>
     </div>
-    <div id="errorMessage" class="form-message" style="display:none;">
+    <div id="errorMessage" class="form-message" role="alert" style="display:none;">
       <h3>Something went wrong</h3>
       <p>We couldn't process your order. Please try again, or contact us at <a href="mailto:media@mag-beverages.com">media@mag-beverages.com</a>.</p>
     </div>
@@ -477,34 +477,34 @@
         </div>
         <div class="form-section-body">
           <div class="field">
-            <label>Business Name <span class="req">*</span></label>
-            <input type="text" name="businessName" required autocomplete="organization">
+            <label for="businessName">Business Name <span class="req">*</span></label>
+            <input type="text" id="businessName" name="businessName" required autocomplete="organization">
             <div class="field-error">Business name is required.</div>
           </div>
           <div class="field">
-            <label>Your Name <span class="req">*</span></label>
-            <input type="text" name="contactName" required autocomplete="name">
+            <label for="contactName">Your Name <span class="req">*</span></label>
+            <input type="text" id="contactName" name="contactName" required autocomplete="name">
             <div class="field-error">Your name is required.</div>
           </div>
           <div class="field">
-            <label>Contact Email <span class="req">*</span></label>
-            <input type="email" name="email" required autocomplete="email">
+            <label for="email">Contact Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" required autocomplete="email">
             <div class="field-error">A valid email is required.</div>
           </div>
           <div class="field">
-            <label>Phone Number <span class="hint">(optional)</span></label>
-            <input type="tel" name="phone" autocomplete="tel">
+            <label for="phone">Phone Number <span class="hint">(optional)</span></label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel">
           </div>
           <div class="field">
-            <label>Partner Access Code <span class="hint">(from your welcome email &mdash; leave blank if you&rsquo;re a new account)</span></label>
-            <input type="text" name="accessCode" autocomplete="off" style="text-transform:uppercase;">
+            <label for="accessCode">Partner Access Code <span class="hint">(from your welcome email &mdash; leave blank if you&rsquo;re a new account)</span></label>
+            <input type="text" id="accessCode" name="accessCode" autocomplete="off" style="text-transform:uppercase;">
             <p style="margin-top:0.5rem;font-size:0.78rem;line-height:1.55;color:var(--mid);background:#f8fafb;border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:4px;padding:0.6rem 0.75rem;">
               <strong style="color:var(--dark);">Net&nbsp;60 terms are for approved wholesale partners.</strong> Enter the code from your welcome email. New accounts: your first order is invoiced for payment before it ships.
             </p>
           </div>
           <div class="field">
-            <label>Shipping Address <span class="req">*</span></label>
-            <textarea name="address" required rows="3" placeholder="Street, City, State, ZIP"></textarea>
+            <label for="address">Shipping Address <span class="req">*</span></label>
+            <textarea id="address" name="address" required rows="3" placeholder="Street, City, State, ZIP"></textarea>
             <div class="field-error">Shipping address is required.</div>
           </div>
         </div>
@@ -527,7 +527,7 @@
                 <div class="product-detail">Case of 5 &nbsp;·&nbsp; $25/case</div>
               </div>
               <div class="product-qty">
-                <input type="number" name="qtyShot" min="0" step="1" placeholder="0" data-price="25">
+                <input type="number" name="qtyShot" min="0" step="1" placeholder="0" data-price="25" aria-label="Spirited Kava Shot — number of cases">
               </div>
             </div>
 
@@ -538,7 +538,7 @@
                 <div class="product-detail">Case of 12 &nbsp;·&nbsp; $396/case</div>
               </div>
               <div class="product-qty">
-                <input type="number" name="qtyInfuser" min="0" step="1" placeholder="0" data-price="396">
+                <input type="number" name="qtyInfuser" min="0" step="1" placeholder="0" data-price="396" aria-label="Spirited Kava Infuser, full case — number of cases">
               </div>
             </div>
 
@@ -549,7 +549,7 @@
                 <div class="product-detail">Case of 6 &nbsp;·&nbsp; $240/case</div>
               </div>
               <div class="product-qty">
-                <input type="number" name="qtyInfuserHalf" min="0" step="1" placeholder="0" data-price="240">
+                <input type="number" name="qtyInfuserHalf" min="0" step="1" placeholder="0" data-price="240" aria-label="Spirited Kava Infuser, half case — number of cases">
               </div>
             </div>
 
@@ -560,7 +560,7 @@
                 <div class="product-detail">Case of 24 &nbsp;·&nbsp; $120/case</div>
               </div>
               <div class="product-qty">
-                <input type="number" name="qtyCola" min="0" step="1" placeholder="0" data-price="120">
+                <input type="number" name="qtyCola" min="0" step="1" placeholder="0" data-price="120" aria-label="Kava Cola — number of cases">
               </div>
             </div>
 
@@ -571,7 +571,7 @@
                 <div class="product-detail">Case of 24 &nbsp;·&nbsp; $120/case</div>
               </div>
               <div class="product-qty">
-                <input type="number" name="qtyPaloma" min="0" step="1" placeholder="0" data-price="120">
+                <input type="number" name="qtyPaloma" min="0" step="1" placeholder="0" data-price="120" aria-label="Kava Paloma — number of cases">
               </div>
             </div>
 
@@ -582,7 +582,7 @@
                 <div class="product-detail">12 of each &nbsp;·&nbsp; $120/case</div>
               </div>
               <div class="product-qty">
-                <input type="number" name="qtyColaPalomaMix" min="0" step="1" placeholder="0" data-price="120">
+                <input type="number" name="qtyColaPalomaMix" min="0" step="1" placeholder="0" data-price="120" aria-label="Kava Cola and Kava Paloma mixed case — number of cases">
               </div>
             </div>
           </div>
@@ -610,8 +610,8 @@
         </div>
         <div class="form-section-body">
           <div class="field">
-            <label>Order Notes <span class="hint">(optional)</span></label>
-            <textarea name="notes" rows="3" placeholder="Special instructions, preferred ship dates, or anything else we should know."></textarea>
+            <label for="notes">Order Notes <span class="hint">(optional)</span></label>
+            <textarea id="notes" name="notes" rows="3" placeholder="Special instructions, preferred ship dates, or anything else we should know."></textarea>
           </div>
           <div class="field" style="margin-top:1.25rem;">
             <div class="checkbox-field">
