@@ -19,6 +19,9 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  .skip-link { position: absolute; left: -9999px; top: 0; z-index: 1000; background: var(--teal); color: #fff; padding: 10px 18px; font-size: 13px; font-weight: 600; text-decoration: none; border-radius: 0 0 4px 0; }
+  .skip-link:focus { left: 0; }
+
   :root {
     --sand: #9a9184; --sand-text: #6f675c;         /* 10% accent — eyebrows, divider, hover tints */
     --bg: #f0efed;
@@ -556,6 +559,7 @@
   </style>
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to store locator</a>
 
 <header>
   <!--
@@ -594,7 +598,7 @@
   </div>
 </div>
 
-<div class="layout">
+<div class="layout" id="main" tabindex="-1">
   <div class="map-wrap">
     <!--
       Blocky grid-style US map.
@@ -602,7 +606,7 @@
       Cell size: 42x34px  Gap: 3px
       Active states (have ordered customers) highlighted in teal.
     -->
-    <svg id="us-map" viewBox="0 0 545 390" xmlns="http://www.w3.org/2000/svg">
+    <svg id="us-map" viewBox="0 0 545 390" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
 
       <!-- W=42 H=34 gap=3 -->
       <!-- ROW 1 y=6 -->
@@ -744,7 +748,7 @@
       </div>
       <div style="padding:18px 22px;">
         <div style="font-size:11px;color:var(--muted);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">Retailers in</div>
-        <div id="state-pills" style="display:flex;flex-wrap:wrap;gap:7px;"></div>
+        <div id="state-pills" role="group" aria-label="Select a state to see local retailers" style="display:flex;flex-wrap:wrap;gap:7px;"></div>
         <div style="margin-top:20px;padding-top:18px;border-top:1px solid var(--border);">
           <div style="font-size:11px;color:var(--muted);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">Not seeing your state?</div>
           <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:12px;">We're expanding fast. Reach out to stock MAG at your bar, bottle shop, or wellness store.</p>
@@ -932,9 +936,11 @@ const labelMap = {
 const pillsEl = document.getElementById('state-pills');
 Object.keys(retailers).sort().forEach(state => {
   const count = retailers[state].length;
-  const pill = document.createElement('div');
-  pill.style.cssText = 'background:var(--teal-pale);border:1.5px solid var(--teal);border-radius:20px;padding:5px 13px;font-size:11px;font-weight:600;color:var(--teal);cursor:pointer;transition:background 0.15s;';
+  const pill = document.createElement('button');
+  pill.type = 'button';
+  pill.style.cssText = 'font-family:inherit;background:var(--teal-pale);border:1.5px solid var(--teal);border-radius:20px;padding:5px 13px;font-size:11px;font-weight:600;color:var(--teal);cursor:pointer;transition:background 0.15s;';
   pill.textContent = `${state} (${count})`;
+  pill.setAttribute('aria-label', `${state}, ${count} retailer${count !== 1 ? 's' : ''} carrying MAG`);
   pill.onmouseenter = () => pill.style.background = 'var(--teal-hover)';
   pill.onmouseleave = () => pill.style.background = 'var(--teal-pale)';
   pill.onclick = () => showState(state);
