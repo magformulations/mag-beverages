@@ -207,11 +207,11 @@
       <p>Tell us about your shop and we&rsquo;ll create your wholesale account &mdash; usually within one business day. Your first order is invoiced for payment before shipment; established partners receive Net&nbsp;60 terms. Once you&rsquo;re approved, we&rsquo;ll email you a personal order link.</p>
     </div>
 
-    <div id="successMessage" class="form-message" style="display:none;">
+    <div id="successMessage" class="form-message" role="status" style="display:none;">
       <h3>Request Received</h3>
       <p>Thanks — we&rsquo;ve got your details and will be in touch shortly, usually within one business day. Questions in the meantime? Email <a href="mailto:media@mag-beverages.com">media@mag-beverages.com</a>.</p>
     </div>
-    <div id="errorMessage" class="form-message" style="display:none;">
+    <div id="errorMessage" class="form-message" role="alert" style="display:none;">
       <h3>Something went wrong</h3>
       <p>We couldn&rsquo;t submit your request. Please try again, or email us directly at <a href="mailto:media@mag-beverages.com">media@mag-beverages.com</a>.</p>
     </div>
@@ -229,28 +229,28 @@
         </div>
         <div class="form-section-body">
           <div class="field">
-            <label>Business Name <span class="req">*</span></label>
-            <input type="text" name="businessName" required autocomplete="organization">
+            <label for="businessName">Business Name <span class="req">*</span></label>
+            <input type="text" id="businessName" name="businessName" required autocomplete="organization">
             <div class="field-error">Business name is required.</div>
           </div>
           <div class="field">
-            <label>Business Address <span class="req">*</span></label>
-            <textarea name="address" required rows="3" placeholder="Street, City, State, ZIP"></textarea>
+            <label for="address">Business Address <span class="req">*</span></label>
+            <textarea id="address" name="address" required rows="3" placeholder="Street, City, State, ZIP"></textarea>
             <div class="field-error">Business address is required.</div>
           </div>
           <div class="field">
-            <label>Contact Name <span class="req">*</span></label>
-            <input type="text" name="contactName" required autocomplete="name">
+            <label for="contactName">Contact Name <span class="req">*</span></label>
+            <input type="text" id="contactName" name="contactName" required autocomplete="name">
             <div class="field-error">Contact name is required.</div>
           </div>
           <div class="field">
-            <label>Contact Email <span class="req">*</span></label>
-            <input type="email" name="email" required autocomplete="email">
+            <label for="email">Contact Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" required autocomplete="email">
             <div class="field-error">A valid email is required.</div>
           </div>
           <div class="field">
-            <label>Phone Number <span class="hint">(optional)</span></label>
-            <input type="tel" name="phone" autocomplete="tel">
+            <label for="phone">Phone Number <span class="hint">(optional)</span></label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel">
           </div>
           <div class="submit-area" style="margin-top:1.5rem;">
             <button type="submit" class="btn-submit" id="submitBtn">Request Account</button>
