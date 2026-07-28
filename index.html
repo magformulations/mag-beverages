@@ -642,7 +642,7 @@
       <rect class="state" x="96"  y="80"  width="42" height="34" rx="4" id="s-WY"/>
       <rect class="state" x="141" y="80"  width="42" height="34" rx="4" id="s-NE"/>
       <rect class="state active" data-state="Missouri"     x="186" y="80"  width="42" height="34" rx="4" id="s-MO"/>
-      <rect class="state" x="231" y="80"  width="42" height="34" rx="4" id="s-KY"/>
+      <rect class="state active" data-state="Kentucky"     x="231" y="80"  width="42" height="34" rx="4" id="s-KY"/>
       <rect class="state" x="276" y="80"  width="42" height="34" rx="4" id="s-WV"/>
       <rect class="state" x="321" y="80"  width="28" height="17" rx="3" id="s-MD"/>
       <rect class="state" x="352" y="80"  width="20" height="17" rx="3" id="s-DE"/>
@@ -706,7 +706,7 @@
       <text class="slabel" x="117" y="97">WY</text>
       <text class="slabel" x="162" y="97">NE</text>
       <text class="slabel active-lbl" id="lbl-MO" x="207" y="97">MO</text>
-      <text class="slabel" x="252" y="97">KY</text>
+      <text class="slabel active-lbl" id="lbl-KY" x="252" y="97">KY</text>
       <text class="slabel" x="297" y="97">WV</text>
       <text class="slabel" x="335" y="89" font-size="6">MD</text>
       <text class="slabel" x="362" y="89" font-size="6">DE</text>
@@ -900,6 +900,9 @@ const retailers = {
     { name: "Social AF Bevvies Boutique", city: "Whitestown",     type: "NA Bottle Shop", address: "8 S Main St" },
     { name: "Generation NA",              city: "Lafayette",      type: "NA Taproom",     address: "504 Main St" },
   ],
+  "Kentucky": [
+    { name: "The Botany Bay",             city: "Lexington",      type: "Smoke Shop",     address: "2350 Woodhill Dr Ste 144" },
+  ],
   "Missouri": [
     { name: "Royals Liquor Gravois",      city: "St. Louis",      type: "Liquor Store",   address: "6400 Gravois Ave" },
     { name: "Royals Liquor Telegraph",    city: "St. Louis",      type: "Liquor Store",   address: "2568 Telegraph Rd" },
@@ -925,6 +928,7 @@ const labelMap = {
   "Colorado":       "lbl-CO",
   "Georgia":        "lbl-GA",
   "Indiana":        "lbl-IN",
+  "Kentucky":       "lbl-KY",
   "Missouri":       "lbl-MO",
   "North Carolina": "lbl-NC",
   "Pennsylvania":   "lbl-PA",
