@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <link rel="icon" href="favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MAG Beverages — Kava Infuser Bottle & Kava Shot | Find a Retailer Near You</title>
-<meta name="description" content="MAG Beverages makes the Spirited Kava Infuser bottle and Spirited Kava Shot — functional non-alcoholic drinks combining noble kava, organic caffeine, and terpene essential oils. No THC, CBD, or kratom. Find a stockist near you or order wholesale today.">
-<meta name="keywords" content="kava infuser bottle, spirited kava infuser, kava shot, kava ashwagandha drink, kava l-theanine, kava vitamin c, kava nootropic, kava adaptogen drink, non-alcoholic functional beverage, kava wholesale, wholesale kava bottle, kava for bars, kava bottle shop, stock kava drinks, NA bar wholesale, alcohol alternative wholesale, kava infuser wholesale, kava near me, kava drink retailer, sober curious functional drink, zero proof wellness drink, kava adaptogen, plant-based wellness drink, kava bar menu, NA beverage distributor, kava smoke shop, MAG Beverages wholesale">
-<meta property="og:title" content="MAG Beverages — Kava Infuser Bottle & Kava Shot. Find a Retailer or Order Wholesale.">
-<meta property="og:description" content="The Spirited Kava Infuser and Spirited Kava Shot — combining kavalactones, organic caffeine, and terpene essential oils. Clean, lab-tested, no THC/CBD/kratom. Available at bars, bottle shops, and wellness stores across the US.">
+<title>MAG Beverages — Kava Infuser Bottle, Kava Shot & Kava Cans | Find a Retailer Near You</title>
+<meta name="description" content="MAG Beverages makes the Spirited Kava Infuser bottle, Spirited Kava Shot, and zero-calorie Kava Cola and Kava Paloma cans — functional non-alcoholic drinks combining noble kava, organic caffeine, and terpene essential oils. No THC, CBD, or kratom. Find a stockist near you or order wholesale today.">
+<meta name="keywords" content="kava infuser bottle, spirited kava infuser, kava shot, kava ashwagandha drink, kava l-theanine, kava vitamin c, kava nootropic, kava adaptogen drink, non-alcoholic functional beverage, kava wholesale, wholesale kava bottle, kava for bars, kava bottle shop, stock kava drinks, NA bar wholesale, alcohol alternative wholesale, kava infuser wholesale, kava cola, kava paloma, zero calorie kava can, ready to drink kava, kava near me, kava drink retailer, sober curious functional drink, zero proof wellness drink, kava adaptogen, plant-based wellness drink, kava bar menu, NA beverage distributor, kava smoke shop, MAG Beverages wholesale">
+<meta property="og:title" content="MAG Beverages — Kava Infuser Bottle, Kava Shot & Kava Cans. Find a Retailer or Order Wholesale.">
+<meta property="og:description" content="The Spirited Kava Infuser, Spirited Kava Shot, and our zero-calorie Kava Cola and Kava Paloma cans — combining kavalactones, organic caffeine, and terpene essential oils. Clean, lab-tested, no THC/CBD/kratom. Available at bars, bottle shops, and wellness stores across the US.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://magbeverages.com/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -544,16 +544,120 @@
     line-height: 1.8;
   }
 
+  /* PRODUCT LINEUP */
+  .lineup-section {
+    width: 100%;
+    max-width: 980px;
+    margin-bottom: 40px;
+    animation: fadeUp 0.6s 0.08s ease both;
+  }
+  .lineup-lede {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto 30px;
+  }
+  .lineup-eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sand-text);
+    font-weight: 600;
+  }
+  .lineup-title {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 34px;
+    color: var(--teal);
+    line-height: 1.15;
+    margin: 12px 0;
+  }
+  .lineup-sub {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+  .lineup-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+  .mini-card {
+    text-decoration: none;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+  .mini-card:hover {
+    border-color: var(--teal);
+    box-shadow: 0 4px 20px rgba(31,89,84,0.1);
+    transform: translateY(-2px);
+  }
+  .mini-media {
+    height: 200px;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .mini-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .mini-body {
+    padding: 18px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .mini-cat {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sand-text);
+    font-weight: 600;
+  }
+  .mini-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 19px;
+    color: var(--teal);
+    margin: 7px 0 6px;
+    line-height: 1.2;
+  }
+  .mini-spec {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.55;
+    margin-bottom: 14px;
+  }
+  .mini-cta {
+    font-size: 12px;
+    color: var(--teal-mid);
+    font-weight: 600;
+    margin-top: auto;
+  }
+
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(14px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
+  @media (max-width: 860px) {
+    .lineup-grid { grid-template-columns: 1fr 1fr; }
+    .lineup-title { font-size: 28px; }
+  }
   @media (max-width: 720px) {
     .layout { grid-template-columns: 1fr; }
     body { padding: 32px 16px 48px; }
     .cta-grid { grid-template-columns: 1fr; }
     .seo-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .lineup-grid { grid-template-columns: 1fr; }
   }
   @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important;}}
   </style>
@@ -590,13 +694,60 @@
   <div class="wholesale-banner-left">
     <div class="wholesale-banner-eyebrow">For Bars, Bottle Shops & Retailers</div>
     <div class="wholesale-banner-headline">Your customers are already looking for this.</div>
-    <div class="wholesale-banner-sub">The Spirited Kava Infuser bottle and Kava Shot — kava with ashwagandha, L-theanine, and Vitamin C, filling the gap between wellness supplements and alcohol alternatives. Now available to stock wholesale.</div>
+    <div class="wholesale-banner-sub">The Spirited Kava Infuser bottle and Kava Shot — kava with ashwagandha, L-theanine, and Vitamin C, filling the gap between wellness supplements and alcohol alternatives. Plus Kava Cola and Kava Paloma, our zero-calorie 16 oz cans with caffeine and terpenes. Now available to stock wholesale.</div>
   </div>
   <div class="wholesale-banner-cta">
     <a class="wholesale-banner-btn" href="/wholesale/">Browse Wholesale Catalog →</a>
     <a class="wholesale-banner-alt" href="https://airgoods.com/u/mag-beverages" target="_blank" rel="noopener">or order on Airgoods →</a>
   </div>
 </div>
+
+<!-- PRODUCT LINEUP -->
+<section class="lineup-section" aria-label="The MAG Beverages lineup">
+  <div class="lineup-lede">
+    <span class="lineup-eyebrow">The Lineup</span>
+    <h2 class="lineup-title">Shop the Products</h2>
+    <p class="lineup-sub">Four ways to magnify the good times &mdash; functional, non-alcoholic kava with real ingredients. No THC, CBD, or kratom.</p>
+  </div>
+  <div class="lineup-grid">
+    <a class="mini-card" href="/products/spirited-kava-infuser">
+      <div class="mini-media"><img src="/products/img/infuser.jpg" alt="Spirited Kava Infuser" loading="lazy"></div>
+      <div class="mini-body">
+        <span class="mini-cat">Drink Infuser &middot; 756 ml</span>
+        <div class="mini-name">Spirited Kava Infuser</div>
+        <div class="mini-spec">Blend it your way &mdash; great straight, or mixed into whatever you're drinking.</div>
+        <div class="mini-cta">View product &rarr;</div>
+      </div>
+    </a>
+    <a class="mini-card" href="/products/spirited-kava-shot">
+      <div class="mini-media"><img src="/products/img/shot.jpg" alt="Spirited Kava Shot" loading="lazy"></div>
+      <div class="mini-body">
+        <span class="mini-cat">Pre-Dosed &middot; 2 oz</span>
+        <div class="mini-name">Spirited Kava Shot</div>
+        <div class="mini-spec">The Infuser in a single, pre-measured dose. No measuring, no commitment.</div>
+        <div class="mini-cta">View product &rarr;</div>
+      </div>
+    </a>
+    <a class="mini-card" href="/products/kava-cola">
+      <div class="mini-media"><img src="/products/img/cola.jpg" alt="Kava Cola" loading="lazy"></div>
+      <div class="mini-body">
+        <span class="mini-cat">Ready-to-Drink &middot; 16 oz</span>
+        <div class="mini-name">Kava Cola</div>
+        <div class="mini-spec">A blissful blackberry buzz &mdash; 60 mg caffeine, zero calories.</div>
+        <div class="mini-cta">View product &rarr;</div>
+      </div>
+    </a>
+    <a class="mini-card" href="/products/kava-paloma">
+      <div class="mini-media"><img src="/products/img/paloma.jpg" alt="Kava Paloma" loading="lazy"></div>
+      <div class="mini-body">
+        <span class="mini-cat">Ready-to-Drink &middot; 16 oz</span>
+        <div class="mini-name">Kava Paloma</div>
+        <div class="mini-spec">Crisp grapefruit and real lime &mdash; 30 mg caffeine, zero calories.</div>
+        <div class="mini-cta">View product &rarr;</div>
+      </div>
+    </a>
+  </div>
+</section>
 
 <div class="layout" id="main" tabindex="-1">
   <div class="map-wrap">
@@ -783,15 +934,15 @@
 <!-- CTA SECTION -->
 <section class="cta-section" aria-label="Connect with MAG Beverages">
   <p class="cta-eyebrow">Wholesale & Partnerships</p>
-  <h2 class="cta-heading">The kava bottle and shot your customers can't find anywhere else.</h2>
-  <p class="cta-subtext">Kava with ashwagandha, L-theanine, and Vitamin C — a functional, non-alcoholic drink that fills the white space between wellness supplements and zero-proof spirits. Low minimums. Ships nationwide. Easy reorders.</p>
+  <h2 class="cta-heading">The kava lineup your customers can't find anywhere else.</h2>
+  <p class="cta-subtext">Kava with ashwagandha, L-theanine, and Vitamin C — functional, non-alcoholic drinks that fill the white space between wellness supplements and zero-proof spirits. Anchor the shelf with the Infuser bottle and Shot, then round out the fridge with our zero-calorie Kava Cola and Kava Paloma cans. Low minimums. Ships nationwide. Easy reorders.</p>
 
   <div class="cta-grid">
 
     <div class="cta-card">
       <span class="cta-card-icon">🛒</span>
       <div class="cta-card-title">Stock MAG at Your Store</div>
-      <p class="cta-card-desc">Order direct from us — the Spirited Kava Infuser bottle and Spirited Kava Shot, with a 5% direct discount, low minimums, and fast shipping nationwide.</p>
+      <p class="cta-card-desc">Order direct from us — the Spirited Kava Infuser bottle and Spirited Kava Shot, plus Kava Cola and Kava Paloma cans, with a 5% direct discount, low minimums, and fast shipping nationwide.</p>
       <a class="cta-btn cta-btn-primary" href="/wholesale/">Place a Wholesale Order →</a>
       <a href="https://airgoods.com/u/mag-beverages" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:10px;font-size:11px;color:var(--muted);text-decoration:underline;text-underline-offset:2px;">Prefer a marketplace? Order on Airgoods →</a>
     </div>
@@ -817,16 +968,16 @@
 <section class="seo-section" aria-label="About MAG Beverages">
   <div class="seo-grid">
     <div>
-      <h3 class="seo-block-title">The Wholesale Kava Bottle & Shot Built for Modern Retail</h3>
-      <p class="seo-block-body">Bars building zero-proof programs, NA bottle shops, wellness stores, smoke shops, and natural food retailers are hunting for functional drinks their customers actually come back for. Made with real ingredients, the Spirited Kava Infuser bottle is a versatile back-bar staple — mix it into mocktails or serve over ice. The Spirited Kava Shot is a grab-and-go impulse buy that moves near the register. Both ship wholesale nationwide with low minimums — order direct at magbeverages.com/wholesale for a 5% discount, or through the Airgoods marketplace. Stock the kava bottle and shot your competitors don't have yet.</p>
+      <h3 class="seo-block-title">The Wholesale Kava Lineup Built for Modern Retail</h3>
+      <p class="seo-block-body">Bars building zero-proof programs, NA bottle shops, wellness stores, smoke shops, and natural food retailers are hunting for functional drinks their customers actually come back for. Made with real ingredients, the Spirited Kava Infuser bottle is a versatile back-bar staple — mix it into mocktails or serve over ice. The Spirited Kava Shot is a grab-and-go impulse buy that moves near the register. For the fridge, Kava Cola and Kava Paloma are ready-to-drink 16 oz cans — 500 mg of kava extract, terpene essential oils, and zero calories — the single-serve format that turns a curious first-timer into a repeat customer. All four ship wholesale nationwide with low minimums — order direct at magbeverages.com/wholesale for a 5% discount, or through the Airgoods marketplace. Stock the kava bottle and shot your competitors don't have yet.</p>
     </div>
     <div>
       <h3 class="seo-block-title">What Are Kavalactones — and Why Does the Source Matter?</h3>
-      <p class="seo-block-body">Kavalactones are the active compounds in kava root (Piper methysticum) responsible for its calming, mood-lifting effects. They interact with GABA receptors in the brain — similar to how anti-anxiety compounds work — producing relaxation and social ease without intoxication. Not all kava is equal: noble kava chemotypes are smoother, safer for regular use, and free from the compounds found in low-grade tudei varieties. MAG's Spirited Kava Infuser bottle and Kava Shot combine premium noble kava extract with ashwagandha, L-theanine, and Vitamin C — a functional stack that stands apart from every sparkling kava tonic, kava spirit, and kava powder on the market today.</p>
+      <p class="seo-block-body">Kavalactones are the active compounds in kava root (Piper methysticum) responsible for its calming, mood-lifting effects. They interact with GABA receptors in the brain — similar to how anti-anxiety compounds work — producing relaxation and social ease without intoxication. Not all kava is equal: noble kava chemotypes are smoother, safer for regular use, and free from the compounds found in low-grade tudei varieties. MAG's Spirited Kava Infuser bottle and Kava Shot combine premium noble kava extract with ashwagandha, L-theanine, and Vitamin C — a functional stack that stands apart from every sparkling kava tonic, kava spirit, and kava powder on the market today. The Kava Cola and Kava Paloma cans take the same noble kava extract into a zero-calorie, ready-to-drink format.</p>
     </div>
     <div>
       <h3 class="seo-block-title">Find MAG Kava Drinks Near You</h3>
-      <p class="seo-block-body">MAG Beverages is currently available at NA bars, alcohol-free bottle shops, smoke shops, and wellness retailers across California, Colorado, Georgia, Indiana, Missouri, North Carolina, Pennsylvania, Tennessee, and Texas — with new stockists being added monthly. If you're looking for a kava drink near you, use the map above to find your closest retailer. If you're a retailer looking to carry the Spirited Kava Infuser bottle and Kava Shot, order wholesale direct at magbeverages.com/wholesale (or through the Airgoods marketplace) with no long-term commitment required.</p>
+      <p class="seo-block-body">MAG Beverages is currently available at NA bars, alcohol-free bottle shops, smoke shops, and wellness retailers across California, Colorado, Georgia, Indiana, Missouri, North Carolina, Pennsylvania, Tennessee, and Texas — with new stockists being added monthly. If you're looking for a kava drink near you, use the map above to find your closest retailer. If you're a retailer looking to carry the Spirited Kava Infuser bottle, Kava Shot, or our Kava Cola and Kava Paloma cans, order wholesale direct at magbeverages.com/wholesale (or through the Airgoods marketplace) with no long-term commitment required.</p>
     </div>
   </div>
 </section>
@@ -875,7 +1026,7 @@
 
 <footer>
   <p>© 2026 MAG Beverages &nbsp;·&nbsp; <a href="https://magbeverages.com">magbeverages.com</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/magbeverages/" target="_blank" rel="noopener">@magbeverages</a> &nbsp;·&nbsp; media@mag-beverages.com</p>
-  <p style="margin-top:6px; font-size:10px; opacity:1;">Kava infuser bottle · Kava shot · Functional non-alcoholic beverage · Wholesale kava drinks · Noble kava extract</p>
+  <p style="margin-top:6px; font-size:10px; opacity:1;">Kava infuser bottle · Kava shot · Kava Cola · Kava Paloma · Functional non-alcoholic beverage · Wholesale kava drinks · Noble kava extract</p>
   <p style="margin-top:4px; font-size:10px; opacity:1;">Proudly Crafted in St. Louis, MO</p>
   <p style="margin-top:6px; font-size:10px; opacity:1; line-height:1.6;">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
 </footer>
