@@ -664,7 +664,7 @@
       <rect class="state" x="186" y="154" width="42" height="34" rx="4" id="s-MS"/>
       <rect class="state" x="231" y="154" width="42" height="34" rx="4" id="s-AL"/>
       <rect class="state active" data-state="Georgia"      x="276" y="154" width="42" height="34" rx="4" id="s-GA"/>
-      <rect class="state" x="321" y="154" width="42" height="34" rx="4" id="s-SC"/>
+      <rect class="state active" data-state="South Carolina" x="321" y="154" width="42" height="34" rx="4" id="s-SC"/>
 
       <!-- ROW 6 y=191 — Texas bigger -->
       <rect class="state active" data-state="Texas"        x="96"  y="191" width="87" height="54" rx="4" id="s-TX"/>
@@ -726,7 +726,7 @@
       <text class="slabel" x="207" y="171">MS</text>
       <text class="slabel" x="252" y="171">AL</text>
       <text class="slabel active-lbl" id="lbl-GA" x="297" y="171">GA</text>
-      <text class="slabel" x="342" y="171">SC</text>
+      <text class="slabel active-lbl" id="lbl-SC" x="342" y="171">SC</text>
       <!-- Row 6 -->
       <text class="slabel active-lbl" id="lbl-TX" x="139" y="218">TX</text>
       <text class="slabel" x="207" y="208">LA</text>
@@ -915,6 +915,9 @@ const retailers = {
     { name: "Hippie & French",            city: "Pittsburgh",     type: "Smoke Shop",     address: "5122 Butler St" },
     { name: "Burman's Health Shop",       city: "Brookhaven",     type: "Wellness",       address: "3409 Edgmont Ave" },
   ],
+  "South Carolina": [
+    { name: "Mutiny Vapors",              city: "Goose Creek",    type: "Smoke Shop",     address: "214 St James Ave" },
+  ],
   "Tennessee": [
     { name: "Killjoy East — East Nashville Shop", city: "Nashville", type: "NA Bottle Shop", address: "1100 Fatherland St, Ste 107" },
     { name: "Killjoy South — Berry Hill Shop",   city: "Nashville", type: "NA Bottle Shop", address: "2813 Columbine Pl" },
@@ -933,6 +936,7 @@ const labelMap = {
   "Missouri":       "lbl-MO",
   "North Carolina": "lbl-NC",
   "Pennsylvania":   "lbl-PA",
+  "South Carolina": "lbl-SC",
   "Tennessee":      "lbl-TN",
   "Texas":          "lbl-TX",
 };
