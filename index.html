@@ -81,37 +81,49 @@
   svg#us-map { width: 100%; height: auto; display: block; }
 
   .state {
-    fill: #c8d0d1;
-    stroke: #f0ece3;
-    stroke-width: 2;
-    transition: fill 0.18s ease;
+    fill: #e0ddd6;
+    stroke: none;
+    transition: fill 0.18s ease, stroke 0.18s ease;
     cursor: default;
   }
   .state.active {
     fill: var(--teal-pale);
-    stroke: var(--teal);
-    stroke-width: 2.5;
+    stroke: var(--teal-mid);
+    stroke-width: 1.5;
     cursor: pointer;
   }
-  .state.active:hover { fill: var(--teal-hover); }
+  .state.active:hover { fill: var(--teal-hover); stroke: var(--teal); }
   .state.selected {
     fill: var(--teal);
-    stroke: var(--teal-mid);
-    stroke-width: 3;
+    stroke: var(--teal);
+    stroke-width: 1.5;
   }
 
   .slabel {
     font-family: 'DM Sans', sans-serif;
-    font-size: 7.5px;
-    font-weight: 600;
-    fill: #999999;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    fill: #a9a49a;
     pointer-events: none;
     user-select: none;
     text-anchor: middle;
-    dominant-baseline: middle;
+    dominant-baseline: central;
   }
-  .slabel.active-lbl { fill: var(--teal); }
-  .slabel.selected-lbl { fill: white; }
+  .slabel.active-lbl { fill: var(--teal); font-weight: 700; }
+  .slabel.selected-lbl { fill: #ffffff; font-weight: 700; }
+  .scount {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 8px;
+    font-weight: 600;
+    fill: var(--teal-mid);
+    opacity: 0.85;
+    pointer-events: none;
+    user-select: none;
+    text-anchor: middle;
+    dominant-baseline: central;
+  }
+  .scount.selected-count { fill: #ffffff; opacity: 0.9; }
 
   .map-hint {
     font-size: 11px;
@@ -207,8 +219,8 @@
   }
   .legend-item { display: flex; align-items: center; gap: 7px; font-size: 11px; color: #6f675c; font-weight: 500; }
   .legend-swatch { width: 14px; height: 14px; border-radius: 3px; border: 1.5px solid; flex-shrink: 0; }
-  .legend-swatch.has { background: var(--teal-pale); border-color: var(--teal); }
-  .legend-swatch.none { background: #c8d0d1; border-color: #cccccc; }
+  .legend-swatch.has { background: var(--teal-pale); border-color: var(--teal-mid); }
+  .legend-swatch.none { background: #e0ddd6; border-color: #d3cfc6; }
   .legend-swatch.sel { background: var(--teal); border-color: var(--teal-mid); }
 
   /* TRUST BAR */
@@ -682,7 +694,6 @@
   <div class="divider"></div>
   <nav style="display:flex;justify-content:center;flex-wrap:wrap;gap:10px 24px;margin-top:16px;">
     <a href="/products/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#6f675c;text-decoration:none;white-space:nowrap;">Shop Products</a>
-    <a href="/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#6f675c;text-decoration:none;white-space:nowrap;">Find a Retailer</a>
     <a href="/wholesale/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#6f675c;text-decoration:none;white-space:nowrap;">Wholesale</a>
     <a href="/journal" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#6f675c;text-decoration:none;white-space:nowrap;">Journal</a>
   </nav>
@@ -731,7 +742,7 @@
     <a class="mini-card" href="/products/kava-cola">
       <div class="mini-media"><img src="/products/img/cola.jpg" alt="Kava Cola" loading="lazy"></div>
       <div class="mini-body">
-        <span class="mini-cat">Ready-to-Drink &middot; 16 oz</span>
+        <span class="mini-cat">Ready-to-Drink &middot; 16 fl oz</span>
         <div class="mini-name">Kava Cola</div>
         <div class="mini-spec">A blissful blackberry buzz &mdash; 60 mg caffeine, zero calories.</div>
         <div class="mini-cta">View product &rarr;</div>
@@ -740,7 +751,7 @@
     <a class="mini-card" href="/products/kava-paloma">
       <div class="mini-media"><img src="/products/img/paloma.jpg" alt="Kava Paloma" loading="lazy"></div>
       <div class="mini-body">
-        <span class="mini-cat">Ready-to-Drink &middot; 16 oz</span>
+        <span class="mini-cat">Ready-to-Drink &middot; 16 fl oz</span>
         <div class="mini-name">Kava Paloma</div>
         <div class="mini-spec">Crisp grapefruit and real lime &mdash; 30 mg caffeine, zero calories.</div>
         <div class="mini-cta">View product &rarr;</div>
@@ -751,140 +762,114 @@
 
 <div class="layout" id="main" tabindex="-1">
   <div class="map-wrap">
-    <!--
-      Blocky grid-style US map.
-      Each state = uniform rectangle, arranged geographically.
-      Cell size: 42x34px  Gap: 3px
-      Active states (have ordered customers) highlighted in teal.
-    -->
-    <svg id="us-map" viewBox="0 0 545 390" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <svg id="us-map" viewBox="0 0 506 323" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of US states where MAG Beverages is stocked">
 
-      <!-- W=42 H=34 gap=3 -->
-      <!-- ROW 1 y=6 -->
-      <rect class="state" x="6"   y="6"   width="42" height="34" rx="4" id="s-WA"/>
-      <rect class="state" x="51"  y="6"   width="42" height="34" rx="4" id="s-MT"/>
-      <rect class="state" x="96"  y="6"   width="42" height="34" rx="4" id="s-ND"/>
-      <rect class="state" x="141" y="6"   width="42" height="34" rx="4" id="s-MN"/>
-      <rect class="state" x="186" y="6"   width="42" height="34" rx="4" id="s-WI"/>
-      <rect class="state" x="231" y="6"   width="42" height="34" rx="4" id="s-MI"/>
-      <!-- gap -->
-      <rect class="state" x="321" y="6"   width="42" height="34" rx="4" id="s-NY"/>
-      <rect class="state" x="366" y="6"   width="22" height="34" rx="4" id="s-VT"/>
-      <rect class="state" x="391" y="6"   width="22" height="34" rx="4" id="s-NH"/>
-      <rect class="state" x="416" y="6"   width="42" height="34" rx="4" id="s-ME"/>
+      <!-- Tile-grid US map. One equal tile per state, arranged geographically.
+           Tile 40x34, gap 5. Active = states with MAG retailers. -->
 
-      <!-- ROW 2 y=43 -->
-      <rect class="state" x="6"   y="43"  width="42" height="34" rx="4" id="s-OR"/>
-      <rect class="state" x="51"  y="43"  width="42" height="34" rx="4" id="s-ID"/>
-      <rect class="state" x="96"  y="43"  width="42" height="34" rx="4" id="s-SD"/>
-      <rect class="state" x="141" y="43"  width="42" height="34" rx="4" id="s-IA"/>
-      <rect class="state" x="186" y="43"  width="42" height="34" rx="4" id="s-IL"/>
-      <rect class="state active" data-state="Indiana"      x="231" y="43"  width="42" height="34" rx="4" id="s-IN"/>
-      <rect class="state" x="276" y="43"  width="42" height="34" rx="4" id="s-OH"/>
-      <rect class="state active" data-state="Pennsylvania" x="321" y="43"  width="42" height="34" rx="4" id="s-PA"/>
-      <rect class="state" x="366" y="43"  width="22" height="34" rx="4" id="s-NJ"/>
-      <rect class="state" x="391" y="43"  width="22" height="34" rx="4" id="s-CT"/>
-      <rect class="state" x="416" y="43"  width="22" height="17" rx="3" id="s-RI"/>
-      <rect class="state" x="366" y="6"   width="72" height="17" rx="3" id="s-MA"/><!-- MA overlaid top -->
-
-      <!-- ROW 3 y=80 -->
-      <rect class="state" x="6"   y="80"  width="42" height="34" rx="4" id="s-CA1"/><!-- CA spans rows 3+4 -->
-      <rect class="state" x="51"  y="80"  width="42" height="34" rx="4" id="s-NV"/>
-      <rect class="state" x="96"  y="80"  width="42" height="34" rx="4" id="s-WY"/>
-      <rect class="state" x="141" y="80"  width="42" height="34" rx="4" id="s-NE"/>
-      <rect class="state active" data-state="Missouri"     x="186" y="80"  width="42" height="34" rx="4" id="s-MO"/>
-      <rect class="state active" data-state="Kentucky"     x="231" y="80"  width="42" height="34" rx="4" id="s-KY"/>
-      <rect class="state" x="276" y="80"  width="42" height="34" rx="4" id="s-WV"/>
-      <rect class="state" x="321" y="80"  width="28" height="17" rx="3" id="s-MD"/>
-      <rect class="state" x="352" y="80"  width="20" height="17" rx="3" id="s-DE"/>
-
-      <!-- ROW 4 y=117 -->
-      <rect class="state active" data-state="California"   x="6"   y="117" width="42" height="34" rx="4" id="s-CA2"/>
-      <rect class="state" x="51"  y="117" width="42" height="34" rx="4" id="s-UT"/>
-      <rect class="state active" data-state="Colorado"     x="96"  y="117" width="42" height="34" rx="4" id="s-CO"/>
-      <rect class="state" x="141" y="117" width="42" height="34" rx="4" id="s-KS"/>
-      <rect class="state" x="186" y="117" width="42" height="34" rx="4" id="s-AR"/>
-      <rect class="state active" data-state="Tennessee"    x="231" y="117" width="42" height="34" rx="4" id="s-TN"/>
-      <rect class="state" x="276" y="117" width="42" height="34" rx="4" id="s-VA"/>
-      <rect class="state active" data-state="North Carolina" x="321" y="117" width="42" height="34" rx="4" id="s-NC"/>
-
-      <!-- ROW 5 y=154 -->
-      <rect class="state" x="51"  y="154" width="42" height="34" rx="4" id="s-AZ"/>
-      <rect class="state" x="96"  y="154" width="42" height="34" rx="4" id="s-NM"/>
-      <rect class="state" x="141" y="154" width="42" height="34" rx="4" id="s-OK"/>
-      <rect class="state" x="186" y="154" width="42" height="34" rx="4" id="s-MS"/>
-      <rect class="state" x="231" y="154" width="42" height="34" rx="4" id="s-AL"/>
-      <rect class="state active" data-state="Georgia"      x="276" y="154" width="42" height="34" rx="4" id="s-GA"/>
-      <rect class="state active" data-state="South Carolina" x="321" y="154" width="42" height="34" rx="4" id="s-SC"/>
-
-      <!-- ROW 6 y=191 — Texas bigger -->
-      <rect class="state active" data-state="Texas"        x="96"  y="191" width="87" height="54" rx="4" id="s-TX"/>
-      <rect class="state" x="186" y="191" width="42" height="34" rx="4" id="s-LA"/>
-      <rect class="state"                                  x="276" y="191" width="87" height="34" rx="4" id="s-FL"/>
-
-      <!-- AK + HI bottom left -->
-      <rect class="state" x="6"   y="320" width="62" height="44" rx="4" id="s-AK"/>
-      <rect class="state" x="80"  y="336" width="62" height="28" rx="4" id="s-HI"/>
+      <!-- ===== TILES ===== -->
+      <rect class="state" x="8" y="8" width="40" height="34" rx="5" id="s-AK"/>
+      <rect class="state" x="458" y="8" width="40" height="34" rx="5" id="s-ME"/>
+      <rect class="state" x="413" y="47" width="40" height="34" rx="5" id="s-VT"/>
+      <rect class="state" x="458" y="47" width="40" height="34" rx="5" id="s-NH"/>
+      <rect class="state" x="8" y="86" width="40" height="34" rx="5" id="s-WA"/>
+      <rect class="state" x="53" y="86" width="40" height="34" rx="5" id="s-ID"/>
+      <rect class="state" x="98" y="86" width="40" height="34" rx="5" id="s-MT"/>
+      <rect class="state" x="143" y="86" width="40" height="34" rx="5" id="s-ND"/>
+      <rect class="state" x="188" y="86" width="40" height="34" rx="5" id="s-MN"/>
+      <rect class="state" x="233" y="86" width="40" height="34" rx="5" id="s-WI"/>
+      <rect class="state" x="278" y="86" width="40" height="34" rx="5" id="s-MI"/>
+      <rect class="state" x="368" y="86" width="40" height="34" rx="5" id="s-NY"/>
+      <rect class="state" x="413" y="86" width="40" height="34" rx="5" id="s-MA"/>
+      <rect class="state" x="458" y="86" width="40" height="34" rx="5" id="s-RI"/>
+      <rect class="state" x="8" y="125" width="40" height="34" rx="5" id="s-OR"/>
+      <rect class="state" x="53" y="125" width="40" height="34" rx="5" id="s-NV"/>
+      <rect class="state" x="98" y="125" width="40" height="34" rx="5" id="s-WY"/>
+      <rect class="state" x="143" y="125" width="40" height="34" rx="5" id="s-SD"/>
+      <rect class="state" x="188" y="125" width="40" height="34" rx="5" id="s-IA"/>
+      <rect class="state" x="233" y="125" width="40" height="34" rx="5" id="s-IL"/>
+      <rect class="state active" data-state="Indiana" x="278" y="125" width="40" height="34" rx="5" id="s-IN"><title>Indiana</title></rect>
+      <rect class="state" x="323" y="125" width="40" height="34" rx="5" id="s-OH"/>
+      <rect class="state active" data-state="Pennsylvania" x="368" y="125" width="40" height="34" rx="5" id="s-PA"><title>Pennsylvania</title></rect>
+      <rect class="state" x="413" y="125" width="40" height="34" rx="5" id="s-NJ"/>
+      <rect class="state" x="458" y="125" width="40" height="34" rx="5" id="s-CT"/>
+      <rect class="state active" data-state="California" x="8" y="164" width="40" height="34" rx="5" id="s-CA"><title>California</title></rect>
+      <rect class="state" x="53" y="164" width="40" height="34" rx="5" id="s-UT"/>
+      <rect class="state active" data-state="Colorado" x="98" y="164" width="40" height="34" rx="5" id="s-CO"><title>Colorado</title></rect>
+      <rect class="state" x="143" y="164" width="40" height="34" rx="5" id="s-NE"/>
+      <rect class="state active" data-state="Missouri" x="188" y="164" width="40" height="34" rx="5" id="s-MO"><title>Missouri</title></rect>
+      <rect class="state active" data-state="Kentucky" x="233" y="164" width="40" height="34" rx="5" id="s-KY"><title>Kentucky</title></rect>
+      <rect class="state" x="278" y="164" width="40" height="34" rx="5" id="s-WV"/>
+      <rect class="state" x="323" y="164" width="40" height="34" rx="5" id="s-VA"/>
+      <rect class="state" x="368" y="164" width="40" height="34" rx="5" id="s-MD"/>
+      <rect class="state" x="413" y="164" width="40" height="34" rx="5" id="s-DE"/>
+      <rect class="state" x="53" y="203" width="40" height="34" rx="5" id="s-AZ"/>
+      <rect class="state" x="98" y="203" width="40" height="34" rx="5" id="s-NM"/>
+      <rect class="state" x="143" y="203" width="40" height="34" rx="5" id="s-KS"/>
+      <rect class="state" x="188" y="203" width="40" height="34" rx="5" id="s-AR"/>
+      <rect class="state active" data-state="Tennessee" x="233" y="203" width="40" height="34" rx="5" id="s-TN"><title>Tennessee</title></rect>
+      <rect class="state active" data-state="North Carolina" x="278" y="203" width="40" height="34" rx="5" id="s-NC"><title>North Carolina</title></rect>
+      <rect class="state active" data-state="South Carolina" x="323" y="203" width="40" height="34" rx="5" id="s-SC"><title>South Carolina</title></rect>
+      <rect class="state" x="143" y="242" width="40" height="34" rx="5" id="s-OK"/>
+      <rect class="state" x="188" y="242" width="40" height="34" rx="5" id="s-LA"/>
+      <rect class="state" x="233" y="242" width="40" height="34" rx="5" id="s-MS"/>
+      <rect class="state" x="278" y="242" width="40" height="34" rx="5" id="s-AL"/>
+      <rect class="state active" data-state="Georgia" x="323" y="242" width="40" height="34" rx="5" id="s-GA"><title>Georgia</title></rect>
+      <rect class="state" x="8" y="281" width="40" height="34" rx="5" id="s-HI"/>
+      <rect class="state active" data-state="Texas" x="143" y="281" width="40" height="34" rx="5" id="s-TX"><title>Texas</title></rect>
+      <rect class="state" x="368" y="281" width="40" height="34" rx="5" id="s-FL"/>
 
       <!-- ===== LABELS ===== -->
-      <!-- Row 1 -->
-      <text class="slabel" x="27"  y="23">WA</text>
-      <text class="slabel" x="72"  y="23">MT</text>
-      <text class="slabel" x="117" y="23">ND</text>
-      <text class="slabel" x="162" y="23">MN</text>
-      <text class="slabel" x="207" y="23">WI</text>
-      <text class="slabel" x="252" y="23">MI</text>
-      <text class="slabel" x="342" y="23">NY</text>
-      <text class="slabel" x="377" y="23" font-size="6">VT</text>
-      <text class="slabel" x="402" y="23" font-size="6">NH</text>
-      <text class="slabel" x="437" y="23">ME</text>
-      <!-- Row 2 -->
-      <text class="slabel" x="27"  y="60">OR</text>
-      <text class="slabel" x="72"  y="60">ID</text>
-      <text class="slabel" x="117" y="60">SD</text>
-      <text class="slabel" x="162" y="60">IA</text>
-      <text class="slabel" x="207" y="60">IL</text>
-      <text class="slabel active-lbl" id="lbl-IN" x="252" y="60">IN</text>
-      <text class="slabel" x="297" y="60">OH</text>
-      <text class="slabel active-lbl" id="lbl-PA" x="342" y="60">PA</text>
-      <text class="slabel" x="377" y="60" font-size="6">NJ</text>
-      <text class="slabel" x="402" y="60" font-size="6">CT</text>
-      <text class="slabel" x="427" y="51" font-size="6">RI</text>
-      <text class="slabel" x="402" y="14" font-size="6">MA</text>
-      <!-- Row 3 -->
-      <text class="slabel" x="27"  y="97">CA</text>
-      <text class="slabel" x="72"  y="97">NV</text>
-      <text class="slabel" x="117" y="97">WY</text>
-      <text class="slabel" x="162" y="97">NE</text>
-      <text class="slabel active-lbl" id="lbl-MO" x="207" y="97">MO</text>
-      <text class="slabel active-lbl" id="lbl-KY" x="252" y="97">KY</text>
-      <text class="slabel" x="297" y="97">WV</text>
-      <text class="slabel" x="335" y="89" font-size="6">MD</text>
-      <text class="slabel" x="362" y="89" font-size="6">DE</text>
-      <!-- Row 4 -->
-      <text class="slabel active-lbl" id="lbl-CA" x="27"  y="134">CA</text>
-      <text class="slabel" x="72"  y="134">UT</text>
-      <text class="slabel active-lbl" id="lbl-CO" x="117" y="134">CO</text>
-      <text class="slabel" x="162" y="134">KS</text>
-      <text class="slabel" x="207" y="134">AR</text>
-      <text class="slabel active-lbl" id="lbl-TN" x="252" y="134">TN</text>
-      <text class="slabel" x="297" y="134">VA</text>
-      <text class="slabel active-lbl" id="lbl-NC" x="342" y="134">NC</text>
-      <!-- Row 5 -->
-      <text class="slabel" x="72"  y="171">AZ</text>
-      <text class="slabel" x="117" y="171">NM</text>
-      <text class="slabel" x="162" y="171">OK</text>
-      <text class="slabel" x="207" y="171">MS</text>
-      <text class="slabel" x="252" y="171">AL</text>
-      <text class="slabel active-lbl" id="lbl-GA" x="297" y="171">GA</text>
-      <text class="slabel active-lbl" id="lbl-SC" x="342" y="171">SC</text>
-      <!-- Row 6 -->
-      <text class="slabel active-lbl" id="lbl-TX" x="139" y="218">TX</text>
-      <text class="slabel" x="207" y="208">LA</text>
-      <text class="slabel"            id="lbl-FL" x="319" y="208">FL</text>
-      <!-- AK HI -->
-      <text class="slabel" x="37"  y="342">AK</text>
-      <text class="slabel" x="111" y="350">HI</text>
+      <text class="slabel" x="28" y="25">AK</text>
+      <text class="slabel" x="478" y="25">ME</text>
+      <text class="slabel" x="433" y="64">VT</text>
+      <text class="slabel" x="478" y="64">NH</text>
+      <text class="slabel" x="28" y="103">WA</text>
+      <text class="slabel" x="73" y="103">ID</text>
+      <text class="slabel" x="118" y="103">MT</text>
+      <text class="slabel" x="163" y="103">ND</text>
+      <text class="slabel" x="208" y="103">MN</text>
+      <text class="slabel" x="253" y="103">WI</text>
+      <text class="slabel" x="298" y="103">MI</text>
+      <text class="slabel" x="388" y="103">NY</text>
+      <text class="slabel" x="433" y="103">MA</text>
+      <text class="slabel" x="478" y="103">RI</text>
+      <text class="slabel" x="28" y="142">OR</text>
+      <text class="slabel" x="73" y="142">NV</text>
+      <text class="slabel" x="118" y="142">WY</text>
+      <text class="slabel" x="163" y="142">SD</text>
+      <text class="slabel" x="208" y="142">IA</text>
+      <text class="slabel" x="253" y="142">IL</text>
+      <text class="slabel active-lbl" id="lbl-IN" x="298" y="142">IN</text>
+      <text class="slabel" x="343" y="142">OH</text>
+      <text class="slabel active-lbl" id="lbl-PA" x="388" y="142">PA</text>
+      <text class="slabel" x="433" y="142">NJ</text>
+      <text class="slabel" x="478" y="142">CT</text>
+      <text class="slabel active-lbl" id="lbl-CA" x="28" y="181">CA</text>
+      <text class="slabel" x="73" y="181">UT</text>
+      <text class="slabel active-lbl" id="lbl-CO" x="118" y="181">CO</text>
+      <text class="slabel" x="163" y="181">NE</text>
+      <text class="slabel active-lbl" id="lbl-MO" x="208" y="181">MO</text>
+      <text class="slabel active-lbl" id="lbl-KY" x="253" y="181">KY</text>
+      <text class="slabel" x="298" y="181">WV</text>
+      <text class="slabel" x="343" y="181">VA</text>
+      <text class="slabel" x="388" y="181">MD</text>
+      <text class="slabel" x="433" y="181">DE</text>
+      <text class="slabel" x="73" y="220">AZ</text>
+      <text class="slabel" x="118" y="220">NM</text>
+      <text class="slabel" x="163" y="220">KS</text>
+      <text class="slabel" x="208" y="220">AR</text>
+      <text class="slabel active-lbl" id="lbl-TN" x="253" y="220">TN</text>
+      <text class="slabel active-lbl" id="lbl-NC" x="298" y="220">NC</text>
+      <text class="slabel active-lbl" id="lbl-SC" x="343" y="220">SC</text>
+      <text class="slabel" x="163" y="259">OK</text>
+      <text class="slabel" x="208" y="259">LA</text>
+      <text class="slabel" x="253" y="259">MS</text>
+      <text class="slabel" x="298" y="259">AL</text>
+      <text class="slabel active-lbl" id="lbl-GA" x="343" y="259">GA</text>
+      <text class="slabel" x="28" y="298">HI</text>
+      <text class="slabel active-lbl" id="lbl-TX" x="163" y="298">TX</text>
+      <text class="slabel" x="388" y="298">FL</text>
     </svg>
 
     <p class="map-hint">Click a highlighted state to explore retailers</p>
@@ -977,7 +962,7 @@
     </div>
     <div>
       <h3 class="seo-block-title">Find MAG Kava Drinks Near You</h3>
-      <p class="seo-block-body">MAG Beverages is currently available at NA bars, alcohol-free bottle shops, smoke shops, and wellness retailers across California, Colorado, Georgia, Indiana, Missouri, North Carolina, Pennsylvania, Tennessee, and Texas — with new stockists being added monthly. If you're looking for a kava drink near you, use the map above to find your closest retailer. If you're a retailer looking to carry the Spirited Kava Infuser bottle, Kava Shot, or our Kava Cola and Kava Paloma cans, order wholesale direct at magbeverages.com/wholesale (or through the Airgoods marketplace) with no long-term commitment required.</p>
+      <p class="seo-block-body">MAG Beverages is currently available at NA bars, alcohol-free bottle shops, smoke shops, and wellness retailers across California, Colorado, Georgia, Indiana, Kentucky, Missouri, North Carolina, Pennsylvania, South Carolina, Tennessee, and Texas — with new stockists being added monthly. If you're looking for a kava drink near you, use the map above to find your closest retailer. If you're a retailer looking to carry the Spirited Kava Infuser bottle, Kava Shot, or our Kava Cola and Kava Paloma cans, order wholesale direct at magbeverages.com/wholesale (or through the Airgoods marketplace) with no long-term commitment required.</p>
     </div>
   </div>
 </section>
@@ -1028,7 +1013,7 @@
   <p>© 2026 MAG Beverages &nbsp;·&nbsp; <a href="https://magbeverages.com">magbeverages.com</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/magbeverages/" target="_blank" rel="noopener">@magbeverages</a> &nbsp;·&nbsp; media@mag-beverages.com</p>
   <p style="margin-top:6px; font-size:10px; opacity:1;">Kava infuser bottle · Kava shot · Kava Cola · Kava Paloma · Functional non-alcoholic beverage · Wholesale kava drinks · Noble kava extract</p>
   <p style="margin-top:4px; font-size:10px; opacity:1;">Proudly Crafted in St. Louis, MO</p>
-  <p style="margin-top:6px; font-size:10px; opacity:1; line-height:1.6;">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+  <p style="margin-top:6px; font-size:10px; opacity:1; line-height:1.6;">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Please drink responsibly and consult a healthcare professional if you have questions about kava or adaptogens. Not intended for those who are pregnant or nursing.</p>
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
@@ -1113,6 +1098,7 @@ function showState(stateName) {
     el.classList.remove('selected-lbl');
     el.classList.add('active-lbl');
   });
+  document.querySelectorAll('.scount.selected-count').forEach(el => el.classList.remove('selected-count'));
 
   document.querySelectorAll(`[data-state="${stateName}"]`).forEach(el => el.classList.add('selected'));
 
@@ -1120,6 +1106,8 @@ function showState(stateName) {
   if (lblId) {
     const lbl = document.getElementById(lblId);
     if (lbl) { lbl.classList.remove('active-lbl'); lbl.classList.add('selected-lbl'); }
+    const cnt = document.getElementById('cnt-' + lblId);
+    if (cnt) cnt.classList.add('selected-count');
   }
 
   const list = retailers[stateName];
@@ -1151,6 +1139,24 @@ function showState(stateName) {
 
 document.querySelectorAll('.state.active').forEach(el => {
   el.addEventListener('click', () => { if (el.dataset.state) showState(el.dataset.state); });
+});
+
+// Retailer count rendered inside each active tile, read from the list above
+document.querySelectorAll('.state.active').forEach(rect => {
+  const state = rect.dataset.state;
+  const list  = retailers[state];
+  const lblId = labelMap[state];
+  const lbl   = lblId && document.getElementById(lblId);
+  if (!list || !lbl) return;
+  const y = parseFloat(lbl.getAttribute('y'));
+  lbl.setAttribute('y', y - 5);
+  const cnt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+  cnt.setAttribute('class', 'scount');
+  cnt.setAttribute('id', 'cnt-' + lblId);
+  cnt.setAttribute('x', lbl.getAttribute('x'));
+  cnt.setAttribute('y', y + 7);
+  cnt.textContent = list.length;
+  lbl.parentNode.appendChild(cnt);
 });
 </script>
 </body>
