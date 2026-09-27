@@ -21,42 +21,96 @@
 <meta name="twitter:image" content="https://magbeverages.com/og-image.png">
 <link rel="canonical" href="https://magbeverages.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "MAG Beverages",
+  "url": "https://magbeverages.com",
+  "logo": "https://magbeverages.com/logo.png",
+  "slogan": "Magnify the Good Times",
+  "email": "media@mag-beverages.com",
+  "sameAs": ["https://www.instagram.com/magbeverages/"],
+  "address": { "@type": "PostalAddress", "addressLocality": "St. Louis", "addressRegion": "MO", "addressCountry": "US" }
+}
+</script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
 
   .skip-link { position: absolute; left: -9999px; top: 0; z-index: 1000; background: var(--teal); color: #fff; padding: 10px 18px; font-size: 13px; font-weight: 600; text-decoration: none; border-radius: 0 0 4px 0; }
   .skip-link:focus { left: 0; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+  .topbar a:focus-visible, .review a:focus-visible, .wholesale a:focus-visible, footer a:focus-visible, .state-back:focus-visible { outline-color: #fff; }
+  main:focus { outline: none; }
 
   :root {
-    --sand: #9a9184; --sand-text: #6f675c;         /* 10% accent — eyebrows, divider, hover tints */
-    --bg: #f0efed;
-    --surface: #faf9f7;
+    --sand: #9a9184; --sand-text: #6f675c; --sand-pale: #e8e2d8;  /* accent — eyebrows, divider, quote marks */
+    --bg: #f4f2ee;
+    --surface: #fbfaf8;
+    --band: #e6ebeb;                                             /* tinted band behind the map */
     --teal: #465b5f;
     --teal-mid: #567276;
     --teal-pale: #e2e8e9;
     --teal-hover: #cfd8da;
+    --ink: #232d2f;
     --text: #333333;
-    --muted: #666666;
-    --border: #c8c4bc;
+    --muted: #5f5f5f;
+    --border: #d4cfc6;
   }
 
   body {
-    background: var(--bg);
+    background:
+      radial-gradient(ellipse 70% 560px at 50% 0%, rgba(86,114,118,0.12), transparent 70%),
+      radial-gradient(ellipse 45% 380px at 85% 700px, rgba(154,145,132,0.14), transparent 70%),
+      var(--bg);
     color: var(--text);
     font-family: 'DM Sans', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 48px 32px 64px;
+    -webkit-font-smoothing: antialiased;
   }
 
-  header {
+  .wrap { width: 100%; max-width: 1060px; margin: 0 auto; padding: 0 28px; }
+  section { position: relative; }
+
+  .eyebrow {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sand-text);
+    font-weight: 600;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(30px, 4.2vw, 42px);
+    color: var(--teal);
+    line-height: 1.12;
+    margin: 12px 0 0;
+  }
+  .section-head { text-align: center; max-width: 640px; margin: 0 auto 44px; }
+  .section-sub { font-size: 15px; line-height: 1.7; color: var(--muted); margin-top: 14px; }
+
+  /* ANNOUNCEMENT BAR — wholesale gets top billing */
+  .topbar {
+    background: var(--ink);
+    color: rgba(255,255,255,0.82);
+    font-size: 12px;
+    letter-spacing: 0.3px;
     text-align: center;
-    margin-bottom: 44px;
-    animation: fadeUp 0.6s ease both;
+    padding: 10px 16px;
+    line-height: 1.5;
   }
+  .topbar strong { color: #fff; font-weight: 600; }
+  .topbar a { color: #fff; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255,255,255,0.4); white-space: nowrap; }
+  .topbar a:hover { text-decoration-color: #fff; }
+  .topbar .alt { color: rgba(255,255,255,0.7); font-weight: 400; }
 
+  /* HEADER + HERO */
+  .hero { text-align: center; padding: 0 0 84px; overflow: hidden; }
+  header { text-align: center; padding-top: 44px; animation: fadeUp 0.6s ease both; }
   .divider {
     width: 44px;
     height: 2.5px;
@@ -65,34 +119,114 @@
     border-radius: 2px;
     opacity: 0.8;
   }
-
-  .page-subtitle {
+  .hero-body { margin-top: 64px; animation: fadeUp 0.8s 0.1s ease both; }
+  .hero h1 {
     font-family: 'DM Serif Display', serif;
-    font-size: 17px;
     font-style: italic;
-    color: #232d2f;
+    font-weight: 400;
+    font-size: clamp(40px, 7vw, 76px);
+    line-height: 1.02;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+    max-width: 13ch;
+    margin: 16px auto 0;
   }
+  .hero h1 em { font-style: italic; color: var(--teal-mid); }
+  .hero-sub {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 540px;
+    margin: 24px auto 0;
+  }
+  .hero-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 34px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 26px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.4px;
+    text-decoration: none; cursor: pointer;
+    border: 1.5px solid transparent;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--teal); color: #fff; border-color: var(--teal); }
+  .btn-primary:hover { background: var(--ink); border-color: var(--ink); }
+  .btn-outline { background: transparent; color: var(--teal); border-color: var(--teal); }
+  .btn-outline:hover { background: var(--teal-pale); }
+  .btn-light { background: #fff; color: var(--teal); border-color: #fff; }
+  .btn-light:hover { background: var(--sand-pale); border-color: var(--sand-pale); }
+  .btn-ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,0.5); }
+  .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,0.06); }
 
-  .layout {
-    width: 100%;
-    max-width: 980px;
-    display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: 36px;
-    align-items: start;
-    animation: fadeUp 0.6s 0.12s ease both;
+  .trust {
+    display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 22px;
+    margin-top: 44px;
+    list-style: none;
   }
+  .trust li {
+    font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--sand-text);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .trust li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--sand); opacity: 0.7; }
+
+  /* PRODUCT LINEUP */
+  .lineup { padding: 24px 0 96px; }
+  .lineup-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .mini-card {
+    text-decoration: none;
+    background: var(--surface);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 2px rgba(35,45,47,0.05), 0 0 0 1px rgba(35,45,47,0.06);
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+  .mini-card:hover {
+    box-shadow: 0 14px 34px rgba(35,45,47,0.12), 0 0 0 1px rgba(70,91,95,0.25);
+    transform: translateY(-4px);
+  }
+  .mini-media { aspect-ratio: 4 / 5; overflow: hidden; background: var(--bg); }
+  .mini-media img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.7s cubic-bezier(.2,.7,.2,1);
+  }
+  .mini-card:hover .mini-media img { transform: scale(1.05); }
+  .mini-body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+  .mini-cat { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-text); font-weight: 600; }
+  .mini-name { font-family: 'DM Serif Display', serif; font-size: 21px; color: var(--teal); margin: 7px 0 6px; line-height: 1.2; }
+  .mini-spec { font-size: 13px; color: var(--muted); line-height: 1.55; margin-bottom: 16px; }
+  .mini-cta { font-size: 12px; color: var(--teal-mid); font-weight: 600; margin-top: auto; letter-spacing: 0.3px; }
+  .mini-cta span { display: inline-block; transition: transform 0.25s; }
+  .mini-card:hover .mini-cta span { transform: translateX(4px); }
+
+  /* STORE LOCATOR */
+  .locator { background: var(--band); padding: 92px 0 88px; scroll-margin-top: 0; }
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 40px;
+    align-items: start;
+  }
+  .map-wrap:focus { outline: none; }
 
   svg#us-map { width: 100%; height: auto; display: block; }
 
   .state {
-    fill: #e0ddd6;
+    fill: #d9dcda;
     stroke: none;
     transition: fill 0.18s ease, stroke 0.18s ease;
     cursor: default;
   }
   .state.active {
-    fill: var(--teal-pale);
+    fill: #fbfaf8;
     stroke: var(--teal-mid);
     stroke-width: 1.5;
     cursor: pointer;
@@ -109,7 +243,7 @@
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.5px;
-    fill: #a9a49a;
+    fill: #575d5b;
     pointer-events: none;
     user-select: none;
     text-anchor: middle;
@@ -130,66 +264,78 @@
   }
   .scount.selected-count { fill: #ffffff; opacity: 0.9; }
 
-  .map-hint {
-    font-size: 11px;
-    color: #6f675c;
-    letter-spacing: 0.8px;
-    margin-top: 10px;
-    text-align: center;
-    font-weight: 500;
+  .map-foot {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px 20px;
+    margin-top: 16px;
   }
+  .map-hint { font-size: 12px; color: var(--sand-text); font-weight: 500; letter-spacing: 0.3px; }
+  .legend { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 7px; font-size: 11px; color: var(--sand-text); font-weight: 500; }
+  .legend-swatch { width: 13px; height: 13px; border-radius: 3px; border: 1.5px solid; flex-shrink: 0; }
+  .legend-swatch.has { background: #fbfaf8; border-color: var(--teal-mid); }
+  .legend-swatch.none { background: #d9dcda; border-color: #d9dcda; }
+  .legend-swatch.sel { background: var(--teal); border-color: var(--teal); }
 
   .sidebar {
     background: var(--surface);
-    border: 1.5px solid var(--border);
-    border-radius: 6px;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    box-shadow: 0 10px 34px rgba(35,45,47,0.10), 0 0 0 1px rgba(35,45,47,0.06);
     min-height: 240px;
   }
-
-  .sidebar-header {
-    background: var(--teal);
-    padding: 20px 22px 18px;
-  }
+  .sidebar-header { background: var(--teal); padding: 22px 24px 20px; }
   .sidebar-header-title {
     font-family: 'DM Serif Display', serif;
-    font-size: 22px;
+    font-size: 23px;
     font-style: italic;
     color: white;
-    line-height: 1.35;
+    line-height: 1.3;
   }
-  .sidebar-header-hint {
-    font-size: 12px;
-    color: rgba(255,255,255,0.7);
-    margin-top: 6px;
-    line-height: 1.5;
+  .sidebar-body { padding: 20px 24px 22px; }
+  .sidebar-label { font-size: 11px; color: var(--muted); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 7px; }
+  .pill {
+    font-family: inherit;
+    background: var(--teal-pale);
+    border: 1.5px solid transparent;
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 11px; font-weight: 600;
+    color: var(--teal);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
   }
+  .pill:hover { background: var(--teal-hover); border-color: var(--teal-mid); }
+  .pill:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+  .sidebar-more { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--border); }
+  .sidebar-more p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 12px; }
+  .sidebar-more .btn { width: 100%; justify-content: center; padding: 11px 16px; font-size: 12px; }
+  .sidebar-alt { display: block; text-align: center; margin-top: 9px; font-size: 11px; color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
 
   .state-view { display: none; }
   .state-view.visible { display: block; }
 
-  .state-name-bar {
-    background: var(--teal);
-    padding: 16px 22px 14px;
+  .state-name-bar { background: var(--teal); padding: 16px 24px 14px; }
+  .state-back {
+    background: none; border: none; cursor: pointer; font-family: inherit;
+    font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+    color: rgba(255,255,255,0.75); margin-bottom: 8px; padding: 0;
   }
+  .state-back:hover { color: #fff; }
   .state-name-text {
+    font-weight: 400;
+    outline: none;
     font-family: 'DM Serif Display', serif;
-    font-size: 22px;
+    font-size: 23px;
     color: white;
     font-style: italic;
   }
-  .state-count {
-    font-size: 11px;
-    color: rgba(255,255,255,0.7);
-    margin-top: 3px;
-    font-weight: 500;
-  }
+  .state-count { font-size: 11px; color: rgba(255,255,255,0.75); margin-top: 3px; font-weight: 500; }
 
   .retailer-list { padding: 6px 0; }
   .retailer {
     display: block;
-    padding: 13px 22px;
+    padding: 13px 24px;
     border-bottom: 1px solid var(--border);
     transition: background 0.15s;
     text-decoration: none;
@@ -208,7 +354,7 @@
     background: var(--teal-pale); padding: 2px 7px;
     border-radius: 20px; text-transform: uppercase; letter-spacing: 0.3px;
   }
-  .retailer-address { font-size: 11px; color: #6f675c; margin-top: 3px; }
+  .retailer-address { font-size: 11px; color: var(--sand-text); margin-top: 3px; }
   .retailer-maps {
     display: inline-flex; align-items: center; gap: 4px;
     font-size: 11px; font-weight: 600; color: var(--teal);
@@ -216,812 +362,497 @@
   }
   .retailer:hover .retailer-maps { text-decoration: underline; }
 
-  .legend {
-    width: 100%; max-width: 980px;
-    display: flex; align-items: center; gap: 20px;
-    margin-top: 24px; flex-wrap: wrap;
-    animation: fadeUp 0.6s 0.24s ease both;
+  /* REVIEW — dark band */
+  .review { background: var(--ink); color: #fff; padding: 104px 0; text-align: center; overflow: hidden; }
+  .review .eyebrow { color: var(--sand); }
+  .review-mark {
+    font-family: 'DM Serif Display', serif;
+    font-size: 120px; line-height: 0.6;
+    color: var(--sand);
+    opacity: 0.55;
+    display: block;
+    margin: 34px 0 6px;
   }
-  .legend-item { display: flex; align-items: center; gap: 7px; font-size: 11px; color: #6f675c; font-weight: 500; }
-  .legend-swatch { width: 14px; height: 14px; border-radius: 3px; border: 1.5px solid; flex-shrink: 0; }
-  .legend-swatch.has { background: var(--teal-pale); border-color: var(--teal-mid); }
-  .legend-swatch.none { background: #e0ddd6; border-color: #d3cfc6; }
-  .legend-swatch.sel { background: var(--teal); border-color: var(--teal-mid); }
-
-  /* TRUST BAR */
-  .trust-bar {
-    width: 100%;
-    max-width: 980px;
-    margin-top: 48px;
-    padding: 22px 32px;
-    border: 1.5px solid var(--border);
-    border-radius: 6px;
-    background: var(--surface);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px 14px;
-    animation: fadeUp 0.6s 0.5s ease both;
-  }
-
-  .trust-item {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #6f675c;
-  }
-
-  .trust-dot {
-    color: var(--border);
-    font-size: 13px;
-    line-height: 1;
-  }
-
-  /* last trust item is the sentence — override uppercase */
-  .trust-item:last-child {
-    text-transform: none;
-    letter-spacing: 0.2px;
-    font-weight: 400;
-    font-size: 12px;
-    font-style: italic;
-    color: var(--muted);
-  }
-
-  /* JOURNAL CTA */
-  .journal-cta {
-    width: 100%;
-    max-width: 980px;
-    margin-top: 32px;
-    text-align: center;
-  }
-
-  .journal-cta-link {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    text-decoration: none;
-    padding: 16px 32px;
-    border: 1.5px solid var(--border);
-    border-radius: 6px;
-    background: var(--surface);
-    transition: border-color 0.2s, background 0.2s;
-  }
-
-  .journal-cta-link:hover {
-    border-color: var(--teal);
-    background: var(--teal-pale);
-  }
-
-  .journal-cta-eyebrow {
-    font-size: 10px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--sand-text);
-    font-weight: 600;
-  }
-
-  .journal-cta-text {
+  .review blockquote p {
     font-family: 'DM Serif Display', serif;
     font-style: italic;
-    font-size: 16px;
-    color: var(--teal);
+    font-size: clamp(19px, 2.3vw, 24px);
+    line-height: 1.6;
+    color: #f4f2ee;
+    max-width: 800px;
+    margin: 0 auto;
   }
+  .review figcaption { margin-top: 30px; font-size: 12px; color: var(--sand); font-weight: 600; letter-spacing: 0.8px; }
+  .review figcaption a { color: #cdd8d9; text-decoration: none; border-bottom: 1px solid rgba(205,216,217,0.35); }
+  .review figcaption a:hover { border-color: #cdd8d9; }
 
-  footer {
-    margin-top: 48px; text-align: center;
-    font-size: 11px; color: #6f675c; letter-spacing: 1px;
-    animation: fadeUp 0.6s 0.36s ease both;
-  }
-  footer a { color: var(--teal); text-decoration: none; font-weight: 600; }
-
-  /* WHOLESALE BANNER — above the fold */
-  .wholesale-banner {
-    width: 100%;
-    max-width: 980px;
-    margin-bottom: 24px;
-    background: var(--teal);
-    border-radius: 6px;
-    padding: 20px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    animation: fadeUp 0.6s 0.05s ease both;
-    position: relative;
+  /* WHOLESALE — teal band */
+  .wholesale {
+    background: linear-gradient(135deg, var(--teal) 0%, #3b4e52 100%);
+    color: #fff;
+    padding: 96px 0;
     overflow: hidden;
   }
-
-  .wholesale-banner::before {
-    content: '';
-    position: absolute;
-    right: -30px;
-    top: -30px;
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.04);
-    pointer-events: none;
+  .wholesale::before {
+    content: ''; position: absolute; right: -120px; top: -120px;
+    width: 420px; height: 420px; border-radius: 50%;
+    background: rgba(255,255,255,0.04); pointer-events: none;
   }
-
-  .wholesale-banner::after {
-    content: '';
-    position: absolute;
-    right: 60px;
-    bottom: -40px;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.03);
-    pointer-events: none;
+  .wholesale::after {
+    content: ''; position: absolute; left: -80px; bottom: -160px;
+    width: 320px; height: 320px; border-radius: 50%;
+    background: rgba(255,255,255,0.03); pointer-events: none;
   }
-
-  .wholesale-banner-left { flex: 1; min-width: 0; }
-
-  .wholesale-banner-eyebrow {
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.75);
-    font-weight: 600;
-    margin-bottom: 5px;
+  .wholesale-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; align-items: center; }
+  .wholesale .eyebrow { color: rgba(255,255,255,0.7); }
+  .wholesale .section-title { color: #fff; }
+  .wholesale-sub { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.78); margin-top: 16px; max-width: 480px; }
+  .wholesale-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+  .wholesale-points { list-style: none; display: grid; gap: 14px; }
+  .wholesale-points li {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    padding: 18px 22px;
   }
+  .wholesale-points strong { display: block; font-family: 'DM Serif Display', serif; font-weight: 400; font-size: 21px; color: #fff; }
+  .wholesale-points span { display: block; font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 3px; }
 
-  .wholesale-banner-headline {
+  /* ABOUT (SEO copy) */
+  .about { padding: 96px 0 40px; }
+  .about-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .about-grid h3 {
     font-family: 'DM Serif Display', serif;
+    font-weight: 400;
     font-size: 20px;
-    font-style: italic;
-    color: white;
-    line-height: 1.3;
-  }
-
-  .wholesale-banner-sub {
-    font-size: 12px;
-    color: rgba(255,255,255,0.65);
-    margin-top: 4px;
-    line-height: 1.5;
-  }
-
-  .wholesale-banner-btn {
-    flex-shrink: 0;
-    display: inline-block;
-    padding: 13px 26px;
-    background: white;
-    color: var(--teal);
-    border-radius: 4px;
-    font-size: 13px;
-    font-weight: 700;
-    text-decoration: none;
-    letter-spacing: 0.3px;
-    transition: background 0.18s, transform 0.15s;
-    white-space: nowrap;
-  }
-
-  .wholesale-banner-btn:hover {
-    background: #f0f4f4;
-    transform: translateY(-1px);
-  }
-
-  .wholesale-banner-cta {
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-  }
-  .wholesale-banner-alt {
-    font-size: 11px;
-    color: rgba(255,255,255,0.82);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    white-space: nowrap;
-  }
-  .wholesale-banner-alt:hover { color: #fff; }
-
-  @media (max-width: 620px) {
-    .wholesale-banner { flex-direction: column; align-items: flex-start; padding: 20px 22px; }
-    .wholesale-banner-cta { width: 100%; }
-    .wholesale-banner-btn { width: 100%; text-align: center; }
-  }
-
-  /* CTA SECTION */
-  .cta-section {
-    width: 100%;
-    max-width: 980px;
-    margin-top: 52px;
-    border-top: 1.5px solid var(--border);
-    padding-top: 48px;
-    animation: fadeUp 0.6s 0.3s ease both;
-  }
-
-  .cta-eyebrow {
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: #6f675c;
-    text-transform: uppercase;
-    font-weight: 600;
-    text-align: center;
+    color: var(--ink);
+    line-height: 1.25;
     margin-bottom: 10px;
   }
+  .about-grid p { font-size: 14px; color: var(--muted); line-height: 1.75; }
+  .about-grid a { color: var(--teal); font-weight: 600; text-decoration: none; }
+  .about-grid a:hover { text-decoration: underline; }
 
-  .cta-heading {
-    font-family: 'DM Serif Display', serif;
-    font-size: 30px;
-    font-style: italic;
-    color: #232d2f;
-    text-align: center;
-    margin-bottom: 10px;
-    line-height: 1.3;
-  }
-
-  .cta-subtext {
-    font-size: 13px;
-    color: var(--muted);
-    text-align: center;
-    max-width: 560px;
-    margin: 0 auto 36px;
-    line-height: 1.7;
-  }
-
-  .cta-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-  }
-
-  .cta-card {
-    background: var(--surface);
-    border: 1.5px solid var(--border);
-    border-radius: 6px;
-    padding: 28px 24px;
-    text-align: center;
-    transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
-  }
-
-  .cta-card:hover {
-    border-color: var(--teal);
-    box-shadow: 0 4px 20px rgba(31,89,84,0.1);
-    transform: translateY(-2px);
-  }
-
-  .cta-card-icon {
-    font-size: 26px;
-    margin-bottom: 12px;
-    display: block;
-  }
-
-  .cta-card-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 17px;
-    color: var(--text);
-    margin-bottom: 7px;
-    line-height: 1.3;
-  }
-
-  .cta-card-desc {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.65;
-    margin-bottom: 20px;
-  }
-
-  .cta-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-decoration: none;
-    transition: background 0.18s, color 0.18s;
-  }
-
-  .cta-btn-primary {
-    background: var(--teal);
-    color: white;
-    border: 1.5px solid var(--teal);
-  }
-  .cta-btn-primary:hover { background: var(--teal); border-color: var(--teal-mid); }
-
-  .cta-btn-secondary {
-    background: transparent;
-    color: var(--teal);
-    border: 1.5px solid var(--teal);
-  }
-  .cta-btn-secondary:hover { background: #ede9e4; }
-
-  /* SEO COPY SECTION */
-  .seo-section {
-    width: 100%;
-    max-width: 980px;
-    margin-top: 52px;
-    padding-top: 40px;
-    border-top: 1.5px solid var(--border);
-    animation: fadeUp 0.6s 0.4s ease both;
-  }
-
-  .seo-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 36px;
-  }
-
-  .seo-block-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 18px;
-    color: #232d2f;
-    margin-bottom: 10px;
-  }
-
-  .seo-block-body {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.8;
-  }
-
-  /* PRODUCT LINEUP */
-  .lineup-section {
-    width: 100%;
-    max-width: 980px;
-    margin-bottom: 40px;
-    animation: fadeUp 0.6s 0.08s ease both;
-  }
-  .lineup-lede {
-    text-align: center;
-    max-width: 620px;
-    margin: 0 auto 30px;
-  }
-  .lineup-eyebrow {
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--sand-text);
-    font-weight: 600;
-  }
-  .lineup-title {
-    font-family: 'DM Serif Display', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 34px;
-    color: var(--teal);
-    line-height: 1.15;
-    margin: 12px 0;
-  }
-  .lineup-sub {
-    font-size: 14px;
-    line-height: 1.7;
-    color: var(--muted);
-  }
-  .lineup-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-  }
-  .mini-card {
+  /* JOURNAL + CONTACT */
+  .more { padding: 56px 0 104px; }
+  .more-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+  .tile {
+    display: flex; flex-direction: column; justify-content: space-between; gap: 18px;
     text-decoration: none;
     background: var(--surface);
-    border: 1.5px solid var(--border);
-    border-radius: 6px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    border-radius: 10px;
+    padding: 24px 26px;
+    box-shadow: 0 0 0 1px rgba(35,45,47,0.08);
+    transition: box-shadow 0.3s, transform 0.3s;
   }
-  .mini-card:hover {
-    border-color: var(--teal);
-    box-shadow: 0 4px 20px rgba(31,89,84,0.1);
-    transform: translateY(-2px);
+  a.tile:hover { box-shadow: 0 12px 30px rgba(35,45,47,0.10), 0 0 0 1px rgba(70,91,95,0.25); transform: translateY(-3px); }
+  .tile-eyebrow { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-text); font-weight: 600; }
+  .tile-title { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 19px; color: var(--teal); line-height: 1.35; margin-top: 8px; }
+  .tile-arrow { font-size: 18px; color: var(--teal); transition: transform 0.25s; }
+  a.tile:hover .tile-arrow { transform: translateX(4px); }
+  .tile-links { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tile-links .btn { padding: 9px 16px; font-size: 12px; }
+
+  /* FOOTER — dark */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 56px 24px 48px;
   }
-  .mini-media {
-    height: 200px;
-    overflow: hidden;
-    background: var(--bg);
-  }
-  .mini-media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .mini-body {
-    padding: 18px 20px 20px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-  .mini-cat {
-    font-size: 9px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--sand-text);
-    font-weight: 600;
-  }
-  .mini-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 19px;
-    color: var(--teal);
-    margin: 7px 0 6px;
-    line-height: 1.2;
-  }
-  .mini-spec {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.55;
-    margin-bottom: 14px;
-  }
-  .mini-cta {
-    font-size: 12px;
-    color: var(--teal-mid);
-    font-weight: 600;
-    margin-top: auto;
-  }
+  footer a { color: #fff; text-decoration: none; font-weight: 600; }
+  footer a:hover { text-decoration: underline; }
+  .footer-tag { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 22px; letter-spacing: 0; color: #f4f2ee; margin-bottom: 18px; }
+  footer p + p { margin-top: 6px; }
+  footer .small { font-size: 10px; }
+  footer .fda { max-width: 760px; margin: 18px auto 0; font-size: 10px; line-height: 1.7; letter-spacing: 0.3px; color: rgba(255,255,255,0.5); }
+
+  /* SCROLL REVEAL — only when JS runs, so content is always visible to crawlers/no-JS */
+  .js .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.2,.7,.2,1); }
+  .js .reveal.in { opacity: 1; transform: none; }
+  .js .reveal-stagger > * { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.2,.7,.2,1); }
+  .js .reveal-stagger.in > * { opacity: 1; transform: none; }
+  .js .reveal-stagger.in > *:nth-child(2) { transition-delay: 0.08s; }
+  .js .reveal-stagger.in > *:nth-child(3) { transition-delay: 0.16s; }
+  .js .reveal-stagger.in > *:nth-child(4) { transition-delay: 0.24s; }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(14px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  @media (max-width: 860px) {
+  @media (max-width: 900px) {
     .lineup-grid { grid-template-columns: 1fr 1fr; }
-    .lineup-title { font-size: 28px; }
+    .wholesale-inner { grid-template-columns: 1fr; gap: 36px; }
+    .more-grid { grid-template-columns: 1fr; }
   }
-  @media (max-width: 720px) {
+  @media (max-width: 760px) {
+    .wrap { padding: 0 16px; }
     .layout { grid-template-columns: 1fr; }
-    body { padding: 32px 16px 48px; }
-    .cta-grid { grid-template-columns: 1fr; }
-    .seo-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 28px; }
+    .hero { padding: 0 0 64px; }
+    header { padding-top: 32px; }
+    .hero-body { margin-top: 44px; }
+    .hero-sub { font-size: 16px; }
+    .locator, .review, .wholesale { padding: 72px 0; }
+    .about { padding-top: 72px; }
+    .lineup { padding-bottom: 72px; }
   }
   @media (max-width: 480px) {
-    .lineup-grid { grid-template-columns: 1fr; }
+    .lineup-grid { gap: 12px; }
+    .mini-body { padding: 14px 14px 16px; }
+    .mini-name { font-size: 18px; }
+    .mini-spec { font-size: 12px; }
+    .hero-actions .btn { width: 100%; justify-content: center; }
+    .topbar .alt { display: none; }
   }
-  @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important;}}
+  @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important;}.js .reveal,.js .reveal-stagger>*{opacity:1 !important;transform:none !important;}}
   </style>
 </head>
 <body>
-<a href="#main" class="skip-link">Skip to store locator</a>
+<script>document.documentElement.classList.add('js');</script>
+<a href="#main" class="skip-link">Skip to main content</a>
 
-<header>
-  <!--
-    =====================================================================
-    LOGO SWAP — TO DO BEFORE DEPLOYING:
-    1. Place "logo.png" in the same folder as this HTML file
-    2. Delete the SVG block below
-    3. Uncomment the <img> tag below it
-    =====================================================================
-  -->
+<div class="topbar" role="complementary" aria-label="Wholesale">
+  <strong>For bars, bottle shops &amp; retailers:</strong> stock MAG with 5% off direct. <a href="/wholesale/">Browse the wholesale catalog &rarr;</a> <a class="alt" href="https://airgoods.com/u/mag-beverages" target="_blank" rel="noopener">or order on Airgoods</a>
+</div>
 
-  <!-- STEP 3: Uncomment this line and delete the SVG below -->
+<header class="wrap">
   <a href="https://magbeverages.com" style="display:block;"><img src="logo.png" height="110" alt="MAG Beverages" style="display:block;margin:0 auto;"></a>
-
-
   <div class="divider"></div>
   <nav style="display:flex;justify-content:center;flex-wrap:wrap;gap:10px 24px;margin-top:16px;">
     <a href="/products/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#6f675c;text-decoration:none;white-space:nowrap;">Shop Products</a>
     <a href="/wholesale/" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#6f675c;text-decoration:none;white-space:nowrap;">Wholesale</a>
     <a href="/journal" style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#6f675c;text-decoration:none;white-space:nowrap;">Journal</a>
   </nav>
-  <h1 class="page-subtitle">Find us near you</h1>
 </header>
 
-<!-- WHOLESALE BANNER -->
-<div class="wholesale-banner" role="complementary" aria-label="Wholesale opportunity">
-  <div class="wholesale-banner-left">
-    <div class="wholesale-banner-eyebrow">For Bars, Bottle Shops & Retailers</div>
-    <div class="wholesale-banner-headline">Your customers are already looking for this.</div>
-    <div class="wholesale-banner-sub">The Spirited Kava Infuser bottle and Kava Shot — kava with ashwagandha, L-theanine, and Vitamin C, filling the gap between wellness supplements and alcohol alternatives. Plus Kava Cola and Kava Paloma, our zero-calorie 16 oz cans with caffeine and terpenes. Now available to stock wholesale.</div>
+<main id="main" tabindex="-1">
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-body">
+      <span class="eyebrow">Non-Alcoholic Kava &middot; St. Louis, MO</span>
+      <h1>Kava drinks that <em>magnify</em> the good times.</h1>
+      <p class="hero-sub">The Spirited Kava Infuser, the Kava Shot, and zero-calorie Kava Cola &amp; Kava Paloma cans. Find them near you, or stock them in your shop.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#find">Find a retailer <span aria-hidden="true">&darr;</span></a>
+        <a class="btn btn-outline" href="/wholesale/">Stock MAG wholesale <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <ul class="trust" aria-label="Product standards">
+        <li>No THC</li>
+        <li>No CBD</li>
+        <li>No Kratom</li>
+        <li>Third-Party Tested</li>
+      </ul>
+    </div>
   </div>
-  <div class="wholesale-banner-cta">
-    <a class="wholesale-banner-btn" href="/wholesale/">Browse Wholesale Catalog →</a>
-    <a class="wholesale-banner-alt" href="https://airgoods.com/u/mag-beverages" target="_blank" rel="noopener">or order on Airgoods →</a>
-  </div>
-</div>
+</section>
 
 <!-- PRODUCT LINEUP -->
-<section class="lineup-section" aria-label="The MAG Beverages lineup">
-  <div class="lineup-lede">
-    <span class="lineup-eyebrow">The Lineup</span>
-    <h2 class="lineup-title">Shop the Products</h2>
-    <p class="lineup-sub">Four ways to magnify the good times &mdash; functional, non-alcoholic kava with real ingredients. No THC, CBD, or kratom.</p>
-  </div>
-  <div class="lineup-grid">
-    <a class="mini-card" href="/products/spirited-kava-infuser">
-      <div class="mini-media"><img src="/products/img/infuser.jpg" alt="Spirited Kava Infuser" loading="lazy"></div>
-      <div class="mini-body">
-        <span class="mini-cat">Drink Infuser &middot; 756 ml</span>
-        <div class="mini-name">Spirited Kava Infuser</div>
-        <div class="mini-spec">Blend it your way &mdash; great straight, or mixed into whatever you're drinking.</div>
-        <div class="mini-cta">View product &rarr;</div>
-      </div>
-    </a>
-    <a class="mini-card" href="/products/spirited-kava-shot">
-      <div class="mini-media"><img src="/products/img/shot.jpg" alt="Spirited Kava Shot" loading="lazy"></div>
-      <div class="mini-body">
-        <span class="mini-cat">Pre-Dosed &middot; 2 oz</span>
-        <div class="mini-name">Spirited Kava Shot</div>
-        <div class="mini-spec">The Infuser in a single, pre-measured dose. No measuring, no commitment.</div>
-        <div class="mini-cta">View product &rarr;</div>
-      </div>
-    </a>
-    <a class="mini-card" href="/products/kava-cola">
-      <div class="mini-media"><img src="/products/img/cola.jpg" alt="Kava Cola" loading="lazy"></div>
-      <div class="mini-body">
-        <span class="mini-cat">Ready-to-Drink &middot; 16 fl oz</span>
-        <div class="mini-name">Kava Cola</div>
-        <div class="mini-spec">A blissful blackberry buzz &mdash; 60 mg caffeine, zero calories.</div>
-        <div class="mini-cta">View product &rarr;</div>
-      </div>
-    </a>
-    <a class="mini-card" href="/products/kava-paloma">
-      <div class="mini-media"><img src="/products/img/paloma.jpg" alt="Kava Paloma" loading="lazy"></div>
-      <div class="mini-body">
-        <span class="mini-cat">Ready-to-Drink &middot; 16 fl oz</span>
-        <div class="mini-name">Kava Paloma</div>
-        <div class="mini-spec">Crisp grapefruit and real lime &mdash; 30 mg caffeine, zero calories.</div>
-        <div class="mini-cta">View product &rarr;</div>
-      </div>
-    </a>
+<section class="lineup" aria-label="The MAG Beverages lineup">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Lineup</span>
+      <h2 class="section-title">Shop the Products</h2>
+      <p class="section-sub">Four ways to magnify the good times &mdash; functional, non-alcoholic kava with real ingredients.</p>
+    </div>
+    <div class="lineup-grid reveal-stagger">
+      <a class="mini-card" href="/products/spirited-kava-infuser">
+        <div class="mini-media"><img src="/products/img/infuser.jpg" alt="Spirited Kava Infuser" loading="lazy"></div>
+        <div class="mini-body">
+          <span class="mini-cat">Drink Infuser &middot; 756 ml</span>
+          <div class="mini-name">Spirited Kava Infuser</div>
+          <div class="mini-spec">Blend it your way &mdash; great straight, or mixed into whatever you're drinking.</div>
+          <div class="mini-cta">View product <span>&rarr;</span></div>
+        </div>
+      </a>
+      <a class="mini-card" href="/products/spirited-kava-shot">
+        <div class="mini-media"><img src="/products/img/shot.jpg" alt="Spirited Kava Shot" loading="lazy"></div>
+        <div class="mini-body">
+          <span class="mini-cat">Pre-Dosed &middot; 2 oz</span>
+          <div class="mini-name">Spirited Kava Shot</div>
+          <div class="mini-spec">The Infuser in a single, pre-measured dose. No measuring, no commitment.</div>
+          <div class="mini-cta">View product <span>&rarr;</span></div>
+        </div>
+      </a>
+      <a class="mini-card" href="/products/kava-cola">
+        <div class="mini-media"><img src="/products/img/cola.jpg" alt="Kava Cola" loading="lazy"></div>
+        <div class="mini-body">
+          <span class="mini-cat">Ready-to-Drink &middot; 16 fl oz</span>
+          <div class="mini-name">Kava Cola</div>
+          <div class="mini-spec">A blissful blackberry buzz &mdash; 60 mg caffeine, zero calories.</div>
+          <div class="mini-cta">View product <span>&rarr;</span></div>
+        </div>
+      </a>
+      <a class="mini-card" href="/products/kava-paloma">
+        <div class="mini-media"><img src="/products/img/paloma.jpg" alt="Kava Paloma" loading="lazy"></div>
+        <div class="mini-body">
+          <span class="mini-cat">Ready-to-Drink &middot; 16 fl oz</span>
+          <div class="mini-name">Kava Paloma</div>
+          <div class="mini-spec">Crisp grapefruit and real lime &mdash; 30 mg caffeine, zero calories.</div>
+          <div class="mini-cta">View product <span>&rarr;</span></div>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 
-<div class="layout" id="main" tabindex="-1">
-  <div class="map-wrap">
-    <svg id="us-map" viewBox="0 0 506 323" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of US states where MAG Beverages is stocked">
+<!-- STORE LOCATOR -->
+<section class="locator" id="find" aria-label="Find a MAG retailer">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Store Locator</span>
+      <h2 class="section-title">Find us near you</h2>
+    </div>
+    <div class="layout reveal">
+      <div class="map-wrap">
+        <svg id="us-map" viewBox="0 0 506 323" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of US states where MAG Beverages is stocked">
 
-      <!-- Tile-grid US map. One equal tile per state, arranged geographically.
-           Tile 40x34, gap 5. Active = states with MAG retailers. -->
+          <!-- Tile-grid US map. One equal tile per state, arranged geographically.
+               Tile 40x34, gap 5. Active = states with MAG retailers. -->
+    
+          <!-- ===== TILES ===== -->
+          <rect class="state" x="8" y="8" width="40" height="34" rx="5" id="s-AK"/>
+          <rect class="state" x="458" y="8" width="40" height="34" rx="5" id="s-ME"/>
+          <rect class="state" x="413" y="47" width="40" height="34" rx="5" id="s-VT"/>
+          <rect class="state" x="458" y="47" width="40" height="34" rx="5" id="s-NH"/>
+          <rect class="state" x="8" y="86" width="40" height="34" rx="5" id="s-WA"/>
+          <rect class="state" x="53" y="86" width="40" height="34" rx="5" id="s-ID"/>
+          <rect class="state" x="98" y="86" width="40" height="34" rx="5" id="s-MT"/>
+          <rect class="state" x="143" y="86" width="40" height="34" rx="5" id="s-ND"/>
+          <rect class="state" x="188" y="86" width="40" height="34" rx="5" id="s-MN"/>
+          <rect class="state" x="233" y="86" width="40" height="34" rx="5" id="s-WI"/>
+          <rect class="state" x="278" y="86" width="40" height="34" rx="5" id="s-MI"/>
+          <rect class="state" x="368" y="86" width="40" height="34" rx="5" id="s-NY"/>
+          <rect class="state" x="413" y="86" width="40" height="34" rx="5" id="s-MA"/>
+          <rect class="state" x="458" y="86" width="40" height="34" rx="5" id="s-RI"/>
+          <rect class="state" x="8" y="125" width="40" height="34" rx="5" id="s-OR"/>
+          <rect class="state" x="53" y="125" width="40" height="34" rx="5" id="s-NV"/>
+          <rect class="state" x="98" y="125" width="40" height="34" rx="5" id="s-WY"/>
+          <rect class="state" x="143" y="125" width="40" height="34" rx="5" id="s-SD"/>
+          <rect class="state" x="188" y="125" width="40" height="34" rx="5" id="s-IA"/>
+          <rect class="state" x="233" y="125" width="40" height="34" rx="5" id="s-IL"/>
+          <rect class="state active" data-state="Indiana" x="278" y="125" width="40" height="34" rx="5" id="s-IN"><title>Indiana</title></rect>
+          <rect class="state" x="323" y="125" width="40" height="34" rx="5" id="s-OH"/>
+          <rect class="state active" data-state="Pennsylvania" x="368" y="125" width="40" height="34" rx="5" id="s-PA"><title>Pennsylvania</title></rect>
+          <rect class="state" x="413" y="125" width="40" height="34" rx="5" id="s-NJ"/>
+          <rect class="state" x="458" y="125" width="40" height="34" rx="5" id="s-CT"/>
+          <rect class="state active" data-state="California" x="8" y="164" width="40" height="34" rx="5" id="s-CA"><title>California</title></rect>
+          <rect class="state" x="53" y="164" width="40" height="34" rx="5" id="s-UT"/>
+          <rect class="state active" data-state="Colorado" x="98" y="164" width="40" height="34" rx="5" id="s-CO"><title>Colorado</title></rect>
+          <rect class="state" x="143" y="164" width="40" height="34" rx="5" id="s-NE"/>
+          <rect class="state active" data-state="Missouri" x="188" y="164" width="40" height="34" rx="5" id="s-MO"><title>Missouri</title></rect>
+          <rect class="state active" data-state="Kentucky" x="233" y="164" width="40" height="34" rx="5" id="s-KY"><title>Kentucky</title></rect>
+          <rect class="state" x="278" y="164" width="40" height="34" rx="5" id="s-WV"/>
+          <rect class="state" x="323" y="164" width="40" height="34" rx="5" id="s-VA"/>
+          <rect class="state" x="368" y="164" width="40" height="34" rx="5" id="s-MD"/>
+          <rect class="state" x="413" y="164" width="40" height="34" rx="5" id="s-DE"/>
+          <rect class="state" x="53" y="203" width="40" height="34" rx="5" id="s-AZ"/>
+          <rect class="state" x="98" y="203" width="40" height="34" rx="5" id="s-NM"/>
+          <rect class="state" x="143" y="203" width="40" height="34" rx="5" id="s-KS"/>
+          <rect class="state" x="188" y="203" width="40" height="34" rx="5" id="s-AR"/>
+          <rect class="state active" data-state="Tennessee" x="233" y="203" width="40" height="34" rx="5" id="s-TN"><title>Tennessee</title></rect>
+          <rect class="state active" data-state="North Carolina" x="278" y="203" width="40" height="34" rx="5" id="s-NC"><title>North Carolina</title></rect>
+          <rect class="state active" data-state="South Carolina" x="323" y="203" width="40" height="34" rx="5" id="s-SC"><title>South Carolina</title></rect>
+          <rect class="state" x="143" y="242" width="40" height="34" rx="5" id="s-OK"/>
+          <rect class="state" x="188" y="242" width="40" height="34" rx="5" id="s-LA"/>
+          <rect class="state" x="233" y="242" width="40" height="34" rx="5" id="s-MS"/>
+          <rect class="state" x="278" y="242" width="40" height="34" rx="5" id="s-AL"/>
+          <rect class="state active" data-state="Georgia" x="323" y="242" width="40" height="34" rx="5" id="s-GA"><title>Georgia</title></rect>
+          <rect class="state" x="8" y="281" width="40" height="34" rx="5" id="s-HI"/>
+          <rect class="state active" data-state="Texas" x="143" y="281" width="40" height="34" rx="5" id="s-TX"><title>Texas</title></rect>
+          <rect class="state" x="368" y="281" width="40" height="34" rx="5" id="s-FL"/>
+    
+          <!-- ===== LABELS ===== -->
+          <text class="slabel" x="28" y="25">AK</text>
+          <text class="slabel" x="478" y="25">ME</text>
+          <text class="slabel" x="433" y="64">VT</text>
+          <text class="slabel" x="478" y="64">NH</text>
+          <text class="slabel" x="28" y="103">WA</text>
+          <text class="slabel" x="73" y="103">ID</text>
+          <text class="slabel" x="118" y="103">MT</text>
+          <text class="slabel" x="163" y="103">ND</text>
+          <text class="slabel" x="208" y="103">MN</text>
+          <text class="slabel" x="253" y="103">WI</text>
+          <text class="slabel" x="298" y="103">MI</text>
+          <text class="slabel" x="388" y="103">NY</text>
+          <text class="slabel" x="433" y="103">MA</text>
+          <text class="slabel" x="478" y="103">RI</text>
+          <text class="slabel" x="28" y="142">OR</text>
+          <text class="slabel" x="73" y="142">NV</text>
+          <text class="slabel" x="118" y="142">WY</text>
+          <text class="slabel" x="163" y="142">SD</text>
+          <text class="slabel" x="208" y="142">IA</text>
+          <text class="slabel" x="253" y="142">IL</text>
+          <text class="slabel active-lbl" id="lbl-IN" x="298" y="142">IN</text>
+          <text class="slabel" x="343" y="142">OH</text>
+          <text class="slabel active-lbl" id="lbl-PA" x="388" y="142">PA</text>
+          <text class="slabel" x="433" y="142">NJ</text>
+          <text class="slabel" x="478" y="142">CT</text>
+          <text class="slabel active-lbl" id="lbl-CA" x="28" y="181">CA</text>
+          <text class="slabel" x="73" y="181">UT</text>
+          <text class="slabel active-lbl" id="lbl-CO" x="118" y="181">CO</text>
+          <text class="slabel" x="163" y="181">NE</text>
+          <text class="slabel active-lbl" id="lbl-MO" x="208" y="181">MO</text>
+          <text class="slabel active-lbl" id="lbl-KY" x="253" y="181">KY</text>
+          <text class="slabel" x="298" y="181">WV</text>
+          <text class="slabel" x="343" y="181">VA</text>
+          <text class="slabel" x="388" y="181">MD</text>
+          <text class="slabel" x="433" y="181">DE</text>
+          <text class="slabel" x="73" y="220">AZ</text>
+          <text class="slabel" x="118" y="220">NM</text>
+          <text class="slabel" x="163" y="220">KS</text>
+          <text class="slabel" x="208" y="220">AR</text>
+          <text class="slabel active-lbl" id="lbl-TN" x="253" y="220">TN</text>
+          <text class="slabel active-lbl" id="lbl-NC" x="298" y="220">NC</text>
+          <text class="slabel active-lbl" id="lbl-SC" x="343" y="220">SC</text>
+          <text class="slabel" x="163" y="259">OK</text>
+          <text class="slabel" x="208" y="259">LA</text>
+          <text class="slabel" x="253" y="259">MS</text>
+          <text class="slabel" x="298" y="259">AL</text>
+          <text class="slabel active-lbl" id="lbl-GA" x="343" y="259">GA</text>
+          <text class="slabel" x="28" y="298">HI</text>
+          <text class="slabel active-lbl" id="lbl-TX" x="163" y="298">TX</text>
+          <text class="slabel" x="388" y="298">FL</text>
+        </svg>
 
-      <!-- ===== TILES ===== -->
-      <rect class="state" x="8" y="8" width="40" height="34" rx="5" id="s-AK"/>
-      <rect class="state" x="458" y="8" width="40" height="34" rx="5" id="s-ME"/>
-      <rect class="state" x="413" y="47" width="40" height="34" rx="5" id="s-VT"/>
-      <rect class="state" x="458" y="47" width="40" height="34" rx="5" id="s-NH"/>
-      <rect class="state" x="8" y="86" width="40" height="34" rx="5" id="s-WA"/>
-      <rect class="state" x="53" y="86" width="40" height="34" rx="5" id="s-ID"/>
-      <rect class="state" x="98" y="86" width="40" height="34" rx="5" id="s-MT"/>
-      <rect class="state" x="143" y="86" width="40" height="34" rx="5" id="s-ND"/>
-      <rect class="state" x="188" y="86" width="40" height="34" rx="5" id="s-MN"/>
-      <rect class="state" x="233" y="86" width="40" height="34" rx="5" id="s-WI"/>
-      <rect class="state" x="278" y="86" width="40" height="34" rx="5" id="s-MI"/>
-      <rect class="state" x="368" y="86" width="40" height="34" rx="5" id="s-NY"/>
-      <rect class="state" x="413" y="86" width="40" height="34" rx="5" id="s-MA"/>
-      <rect class="state" x="458" y="86" width="40" height="34" rx="5" id="s-RI"/>
-      <rect class="state" x="8" y="125" width="40" height="34" rx="5" id="s-OR"/>
-      <rect class="state" x="53" y="125" width="40" height="34" rx="5" id="s-NV"/>
-      <rect class="state" x="98" y="125" width="40" height="34" rx="5" id="s-WY"/>
-      <rect class="state" x="143" y="125" width="40" height="34" rx="5" id="s-SD"/>
-      <rect class="state" x="188" y="125" width="40" height="34" rx="5" id="s-IA"/>
-      <rect class="state" x="233" y="125" width="40" height="34" rx="5" id="s-IL"/>
-      <rect class="state active" data-state="Indiana" x="278" y="125" width="40" height="34" rx="5" id="s-IN"><title>Indiana</title></rect>
-      <rect class="state" x="323" y="125" width="40" height="34" rx="5" id="s-OH"/>
-      <rect class="state active" data-state="Pennsylvania" x="368" y="125" width="40" height="34" rx="5" id="s-PA"><title>Pennsylvania</title></rect>
-      <rect class="state" x="413" y="125" width="40" height="34" rx="5" id="s-NJ"/>
-      <rect class="state" x="458" y="125" width="40" height="34" rx="5" id="s-CT"/>
-      <rect class="state active" data-state="California" x="8" y="164" width="40" height="34" rx="5" id="s-CA"><title>California</title></rect>
-      <rect class="state" x="53" y="164" width="40" height="34" rx="5" id="s-UT"/>
-      <rect class="state active" data-state="Colorado" x="98" y="164" width="40" height="34" rx="5" id="s-CO"><title>Colorado</title></rect>
-      <rect class="state" x="143" y="164" width="40" height="34" rx="5" id="s-NE"/>
-      <rect class="state active" data-state="Missouri" x="188" y="164" width="40" height="34" rx="5" id="s-MO"><title>Missouri</title></rect>
-      <rect class="state active" data-state="Kentucky" x="233" y="164" width="40" height="34" rx="5" id="s-KY"><title>Kentucky</title></rect>
-      <rect class="state" x="278" y="164" width="40" height="34" rx="5" id="s-WV"/>
-      <rect class="state" x="323" y="164" width="40" height="34" rx="5" id="s-VA"/>
-      <rect class="state" x="368" y="164" width="40" height="34" rx="5" id="s-MD"/>
-      <rect class="state" x="413" y="164" width="40" height="34" rx="5" id="s-DE"/>
-      <rect class="state" x="53" y="203" width="40" height="34" rx="5" id="s-AZ"/>
-      <rect class="state" x="98" y="203" width="40" height="34" rx="5" id="s-NM"/>
-      <rect class="state" x="143" y="203" width="40" height="34" rx="5" id="s-KS"/>
-      <rect class="state" x="188" y="203" width="40" height="34" rx="5" id="s-AR"/>
-      <rect class="state active" data-state="Tennessee" x="233" y="203" width="40" height="34" rx="5" id="s-TN"><title>Tennessee</title></rect>
-      <rect class="state active" data-state="North Carolina" x="278" y="203" width="40" height="34" rx="5" id="s-NC"><title>North Carolina</title></rect>
-      <rect class="state active" data-state="South Carolina" x="323" y="203" width="40" height="34" rx="5" id="s-SC"><title>South Carolina</title></rect>
-      <rect class="state" x="143" y="242" width="40" height="34" rx="5" id="s-OK"/>
-      <rect class="state" x="188" y="242" width="40" height="34" rx="5" id="s-LA"/>
-      <rect class="state" x="233" y="242" width="40" height="34" rx="5" id="s-MS"/>
-      <rect class="state" x="278" y="242" width="40" height="34" rx="5" id="s-AL"/>
-      <rect class="state active" data-state="Georgia" x="323" y="242" width="40" height="34" rx="5" id="s-GA"><title>Georgia</title></rect>
-      <rect class="state" x="8" y="281" width="40" height="34" rx="5" id="s-HI"/>
-      <rect class="state active" data-state="Texas" x="143" y="281" width="40" height="34" rx="5" id="s-TX"><title>Texas</title></rect>
-      <rect class="state" x="368" y="281" width="40" height="34" rx="5" id="s-FL"/>
-
-      <!-- ===== LABELS ===== -->
-      <text class="slabel" x="28" y="25">AK</text>
-      <text class="slabel" x="478" y="25">ME</text>
-      <text class="slabel" x="433" y="64">VT</text>
-      <text class="slabel" x="478" y="64">NH</text>
-      <text class="slabel" x="28" y="103">WA</text>
-      <text class="slabel" x="73" y="103">ID</text>
-      <text class="slabel" x="118" y="103">MT</text>
-      <text class="slabel" x="163" y="103">ND</text>
-      <text class="slabel" x="208" y="103">MN</text>
-      <text class="slabel" x="253" y="103">WI</text>
-      <text class="slabel" x="298" y="103">MI</text>
-      <text class="slabel" x="388" y="103">NY</text>
-      <text class="slabel" x="433" y="103">MA</text>
-      <text class="slabel" x="478" y="103">RI</text>
-      <text class="slabel" x="28" y="142">OR</text>
-      <text class="slabel" x="73" y="142">NV</text>
-      <text class="slabel" x="118" y="142">WY</text>
-      <text class="slabel" x="163" y="142">SD</text>
-      <text class="slabel" x="208" y="142">IA</text>
-      <text class="slabel" x="253" y="142">IL</text>
-      <text class="slabel active-lbl" id="lbl-IN" x="298" y="142">IN</text>
-      <text class="slabel" x="343" y="142">OH</text>
-      <text class="slabel active-lbl" id="lbl-PA" x="388" y="142">PA</text>
-      <text class="slabel" x="433" y="142">NJ</text>
-      <text class="slabel" x="478" y="142">CT</text>
-      <text class="slabel active-lbl" id="lbl-CA" x="28" y="181">CA</text>
-      <text class="slabel" x="73" y="181">UT</text>
-      <text class="slabel active-lbl" id="lbl-CO" x="118" y="181">CO</text>
-      <text class="slabel" x="163" y="181">NE</text>
-      <text class="slabel active-lbl" id="lbl-MO" x="208" y="181">MO</text>
-      <text class="slabel active-lbl" id="lbl-KY" x="253" y="181">KY</text>
-      <text class="slabel" x="298" y="181">WV</text>
-      <text class="slabel" x="343" y="181">VA</text>
-      <text class="slabel" x="388" y="181">MD</text>
-      <text class="slabel" x="433" y="181">DE</text>
-      <text class="slabel" x="73" y="220">AZ</text>
-      <text class="slabel" x="118" y="220">NM</text>
-      <text class="slabel" x="163" y="220">KS</text>
-      <text class="slabel" x="208" y="220">AR</text>
-      <text class="slabel active-lbl" id="lbl-TN" x="253" y="220">TN</text>
-      <text class="slabel active-lbl" id="lbl-NC" x="298" y="220">NC</text>
-      <text class="slabel active-lbl" id="lbl-SC" x="343" y="220">SC</text>
-      <text class="slabel" x="163" y="259">OK</text>
-      <text class="slabel" x="208" y="259">LA</text>
-      <text class="slabel" x="253" y="259">MS</text>
-      <text class="slabel" x="298" y="259">AL</text>
-      <text class="slabel active-lbl" id="lbl-GA" x="343" y="259">GA</text>
-      <text class="slabel" x="28" y="298">HI</text>
-      <text class="slabel active-lbl" id="lbl-TX" x="163" y="298">TX</text>
-      <text class="slabel" x="388" y="298">FL</text>
-    </svg>
-
-    <p class="map-hint">Click a highlighted state to explore retailers</p>
-  </div>
-
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-    <div id="prompt-view">
-      <div class="sidebar-header">
-        <div class="sidebar-header-title">Where can you find MAG?</div>
-        <div class="sidebar-header-hint">Select any highlighted state on the map to see local retailers near you.</div>
-      </div>
-      <div style="padding:18px 22px;">
-        <div style="font-size:11px;color:var(--muted);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">Retailers in</div>
-        <div id="state-pills" role="group" aria-label="Select a state to see local retailers" style="display:flex;flex-wrap:wrap;gap:7px;"></div>
-        <div style="margin-top:20px;padding-top:18px;border-top:1px solid var(--border);">
-          <div style="font-size:11px;color:var(--muted);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">Not seeing your state?</div>
-          <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:12px;">We're expanding fast. Reach out to stock MAG at your bar, bottle shop, or wellness store.</p>
-          <a href="/wholesale/" style="display:block;text-align:center;background:var(--teal);color:white;padding:10px 16px;border-radius:4px;font-size:12px;font-weight:700;text-decoration:none;letter-spacing:0.3px;transition:background 0.18s;" onmouseover="this.style.background='#567276'" onmouseout="this.style.background='var(--teal)'">Order Wholesale Direct →</a>
-          <a href="https://airgoods.com/u/mag-beverages" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:8px;font-size:11px;color:var(--muted);text-decoration:underline;text-underline-offset:2px;">or order on Airgoods →</a>
-        </div>
-        <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);">
-          <a href="https://magbeverages.com/journal" style="display:block;text-decoration:none;padding:13px 16px;border:1.5px solid var(--border);border-radius:4px;background:var(--bg);transition:border-color 0.2s,background 0.2s;" onmouseover="this.style.borderColor='var(--teal)';this.style.background='var(--teal-pale)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--bg)'">
-            <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--sand-text);font-weight:600;margin-bottom:4px;">Wellness Intelligence — Issue No. 1</div>
-            <div style="font-family:'DM Serif Display',serif;font-style:italic;font-size:14px;color:var(--teal);line-height:1.35;">Read the science behind our ingredients →</div>
-          </a>
+        <div class="map-foot">
+          <p class="map-hint">Tap a highlighted state to see retailers</p>
+          <div class="legend">
+            <div class="legend-item"><div class="legend-swatch has"></div>Stocked</div>
+            <div class="legend-item"><div class="legend-swatch sel"></div>Selected</div>
+            <div class="legend-item"><div class="legend-swatch none"></div>Coming soon</div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="state-view" id="state-view">
-      <div class="state-name-bar">
-        <div class="state-name-text" id="state-name-text"></div>
-        <div class="state-count" id="state-count"></div>
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+        <div id="prompt-view">
+          <div class="sidebar-header">
+            <div class="sidebar-header-title">Where to find MAG</div>
+          </div>
+          <div class="sidebar-body">
+            <div class="sidebar-label">Retailers in</div>
+            <div id="state-pills" class="pills" role="group" aria-label="Select a state to see local retailers"></div>
+            <div class="sidebar-more">
+              <div class="sidebar-label">Not seeing your state?</div>
+              <p>We're expanding fast. Stock MAG at your bar, bottle shop, or wellness store.</p>
+              <a class="btn btn-primary" href="/wholesale/">Order Wholesale Direct &rarr;</a>
+              <a class="sidebar-alt" href="https://airgoods.com/u/mag-beverages" target="_blank" rel="noopener">or order on Airgoods &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="state-view" id="state-view" role="region" aria-label="Retailers in selected state">
+          <div class="state-name-bar">
+            <button type="button" class="state-back" id="state-back">&larr; All states</button>
+            <h3 class="state-name-text" id="state-name-text" tabindex="-1"></h3>
+            <div class="state-count" id="state-count"></div>
+          </div>
+          <div class="retailer-list" id="retailer-list"></div>
+        </div>
       </div>
-      <div class="retailer-list" id="retailer-list"></div>
-    </div>
-  </div>
-</div>
-
-<div class="legend">
-  <div class="legend-item"><div class="legend-swatch has"></div>States with MAG retailers</div>
-  <div class="legend-item"><div class="legend-swatch sel"></div>Selected state</div>
-  <div class="legend-item"><div class="legend-swatch none"></div>Coming soon</div>
-</div>
-
-<!-- CTA SECTION -->
-<section class="cta-section" aria-label="Connect with MAG Beverages">
-  <p class="cta-eyebrow">Wholesale & Partnerships</p>
-  <h2 class="cta-heading">The kava lineup your customers can't find anywhere else.</h2>
-  <p class="cta-subtext">Kava with ashwagandha, L-theanine, and Vitamin C — functional, non-alcoholic drinks that fill the white space between wellness supplements and zero-proof spirits. Anchor the shelf with the Infuser bottle and Shot, then round out the fridge with our zero-calorie Kava Cola and Kava Paloma cans. Low minimums. Ships nationwide. Easy reorders.</p>
-
-  <div class="cta-grid">
-
-    <div class="cta-card">
-      <span class="cta-card-icon">🛒</span>
-      <div class="cta-card-title">Stock MAG at Your Store</div>
-      <p class="cta-card-desc">Order direct from us — the Spirited Kava Infuser bottle and Spirited Kava Shot, plus Kava Cola and Kava Paloma cans, with a 5% direct discount, low minimums, and fast shipping nationwide.</p>
-      <a class="cta-btn cta-btn-primary" href="/wholesale/">Place a Wholesale Order →</a>
-      <a href="https://airgoods.com/u/mag-beverages" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:10px;font-size:11px;color:var(--muted);text-decoration:underline;text-underline-offset:2px;">Prefer a marketplace? Order on Airgoods →</a>
-    </div>
-
-    <div class="cta-card">
-      <span class="cta-card-icon">📸</span>
-      <div class="cta-card-title">Follow & Connect</div>
-      <p class="cta-card-desc">Stay up to date on new products, new stockists, and what's happening in the non-alcoholic and kava space. Slide into our DMs anytime.</p>
-      <a class="cta-btn cta-btn-secondary" href="https://www.instagram.com/magbeverages/" target="_blank" rel="noopener">DM Us on Instagram →</a>
-    </div>
-
-    <div class="cta-card">
-      <span class="cta-card-icon">✉️</span>
-      <div class="cta-card-title">Have Questions?</div>
-      <p class="cta-card-desc">Press inquiries, partnership ideas, or just want to know more about our kava formulations? We're happy to talk.</p>
-      <button class="cta-btn cta-btn-secondary" onclick="navigator.clipboard.writeText('media@mag-beverages.com').then(()=>{this.textContent='Copied!';setTimeout(()=>{this.textContent='Email Us with Questions →'},2000)})" style="cursor:pointer;font-family:inherit;">Email Us with Questions →</button>
-    </div>
-
-  </div>
-</section>
-
-<!-- SEO CONTENT SECTION -->
-<section class="seo-section" aria-label="About MAG Beverages">
-  <div class="seo-grid">
-    <div>
-      <h3 class="seo-block-title">The Wholesale Kava Lineup Built for Modern Retail</h3>
-      <p class="seo-block-body">Bars building zero-proof programs, NA bottle shops, wellness stores, smoke shops, and natural food retailers are hunting for functional drinks their customers actually come back for. Made with real ingredients, the Spirited Kava Infuser bottle is a versatile back-bar staple — mix it into mocktails or serve over ice. The Spirited Kava Shot is a grab-and-go impulse buy that moves near the register. For the fridge, Kava Cola and Kava Paloma are ready-to-drink 16 oz cans — 500 mg of kava extract, terpene essential oils, and zero calories — the single-serve format that turns a curious first-timer into a repeat customer. All four ship wholesale nationwide with low minimums — order direct at magbeverages.com/wholesale for a 5% discount, or through the Airgoods marketplace. Stock the kava bottle and shot your competitors don't have yet.</p>
-    </div>
-    <div>
-      <h3 class="seo-block-title">What Are Kavalactones — and Why Does the Source Matter?</h3>
-      <p class="seo-block-body">Kavalactones are the active compounds in kava root (Piper methysticum) responsible for its calming, mood-lifting effects. They interact with GABA receptors in the brain — similar to how anti-anxiety compounds work — producing relaxation and social ease without intoxication. Not all kava is equal: noble kava chemotypes are smoother, safer for regular use, and free from the compounds found in low-grade tudei varieties. MAG's Spirited Kava Infuser bottle and Kava Shot combine premium noble kava extract with ashwagandha, L-theanine, and Vitamin C — a functional stack that stands apart from every sparkling kava tonic, kava spirit, and kava powder on the market today. The Kava Cola and Kava Paloma cans take the same noble kava extract into a zero-calorie, ready-to-drink format.</p>
-    </div>
-    <div>
-      <h3 class="seo-block-title">Find MAG Kava Drinks Near You</h3>
-      <p class="seo-block-body">MAG Beverages is currently available at NA bars, alcohol-free bottle shops, smoke shops, and wellness retailers across California, Colorado, Georgia, Indiana, Kentucky, Missouri, North Carolina, Pennsylvania, South Carolina, Tennessee, and Texas — with new stockists being added monthly. If you're looking for a kava drink near you, use the map above to find your closest retailer. If you're a retailer looking to carry the Spirited Kava Infuser bottle, Kava Shot, or our Kava Cola and Kava Paloma cans, order wholesale direct at magbeverages.com/wholesale (or through the Airgoods marketplace) with no long-term commitment required.</p>
     </div>
   </div>
 </section>
-
-<!-- JOURNAL CTA BAR -->
-<div style="max-width:960px;margin:0 auto;padding:40px 24px 40px;">
-  <div style="display:flex;gap:14px;flex-wrap:wrap;">
-    <a href="https://magbeverages.com/journal" style="flex:1;min-width:240px;display:flex;align-items:center;justify-content:space-between;text-decoration:none;padding:18px 24px;border:1.5px solid var(--border);border-radius:6px;background:var(--surface);transition:border-color 0.2s,background 0.2s;" onmouseover="this.style.borderColor='var(--teal)';this.style.background='var(--teal-pale)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--surface)'">
-      <div>
-        <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--sand-text);font-weight:600;margin-bottom:5px;">Wellness Intelligence — Issue No. 1</div>
-        <div style="font-family:'DM Serif Display',serif;font-style:italic;font-size:15px;color:var(--teal);line-height:1.35;">Read the science behind our ingredients</div>
-      </div>
-      <div style="font-size:18px;color:var(--teal);margin-left:16px;flex-shrink:0;">→</div>
-    </a>
-    <a href="https://magbeverages.com/journal-recipes" style="flex:1;min-width:240px;display:flex;align-items:center;justify-content:space-between;text-decoration:none;padding:18px 24px;border:1.5px solid var(--border);border-radius:6px;background:var(--surface);transition:border-color 0.2s,background 0.2s;" onmouseover="this.style.borderColor='var(--teal)';this.style.background='var(--teal-pale)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--surface)'">
-      <div>
-        <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--sand-text);font-weight:600;margin-bottom:5px;">Wellness Intelligence — Ritual Edition</div>
-        <div style="font-family:'DM Serif Display',serif;font-style:italic;font-size:15px;color:var(--teal);line-height:1.35;">Six ways to mix the Kava Shot</div>
-      </div>
-      <div style="font-size:18px;color:var(--teal);margin-left:16px;flex-shrink:0;">→</div>
-    </a>
-  </div>
-</div>
 
 <!-- REVIEW -->
-<div style="max-width:960px;margin:0 auto;padding:0 24px 28px;">
-  <div style="border:1.5px solid var(--border);border-radius:6px;background:var(--surface);padding:24px 28px;">
-    <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--sand-text);font-weight:600;margin-bottom:16px;">Customer Review</div>
-    <p style="font-family:'DM Serif Display',serif;font-style:italic;font-size:17px;color:var(--teal);line-height:1.6;margin-bottom:16px;">"We've been loving the Spirited Kava Infuser Bottle and Kava Shots from MAG Beverages! They are a game changer for our wellness routine. The kava infusion gives a smooth calming buzz without any THC, CBD, or Kratom. It's blended perfectly with L-Theanine and Ashwagandha for clean, lasting energy. The kava shots are super convenient for on-the-go moments and the bottle is a great addition to any gathering with friends. 10/10 highly recommend both products to anyone looking for an alternative, elevated buzz!"</p>
-    <div style="font-size:11px;color:var(--sand-text);font-weight:600;letter-spacing:0.5px;">Kay &amp; Crystal Clark &nbsp;·&nbsp; <a href="https://www.undertowco.com" target="_blank" rel="noopener" style="color:var(--teal-mid);text-decoration:none;">Undertow Collective</a> &nbsp;·&nbsp; Southern California</div>
+<section class="review" aria-label="Customer review">
+  <div class="wrap reveal">
+    <span class="eyebrow">Customer Review</span>
+    <figure>
+      <span class="review-mark" aria-hidden="true">&ldquo;</span>
+      <blockquote>
+        <p>We've been loving the Spirited Kava Infuser Bottle and Kava Shots from MAG Beverages! They are a game changer for our wellness routine. The kava infusion gives a smooth calming buzz without any THC, CBD, or Kratom. It's blended perfectly with L-Theanine and Ashwagandha for clean, lasting energy. The kava shots are super convenient for on-the-go moments and the bottle is a great addition to any gathering with friends. 10/10 highly recommend both products to anyone looking for an alternative, elevated buzz!</p>
+      </blockquote>
+      <figcaption>Kay &amp; Crystal Clark &nbsp;&middot;&nbsp; <a href="https://www.undertowco.com" target="_blank" rel="noopener">Undertow Collective</a> &nbsp;&middot;&nbsp; Southern California</figcaption>
+    </figure>
   </div>
-</div>
+</section>
 
-<!-- TRUST BAR -->
-<div class="trust-bar">
-  <span class="trust-item">No THC</span>
-  <span class="trust-dot">·</span>
-  <span class="trust-item">No CBD</span>
-  <span class="trust-dot">·</span>
-  <span class="trust-item">No Kratom</span>
-  <span class="trust-dot">·</span>
-  <span class="trust-item">Third-Party Tested</span>
-  <span class="trust-dot">·</span>
-  <span class="trust-item">Built for consumers looking for alternatives to energy drinks and alcohol</span>
-</div>
+<!-- WHOLESALE -->
+<section class="wholesale" aria-label="Wholesale for retailers">
+  <div class="wrap wholesale-inner">
+    <div class="reveal">
+      <span class="eyebrow">Wholesale &amp; Partnerships</span>
+      <h2 class="section-title">The kava lineup your customers can't find anywhere else.</h2>
+      <p class="wholesale-sub">Anchor the shelf with the Infuser and Shot, then fill the fridge with Kava Cola and Kava Paloma.</p>
+      <div class="wholesale-actions">
+        <a class="btn btn-light" href="/wholesale/">Place a Wholesale Order &rarr;</a>
+        <a class="btn btn-ghost" href="https://airgoods.com/u/mag-beverages" target="_blank" rel="noopener">Order on Airgoods</a>
+      </div>
+    </div>
+    <ul class="wholesale-points reveal-stagger">
+      <li><strong>5% off direct</strong><span>when you order through magbeverages.com</span></li>
+      <li><strong>Low minimums</strong><span>no long-term commitment</span></li>
+      <li><strong>Ships nationwide</strong><span>with easy reorders</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ABOUT (SEO copy) -->
+<section class="about" aria-label="About MAG Beverages">
+  <div class="wrap about-grid reveal-stagger">
+    <div>
+      <h3>Wholesale kava for modern retail</h3>
+      <p>NA bars, bottle shops, wellness stores, and smoke shops stock MAG for customers who come back for it. The Spirited Kava Infuser bottle is a back-bar mixer, the Kava Shot sells at the register, and the Kava Cola and Kava Paloma cans fill the fridge. <a href="/wholesale/">Order wholesale direct</a> or through Airgoods.</p>
+    </div>
+    <div>
+      <h3>Noble kava, real ingredients</h3>
+      <p>Kavalactones are the active compounds in kava root (Piper methysticum). MAG uses noble kava extract, paired with ashwagandha, L-theanine, and Vitamin C in the Infuser and Shot, and with caffeine and terpenes in our zero-calorie cans.</p>
+    </div>
+    <div>
+      <h3>Find MAG kava drinks near you</h3>
+      <p>Stocked at NA bars, bottle shops, smoke shops, and wellness retailers in California, Colorado, Georgia, Indiana, Kentucky, Missouri, North Carolina, Pennsylvania, South Carolina, Tennessee, and Texas, with new stockists added monthly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNAL + CONTACT -->
+<section class="more" aria-label="Journal and contact">
+  <div class="wrap more-grid reveal-stagger">
+    <a class="tile" href="https://magbeverages.com/journal">
+      <div>
+        <div class="tile-eyebrow">Wellness Intelligence &mdash; Issue No. 1</div>
+        <div class="tile-title">Read the science behind our ingredients</div>
+      </div>
+      <div class="tile-arrow" aria-hidden="true">&rarr;</div>
+    </a>
+    <a class="tile" href="https://magbeverages.com/journal-recipes">
+      <div>
+        <div class="tile-eyebrow">Wellness Intelligence &mdash; Ritual Edition</div>
+        <div class="tile-title">Six ways to mix the Kava Shot</div>
+      </div>
+      <div class="tile-arrow" aria-hidden="true">&rarr;</div>
+    </a>
+    <div class="tile">
+      <div>
+        <div class="tile-eyebrow">Say Hello</div>
+        <div class="tile-title">Press, partnerships, or questions?</div>
+      </div>
+      <div class="tile-links">
+        <a class="btn btn-outline" href="https://www.instagram.com/magbeverages/" target="_blank" rel="noopener">Instagram</a>
+        <button class="btn btn-outline" type="button" aria-live="polite" onclick="navigator.clipboard.writeText('media@mag-beverages.com').then(()=>{this.textContent='Copied!';setTimeout(()=>{this.textContent='Copy email'},2000)})">Copy email</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
 
 <footer>
-  <p>© 2026 MAG Beverages &nbsp;·&nbsp; <a href="https://magbeverages.com">magbeverages.com</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/magbeverages/" target="_blank" rel="noopener">@magbeverages</a> &nbsp;·&nbsp; media@mag-beverages.com</p>
-  <p style="margin-top:6px; font-size:10px; opacity:1;">Kava infuser bottle · Kava shot · Kava Cola · Kava Paloma · Functional non-alcoholic beverage · Wholesale kava drinks · Noble kava extract</p>
-  <p style="margin-top:4px; font-size:10px; opacity:1;">Proudly Crafted in St. Louis, MO</p>
-  <p style="margin-top:6px; font-size:10px; opacity:1; line-height:1.6;">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Please drink responsibly and consult a healthcare professional if you have questions about kava or adaptogens. Not intended for those who are pregnant or nursing.</p>
+  <p class="footer-tag">Magnify the Good Times</p>
+  <p>&copy; 2026 MAG Beverages &nbsp;&middot;&nbsp; <a href="https://magbeverages.com">magbeverages.com</a> &nbsp;&middot;&nbsp; <a href="https://www.instagram.com/magbeverages/" target="_blank" rel="noopener">@magbeverages</a> &nbsp;&middot;&nbsp; media@mag-beverages.com</p>
+  <p class="small">Kava infuser bottle &middot; Kava shot &middot; Kava Cola &middot; Kava Paloma &middot; Functional non-alcoholic beverage &middot; Wholesale kava drinks &middot; Noble kava extract</p>
+  <p class="small">Proudly Crafted in St. Louis, MO</p>
+  <p class="fda">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Please drink responsibly and consult a healthcare professional if you have questions about kava or adaptogens. Not intended for those who are pregnant or nursing.</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const retailers = {
   "California": [
     { name: "Dragon Smokeshop",           city: "Santa Monica",   type: "Smoke Shop",     address: "2934 Wilshire Blvd" },
@@ -1088,22 +919,27 @@ Object.keys(retailers).sort().forEach(state => {
   const count = retailers[state].length;
   const pill = document.createElement('button');
   pill.type = 'button';
-  pill.style.cssText = 'font-family:inherit;background:var(--teal-pale);border:1.5px solid var(--teal);border-radius:20px;padding:5px 13px;font-size:11px;font-weight:600;color:var(--teal);cursor:pointer;transition:background 0.15s;';
+  pill.className = 'pill';
+  pill.dataset.pill = state;
   pill.textContent = `${state} (${count})`;
   pill.setAttribute('aria-label', `${state}, ${count} retailer${count !== 1 ? 's' : ''} carrying MAG`);
-  pill.onmouseenter = () => pill.style.background = 'var(--teal-hover)';
-  pill.onmouseleave = () => pill.style.background = 'var(--teal-pale)';
   pill.onclick = () => showState(state);
   pillsEl.appendChild(pill);
 });
 
-function showState(stateName) {
+function clearSelection() {
   document.querySelectorAll('.state.selected').forEach(el => el.classList.remove('selected'));
   document.querySelectorAll('.slabel.selected-lbl').forEach(el => {
     el.classList.remove('selected-lbl');
     el.classList.add('active-lbl');
   });
   document.querySelectorAll('.scount.selected-count').forEach(el => el.classList.remove('selected-count'));
+}
+
+let lastState = null;
+
+function showState(stateName) {
+  clearSelection();
 
   document.querySelectorAll(`[data-state="${stateName}"]`).forEach(el => el.classList.add('selected'));
 
@@ -1122,8 +958,7 @@ function showState(stateName) {
     const mapsQuery = encodeURIComponent(`${r.name}, ${r.address}, ${r.city}, ${stateName}`);
     const mapsUrl   = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
     return `
-    <a class="retailer" href="${mapsUrl}" target="_blank" rel="noopener"
-       aria-label="Open ${r.name} in Google Maps">
+    <a class="retailer" href="${mapsUrl}" target="_blank" rel="noopener">
       <div class="retailer-name">${r.name}</div>
       <div class="retailer-meta">
         <span class="retailer-city">${r.city}</span>
@@ -1132,7 +967,7 @@ function showState(stateName) {
       <div class="retailer-address">${r.address}</div>
       <div class="retailer-maps">
         <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
-        View on Google Maps →
+        View on Google Maps →<span class="sr-only"> (opens in a new tab)</span>
       </div>
     </a>
   `;
@@ -1140,7 +975,22 @@ function showState(stateName) {
 
   document.getElementById('prompt-view').style.display = 'none';
   document.getElementById('state-view').classList.add('visible');
+  lastState = stateName;
+  document.getElementById('state-name-text').focus({ preventScroll: true });
+
+  // Phones: the list sits below the map, so bring it into view
+  if (window.matchMedia('(max-width: 760px)').matches) {
+    document.querySelector('.sidebar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
+
+document.getElementById('state-back').addEventListener('click', () => {
+  clearSelection();
+  document.getElementById('state-view').classList.remove('visible');
+  document.getElementById('prompt-view').style.display = '';
+  const pill = [...pillsEl.children].find(b => b.dataset.pill === lastState);
+  if (pill) pill.focus();
+});
 
 document.querySelectorAll('.state.active').forEach(el => {
   el.addEventListener('click', () => { if (el.dataset.state) showState(el.dataset.state); });
@@ -1163,6 +1013,16 @@ document.querySelectorAll('.state.active').forEach(rect => {
   cnt.textContent = list.length;
   lbl.parentNode.appendChild(cnt);
 });
+
+// Scroll reveal — sections ease in once as they enter the viewport
+(function () {
+  const els = document.querySelectorAll('.reveal, .reveal-stagger');
+  if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('in')); return; }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+  els.forEach(el => io.observe(el));
+})();
 </script>
 </body>
 </html>
