@@ -271,6 +271,26 @@
       box-shadow: 0 0 0 3px rgba(86, 114, 118, 0.12);
     }
 
+    /* ── Merch ───────────────────────────────── */
+    .merch-heading {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0.75rem 0 -0.25rem;
+    }
+    .tee-sizes { display: flex; gap: 0.5rem; flex-shrink: 0; }
+    .tee-sizes .product-qty { width: 60px; }
+    .tee-sizes label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--mid);
+      text-align: center;
+      margin-bottom: 0.2rem;
+    }
+
     /* ── Live Total ──────────────────────────── */
     .order-summary {
       margin-top: 1.25rem;
@@ -418,6 +438,8 @@
       .product-row { flex-direction: column; align-items: stretch; gap: 0.5rem; }
       .product-row .product-qty { width: 100%; }
       .product-row .product-qty input { text-align: left; }
+      .tee-sizes .product-qty { width: auto; flex: 1; }
+      .tee-sizes .product-qty input { text-align: center; }
       .intro .terms { gap: 0.5rem; }
     }
   @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important;}}
@@ -441,9 +463,9 @@
     <!-- ── Intro ─────────────────────────────── -->
     <div class="intro">
       <h1>Place a Direct Wholesale Order</h1>
-      <p>Order below to receive a 5% discount on every direct order vs. marketplace pricing. You'll receive an order confirmation immediately, and an invoice around the time your order ships.</p>
+      <p>Order below to receive 5% off every direct order vs. marketplace pricing &mdash; 10% off at $1,250+ and 15% off at $2,000+. You'll receive an order confirmation immediately, and an invoice around the time your order ships.</p>
       <div class="terms">
-        <span class="term-badge">5% Direct Discount</span>
+        <span class="term-badge">5&ndash;15% Direct Discount</span>
         <span class="term-badge" id="termsBadge">Net 60 Payment Terms</span>
         <span class="term-badge">$70 Minimum Order</span>
       </div>
@@ -516,7 +538,7 @@
           <h3>Your Order</h3>
         </div>
         <div class="form-section-body">
-          <p style="font-size:0.82rem;color:var(--mid);margin-bottom:1rem;">Enter the number of <strong>cases</strong> for each product. Leave blank for items you don't need.</p>
+          <p style="font-size:0.82rem;color:var(--mid);margin-bottom:1rem;">Enter the number of <strong>cases</strong> for each product (merch: tees by size, totes by 10-pack). Leave blank for items you don't need.</p>
 
           <div class="product-grid">
             <div class="product-row">
@@ -584,18 +606,44 @@
                 <input type="number" name="qtyColaPalomaMix" min="0" step="1" placeholder="0" data-price="120" aria-label="Kava Cola and Kava Paloma mixed case — number of cases">
               </div>
             </div>
+
+            <div class="merch-heading">MAG Merch</div>
+
+            <div class="product-row">
+              <div class="product-info">
+                <div class="product-name">MAG Tee</div>
+                <div class="product-detail">Midweight cotton &nbsp;·&nbsp; $16 each &nbsp;·&nbsp; $32 suggested retail</div>
+              </div>
+              <div class="tee-sizes">
+                <div class="product-qty"><label for="qtyTeeS">S</label><input type="number" id="qtyTeeS" name="qtyTeeS" min="0" step="1" placeholder="0" data-price="16" aria-label="MAG Tee, small — number of tees"></div>
+                <div class="product-qty"><label for="qtyTeeM">M</label><input type="number" id="qtyTeeM" name="qtyTeeM" min="0" step="1" placeholder="0" data-price="16" aria-label="MAG Tee, medium — number of tees"></div>
+                <div class="product-qty"><label for="qtyTeeL">L</label><input type="number" id="qtyTeeL" name="qtyTeeL" min="0" step="1" placeholder="0" data-price="16" aria-label="MAG Tee, large — number of tees"></div>
+                <div class="product-qty"><label for="qtyTeeXL">XL</label><input type="number" id="qtyTeeXL" name="qtyTeeXL" min="0" step="1" placeholder="0" data-price="16" aria-label="MAG Tee, extra large — number of tees"></div>
+              </div>
+            </div>
+
+            <div class="product-row">
+              <div class="product-info">
+                <div class="product-name">MAG Tote Bag &ndash; 10-pack</div>
+                <div class="product-detail">Heavyweight cotton &nbsp;·&nbsp; $125 per 10 ($12.50 each) &nbsp;·&nbsp; $25 suggested retail</div>
+              </div>
+              <div class="product-qty">
+                <input type="number" name="qtyTote10" min="0" step="1" placeholder="0" data-price="125" aria-label="MAG Tote Bag — number of 10-packs">
+              </div>
+            </div>
           </div>
 
           <!-- Live order total -->
           <div class="order-summary" id="orderSummary" style="display:none;">
             <div class="line"><span>Subtotal</span><span id="subtotalDisplay">$0.00</span></div>
-            <div class="line discount"><span>5% Direct Discount</span><span id="discountDisplay">-$0.00</span></div>
+            <div class="line discount"><span id="discountLabel">5% Direct Discount</span><span id="discountDisplay">-$0.00</span></div>
             <div class="line total"><span>Total Due</span><span id="totalDisplay">$0.00</span></div>
+            <div class="tier-hint" id="tierHint" style="display:none;font-size:0.8rem;color:#7dd3a0;margin-top:0.4rem;"></div>
             <div class="minimum-warning" id="minimumWarning">Order must be at least $70 after discount.</div>
           </div>
 
           <!-- Shipping disclosure -->
-          <div class="shipping-note">
+          <div class="shipping-note" id="shippingNote">
             <strong>Shipping &amp; handling not included.</strong> The total shown above reflects merchandise only. Shipping and handling are calculated based on your order's size and delivery destination, and will be added to your final invoice. The full invoice amount — merchandise plus shipping — is payable under the Net&nbsp;60 terms below and will be billed together as a single charge.
           </div>
         </div>
@@ -657,6 +705,20 @@
 
     const DISCOUNT_RATE = 0.05;
     const ORDER_MINIMUM = 70;
+    // Volume tiers + deposit terms — must match CONFIG.discountTiers / depositThreshold in MAG_Order_Script.gs
+    const DISCOUNT_TIERS    = [{ min: 2000, rate: 0.15 }, { min: 1250, rate: 0.10 }];
+    const DEPOSIT_THRESHOLD = 1250;
+    function rateFor(subtotal) {
+      for (const tier of DISCOUNT_TIERS) if (subtotal >= tier.min) return tier.rate;
+      return DISCOUNT_RATE;
+    }
+    function currentSubtotal() {
+      let s = 0;
+      document.querySelectorAll('.product-qty input').forEach(input => {
+        s += Math.max(0, parseInt(input.value) || 0) * (parseFloat(input.dataset.price) || 0);
+      });
+      return s;
+    }
 
     // ── DOM refs ────────────────────────────────
     const form          = document.getElementById('orderForm');
@@ -688,10 +750,22 @@
     const ackLabel   = document.querySelector('label[for="ackCheckbox"]');
     const NET60_ACK  = ackLabel.innerHTML;
     const PREPAY_ACK = 'I understand that as a new account my first order is <strong>invoiced for payment before shipment</strong>, and that <strong>shipping &amp; handling</strong> will be added to the total shown and billed on the same invoice.';
+    const DEPOSIT_ACK = 'I understand that orders of $1,250 or more require a <strong>50% deposit</strong> when invoiced, with the remaining 50% <strong>plus shipping &amp; handling</strong> due upon shipment.';
+    const shippingNote = document.getElementById('shippingNote');
+    const NET60_SHIP   = shippingNote.innerHTML;
+    const DEPOSIT_SHIP = '<strong>Shipping &amp; handling not included.</strong> The total shown above reflects merchandise only. You&rsquo;ll be invoiced a <strong>50% deposit</strong> now; the remaining 50% plus shipping and handling (calculated by order size and destination) is invoiced when your order ships, due upon shipment.';
+    const ackBox = document.getElementById('ackCheckbox');
+    let lastTerms = null;
     function refreshTermsCopy() {
       const hasCode = codeInput.value.trim().length > 0;
-      if (termsBadge) termsBadge.textContent = hasCode ? 'Net 60 Payment Terms' : 'Payment Before First Shipment';
-      ackLabel.innerHTML = hasCode ? NET60_ACK : PREPAY_ACK;
+      const terms = currentSubtotal() >= DEPOSIT_THRESHOLD ? 'deposit' : (hasCode ? 'net60' : 'prepay');
+      if (terms === lastTerms) return;
+      if (lastTerms !== null) ackBox.checked = false;   // terms changed — ask the buyer to re-acknowledge
+      lastTerms = terms;
+      if (termsBadge) termsBadge.textContent = terms === 'deposit' ? '50% Deposit / 50% on Shipment'
+        : (hasCode ? 'Net 60 Payment Terms' : 'Payment Before First Shipment');
+      ackLabel.innerHTML = terms === 'deposit' ? DEPOSIT_ACK : (hasCode ? NET60_ACK : PREPAY_ACK);
+      shippingNote.innerHTML = terms === 'deposit' ? DEPOSIT_SHIP : NET60_SHIP;
     }
     codeInput.addEventListener('input', refreshTermsCopy);
     refreshTermsCopy();
@@ -707,14 +781,27 @@
 
       // Reset to the default message in case a prior validation changed it
       minWarning.textContent = MIN_WARNING_TEXT;
+      refreshTermsCopy();
 
       if (subtotal === 0) {
         summaryBox.style.display = 'none';
         return;
       }
 
-      const discount = subtotal * DISCOUNT_RATE;
+      const rate     = rateFor(subtotal);
+      const discount = Math.round(subtotal * rate * 100) / 100;
       const total    = subtotal - discount;
+
+      document.getElementById('discountLabel').textContent =
+        Math.round(rate * 100) + (rate > DISCOUNT_RATE ? '% Volume Discount' : '% Direct Discount');
+      const next = DISCOUNT_TIERS.slice().reverse().find(tier => subtotal < tier.min);
+      const hint = document.getElementById('tierHint');
+      if (next && next.min - subtotal <= 500) {
+        hint.textContent = 'Add $' + (next.min - subtotal).toFixed(2) + ' more to reach ' + Math.round(next.rate * 100) + '% off.';
+        hint.style.display = 'block';
+      } else {
+        hint.style.display = 'none';
+      }
 
       subtotalEl.textContent = '$' + subtotal.toFixed(2);
       discountEl.textContent = '-$' + discount.toFixed(2);
@@ -797,7 +884,7 @@
         qtyInputs.forEach(input => {
           subtotal += (parseInt(input.value) || 0) * (parseFloat(input.dataset.price) || 0);
         });
-        const total = subtotal * (1 - DISCOUNT_RATE);
+        const total = subtotal * (1 - rateFor(subtotal));
         if (total < ORDER_MINIMUM) {
           valid = false;
           minWarning.textContent = 'Order must be at least $70 after discount.';
@@ -849,6 +936,11 @@
       data.append('qtyCola',          cleanQty(form.qtyCola));
       data.append('qtyPaloma',        cleanQty(form.qtyPaloma));
       data.append('qtyColaPalomaMix', cleanQty(form.qtyColaPalomaMix));
+      data.append('qtyTeeS',          cleanQty(form.qtyTeeS));     // merch (append-only; maps to CONFIG.products tail)
+      data.append('qtyTeeM',          cleanQty(form.qtyTeeM));
+      data.append('qtyTeeL',          cleanQty(form.qtyTeeL));
+      data.append('qtyTeeXL',         cleanQty(form.qtyTeeXL));
+      data.append('qtyTote10',        cleanQty(form.qtyTote10));
       data.append('notes',           form.notes.value.trim());
       data.append('accessCode',      form.accessCode.value.trim().toUpperCase());
       data.append('company_website', form.company_website.value); // honeypot
